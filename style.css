@@ -1,0 +1,260 @@
+/* ---------------------------------------------------
+   Color tokens — matched to julian.com's palette exactly
+   --------------------------------------------------- */
+:root {
+  --bg: #1e242e;          /* page background */
+  --text: #e6e6e6;        /* body text */
+  --heading: #ebebeb;     /* headings */
+  --accent: #3fa9eb;      /* links */
+  --muted: #9c9c9c;       /* secondary text, selection */
+  --card-bg: #262d38;     /* slightly lifted card surface, derived from bg */
+  --border: #333b47;
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Font note: julian.com's exact typeface can't be read from a page fetch —
+   only CSS class names and colors are visible, not embedded/licensed font
+   files. Inter is used here as a close, clean equivalent. Swap the
+   font-family below if you license the original later. */
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--muted);
+  color: #000;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  color: var(--heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ---------------------------------------------------
+   Header
+   --------------------------------------------------- */
+.site-header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--heading);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.site-header nav a {
+  margin-left: 24px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.site-header nav a:hover {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   Hero
+   --------------------------------------------------- */
+.hero {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px 24px 64px;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.hero-sub {
+  color: var(--text);
+  font-size: 17px;
+  max-width: 60ch;
+}
+
+/* ---------------------------------------------------
+   Handbooks
+   --------------------------------------------------- */
+.handbooks {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 15px;
+  margin-top: 8px;
+  max-width: 60ch;
+}
+
+.handbook-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.handbook-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.handbook-card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.handbook-label {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.handbook-title {
+  color: var(--heading);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.handbook-desc {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------
+   Posts
+   --------------------------------------------------- */
+.posts {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.post-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.post-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.post-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 16px 0;
+  color: var(--text);
+}
+
+.post-item a:hover {
+  text-decoration: none;
+}
+
+.post-item a:hover .post-title {
+  color: var(--accent);
+}
+
+.post-title {
+  font-size: 16px;
+  color: var(--heading);
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+  margin-left: 16px;
+}
+
+/* ---------------------------------------------------
+   About
+   --------------------------------------------------- */
+.about {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+  border-top: 1px solid var(--border);
+}
+
+.about p {
+  color: var(--text);
+  font-size: 16px;
+  max-width: 60ch;
+}
+
+/* ---------------------------------------------------
+   Footer
+   --------------------------------------------------- */
+.site-footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------
+   Responsive
+   --------------------------------------------------- */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+  .handbook-grid {
+    grid-template-columns: 1fr;
+  }
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .site-header nav a {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+}
