@@ -1,0 +1,25 @@
+{% extends "templates/tfg_base.html" %}
+{% block content %}
+{%- set env = doc.environment if doc.environment != "none" else None -%}
+<article class="wrap article">
+  <header class="article-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/explainers">Explainers</a><span>/</span><a href="/series/{{ series.slug }}">{{ series.title | e }}</a></nav>
+    <span><span class="tfg-tag">{{ series.title | e }}</span></span>
+    <h1 class="h1">{{ doc.title | e }}</h1>
+    <p class="meta">{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {{ tfg_read_minutes(doc.body) }} min read{% if doc.asked_by %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
+  </header>
+  <div class="article-panel">{{ tfg_panel(
+    tfg_char(doc.cast_pose, "--fig:60%;--x:3%")
+    ~ tfg_char(doc.deepak_pose, "--fig:60%;--x:4%")
+    ~ tfg_bubble(doc.question, "left", "left:4%;top:4%;--w:42%;--tail-x:64%")
+    ~ tfg_bubble(doc.answer, "right", "right:4%;top:14%;--w:45%;--tail-x:60%"),
+    env
+  ) }}</div>
+  <div class="prose">{{ body_html | safe }}</div>
+  <p class="tfg-takeaway">{{ doc.takeaway | e }}</p>
+  <div class="after">
+    <div><span class="label">STILL UNSURE?</span><a class="h3" href="/ask?area={{ series.slug }}">Ask a follow-up question</a></div>
+    {% if next %}<div><span class="label">READ NEXT</span><a class="h3" href="/explainers/{{ next[0].name }}">{{ next[0].title | e }}</a></div>{% endif %}
+  </div>
+</article>
+{% endblock %}

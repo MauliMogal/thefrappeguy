@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "autoname": "field:slug",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "slug",
+  "title",
+  "scene",
+  "sort_order",
+  "description",
+  "asked_by",
+  "pose"
+ ],
+ "fields": [
+  {
+   "description": "Lowercase words joined by hyphens. It becomes /series/<slug>.",
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "scene",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Scene colour",
+   "options": "sky\nperiwinkle\nmustard\nsalmon\nsage\ngrey",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Order"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "description": "One sentence, for example: Usually asked by Sara, who wants proof.",
+   "fieldname": "asked_by",
+   "fieldtype": "Data",
+   "label": "Who usually asks"
+  },
+  {
+   "default": "dr-thinking",
+   "fieldname": "pose",
+   "fieldtype": "Select",
+   "label": "Deepak pose on the series header",
+   "options": "dr-accomplished\ndr-adjusting-hair\ndr-boasting\ndr-book\ndr-bro-fist\ndr-coffee\ndr-coffee-offer\ndr-doubtful\ndr-express\ndr-idea\ndr-laptop\ndr-laughing\ndr-listen\ndr-no-idea\ndr-passing-files\ndr-scared\ndr-shock\ndr-sleeping\ndr-thinking\ndr-thumbsup\ndr-thumbsup-2\ndr-tierd\ndr-using-ipad\ndr-work-talk\ndr-yawning"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "The Frappe Guy",
+ "name": "Explainer Series",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

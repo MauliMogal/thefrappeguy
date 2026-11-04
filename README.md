@@ -1,24 +1,39 @@
-# The Frappe Guy — site files
+# The Frappe Guy
 
-Two files: `index.html` and `style.css`. No build step, no npm, no framework — plain HTML/CSS, so it works anywhere.
+The Frappe app behind **thefrappeguy.com**: Frappe, ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud and the Framework, explained honestly. Run by Mauli Mogal, Sales @ Frappe.
 
-## What's real vs. placeholder
-- Colors: matched exactly to julian.com (`#1e242e` background, `#e6e6e6` text, `#3fa9eb` links).
-- Font: julian.com's exact typeface can't be read off a page fetch — only CSS class names and colors are visible, not licensed font files. This uses **Inter** (free, Google Fonts) as a close equivalent. If you want the real one, open julian.com in Chrome → Inspect → Computed → font-family to find the exact name, then swap it into `style.css` (`--font` variable at the top).
-- Everything marked `[Dummy]` or `[PLACEHOLDER]` is a stand-in — replace with your own words once you've picked a positioning statement and written your bio. Don't skip this — a site full of bracketed placeholders live is worse than a "coming soon" page with nothing else.
+The site is the brand system's "comic on a quiet page": pages stay ink and paper, and all colour comes from Deepak and the cast of Frappe's Character Library.
 
-## Fastest way to get this live (no coding required)
+## What's in the app
 
-**Option A — Vercel drag-and-drop (simplest):**
-1. Go to vercel.com, sign in (or create a free account).
-2. Click "Add New" → "Project" → "Deploy" and drag the `frappe-guy-site` folder in, or use "Import" and drag the two files.
-3. Vercel gives you a live URL in under a minute. You can attach a custom domain later (e.g. thefrappeguy.com) from Vercel's dashboard.
+| Part | Where | What it does |
+|---|---|---|
+| Pages | `thefrappeguy/www/` | Home, explainers index, series pages, explainer article, About, Ask, Brand book, Privacy, 404. All extend `templates/tfg_base.html`; no Frappe website chrome or desk JavaScript is loaded. |
+| Routes | `hooks.py` | `/explainers/<slug>` and `/series/<slug>` route to `www/explainer` and `www/series`. |
+| Content | DocTypes in module **The Frappe Guy** | **Explainer** (one question, panel, article, takeaway), **Explainer Series** (the six series and their scene colours), **Question** (what people send from /ask). |
+| Brand checks | `content.py`, `explainer.py` | Saving an explainer fails on em or en dashes, banned words, bubbles over 20 words, exclamation marks from Deepak, or a pose that can't do the job. |
+| Feeds | `renderers.py` | `/rss.xml`, `/sitemap.xml`, `/robots.txt`, `/favicon.ico`, `/site.webmanifest`. |
+| Ask form | `api.py` | `thefrappeguy.api.ask`: guest POST, 5 per hour per IP, a hidden trap field for bots. |
+| Assets | `thefrappeguy/public/` | Fonts (Inter, Caveat, JetBrains Mono, all OFL), logo kit, favicons, share images, the public brand book PDF, and the character exports. |
+| Tools | `tools/` | Scripts that regenerate the share images, the favicon and the brand book PDF from the site itself. Not loaded by the app. |
 
-**Option B — fold it into your existing Next.js site (maulimogal.com):**
-Since that's already on the portfolio-blog-starter, add a new route like `/frappe-guy` and paste this HTML/CSS in as a page — ask me for that version when you're ready, it needs slightly different syntax (JSX instead of plain HTML).
+## Install
 
-## When you come back to this
-1. Finalize your positioning statement, replace the hero placeholder.
-2. Write your own About paragraph — not me.
-3. Once you have your first real post, replace one `[Dummy]` post item with the real one and link it.
-4. Everything else can stay as "coming soon" until you have content to fill it.
+On Frappe Cloud: add this repository to the bench as an app, deploy, then install `thefrappeguy` on the site. The six series are created on install.
+
+Locally:
+
+```bash
+bench get-app https://github.com/MauliMogal/the-frappe-guy
+bench --site yoursite install-app thefrappeguy
+```
+
+## Writing an explainer
+
+Desk → **Explainer** → New. Fill the card, the comic panel (asker on the left, Deepak on the right), the article in Markdown and one takeaway, then tick **Published**. The page goes live at `/explainers/<slug>` and appears in the feed and sitemap.
+
+## The characters
+
+Deepak and the cast belong to Frappe and are used with permission. They are composed only from the library's own exports, never drawn, generated or redrawn. They are not covered by this repository's licence, and this repository stays private so the artwork never becomes a public kit.
+
+Characters from the Frappe Character Library, used with permission.

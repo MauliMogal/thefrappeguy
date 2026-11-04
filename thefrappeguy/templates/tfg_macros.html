@@ -1,0 +1,17 @@
+{% macro card(e) -%}
+<a class="card" href="{{ e.url }}" data-series="{{ e.series }}">
+  <div class="tfg-scene card__art" data-scene="{{ e.scene }}"><span class="tfg-dot" style="left:7%;top:12%;--d:14px"></span><span class="tfg-dot" data-dot="blue" style="left:12%;top:22%;--d:9px"></span>{{ tfg_char(e.card_pose or "dr-idea", "", True) }}</div>
+  <span class="label">{{ (e.series_title or "") | upper | e }}</span>
+  <span class="h3">{{ e.title | e }}</span>
+  {% if e.dek %}<p>{{ e.dek | e }}</p>{% endif %}
+  <span class="meta">{{ frappe.format_date(e.published_on, "d MMM yyyy") if e.published_on else "" }}{% if e.published_on %} · {% endif %}{{ e.read_minutes }} min read</span>
+</a>
+{%- endmacro %}
+
+{% macro series_links(series, skip=None) -%}
+{%- for s in series if s.slug != skip %}<a href="/series/{{ s.slug }}"><i class="tfg-scene swatch" data-scene="{{ s.scene }}"></i><span>{{ s.title | e }}</span></a>{% endfor -%}
+{%- endmacro %}
+
+{% macro empty(title) -%}
+<div class="empty"><p class="h3">{{ title | e }}</p><p class="muted">Ask the question you want answered here. Good questions become the next explainer.</p><div class="actions"><a class="btn" href="/ask">Ask a question</a></div></div>
+{%- endmacro %}

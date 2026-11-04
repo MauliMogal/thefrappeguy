@@ -1,0 +1,216 @@
+/* The Frappe Guy: comic components and template frames.
+   Every value reads a token from tokens.css first; the fallbacks match tokens.json.
+   Characters are never drawn here: .tfg-char only places a library export. */
+
+/* ---------- ComicPanel ---------- */
+.tfg-panel {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: var(--panel-ratio, 4 / 3);
+  overflow: hidden;
+  margin: 0;
+  background: var(--comic-paper, #FAF8F2);
+  border-radius: var(--radius-0, 0);
+  box-shadow: none;
+  isolation: isolate;
+}
+.tfg-panel[data-shape="wide"] { aspect-ratio: 1600 / 576; }
+.tfg-panel[data-ground="flat"] { background: var(--tfg-ground, var(--highlight, #E8BE5F)); }
+.tfg-panel > * { --bw: max(2px, 0.56cqw); }
+.tfg-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border: max(2px, 0.56cqw) solid var(--comic-ink, #000000);
+  pointer-events: none;
+}
+
+/* Environment line art from the library, always at scenery-opacity */
+.tfg-scenery {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: var(--scenery-opacity, 0.1);
+  pointer-events: none;
+}
+
+/* ---------- TableStrip ---------- */
+.tfg-table {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: var(--table-height, 8.5%);
+  background: var(--comic-table, #E4CAB9);
+  border-top: var(--bw, 3px) solid var(--comic-ink, #000000);
+}
+
+/* ---------- Character ----------
+   --n is the pose's height normalised to Deepak's large poses (scale_to_match_large already applied).
+   --fig is the layout factor: how tall a large pose stands in this frame. One --fig per frame. */
+.tfg-char {
+  position: absolute;
+  z-index: 1;
+  bottom: var(--y, 0);
+  height: calc(var(--fig, 64%) * var(--n, 1));
+  width: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+.tfg-char[data-side="right"] { right: var(--x, 5%); }
+.tfg-char[data-side="left"] { left: var(--x, 5%); }
+.tfg-char[data-baked-table] {
+  z-index: 3;
+  bottom: calc(var(--table-height, 8.5%) - var(--fig, 64%) * var(--n, 1) * var(--drop, 0.0873));
+}
+
+/* ---------- SpeechBubble ---------- */
+.tfg-bubble {
+  position: absolute;
+  z-index: 4;
+  box-sizing: border-box;
+  margin: 0;
+  max-width: var(--w, 46%);
+  padding: 0.32em 0.62em 0.42em;
+  background: var(--comic-bubble, #FFFFFF);
+  border: var(--bw, 3px) solid var(--comic-ink, #000000);
+  border-radius: var(--radius-0, 0);
+  color: var(--comic-ink, #000000);
+  font-family: var(--font-hand, "Caveat", cursive);
+  font-weight: 500;
+  font-size: var(--letter, 4.7cqw);
+  line-height: 1.2;
+  text-wrap: pretty;
+}
+/* Tail: the library speech box tail (same proportions as the logo), drawn as one open stroke */
+.tfg-bubble::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - var(--bw, 3px));
+  width: 1.12em;
+  height: calc(var(--tail, 1.05em) + var(--bw, 3px));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.tfg-bubble[data-tail="right"]::after {
+  left: var(--tail-x, 68%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 110' preserveAspectRatio='none'%3E%3Cpath d='M6 0 L104 104 L58 0' fill='%23fff' stroke='%23000' stroke-width='11' stroke-linejoin='miter' stroke-miterlimit='10'/%3E%3C/svg%3E");
+}
+.tfg-bubble[data-tail="left"]::after {
+  right: var(--tail-x, 68%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 110' preserveAspectRatio='none'%3E%3Cpath d='M106 0 L8 104 L54 0' fill='%23fff' stroke='%23000' stroke-width='11' stroke-linejoin='miter' stroke-miterlimit='10'/%3E%3C/svg%3E");
+}
+
+/* ---------- ThoughtBubble ---------- */
+.tfg-thought {
+  position: absolute;
+  z-index: 4;
+  box-sizing: border-box;
+  margin: 0;
+  width: var(--w, 46%);
+  padding: 1.1em 1.25em 1.2em;
+  color: var(--comic-ink, #000000);
+  font-family: var(--font-hand, "Caveat", cursive);
+  font-weight: 500;
+  font-size: var(--letter, 4.7cqw);
+  line-height: 1.2;
+  text-align: center;
+  text-wrap: balance;
+  aspect-ratio: 5 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tfg-thought > svg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; overflow: visible; }
+.tfg-thought > svg path,
+.tfg-thought > svg circle { fill: var(--comic-bubble, #FFFFFF); stroke: var(--comic-ink, #000000); stroke-width: var(--bw, 3px); vector-effect: non-scaling-stroke; }
+
+/* ---------- Sticker ---------- */
+.tfg-sticker {
+  position: absolute;
+  z-index: 4;
+  width: var(--w, 30%);
+  height: auto;
+  pointer-events: none;
+}
+
+/* ---------- ComicGrid (layouts) ---------- */
+.tfg-grid { display: grid; gap: var(--gutter, var(--space-4, 16px)); }
+.tfg-grid[data-layout="single"] { grid-template-columns: 1fr; }
+.tfg-grid[data-layout="2x2"] { grid-template-columns: 1fr 1fr; }
+.tfg-grid[data-layout="3+1"] { grid-template-columns: 1fr 1fr 1fr; }
+.tfg-grid[data-layout="3+1"] > :last-child { grid-column: 1 / -1; aspect-ratio: 1600 / 576; }
+
+/* ---------- SceneGround ---------- */
+.tfg-scene { position: relative; overflow: hidden; background: var(--scene-grey, #8F9198); color: var(--on-scene, #000000); }
+.tfg-scene[data-scene="sky"] { background: var(--scene-sky, #4B93E9); }
+.tfg-scene[data-scene="periwinkle"] { background: var(--scene-periwinkle, #7883E9); }
+.tfg-scene[data-scene="mustard"] { background: var(--scene-mustard, #F5C57D); }
+.tfg-scene[data-scene="salmon"] { background: var(--scene-salmon, #F37E7E); }
+.tfg-scene[data-scene="sage"] { background: var(--scene-sage, #789B7A); }
+.tfg-scene[data-scene="grey"] { background: var(--scene-grey, #8F9198); }
+.tfg-dot { position: absolute; z-index: 0; width: var(--d, 18px); height: var(--d, 18px); border-radius: 50%; background: var(--dot-pink, #F3AFAD); }
+.tfg-dot[data-dot="blue"] { background: var(--dot-blue, #4B93EA); }
+
+/* ---------- Tag (highlighter swipe) ---------- */
+.tfg-tag {
+  display: inline-block;
+  padding: 0.04em 0.5em 0.1em;
+  background: var(--highlight, #E8BE5F);
+  color: var(--on-highlight, #000000);
+  font-family: var(--font-hand, "Caveat", cursive);
+  font-weight: 600;
+  font-size: var(--tag-size, 25px);
+  line-height: 1.15;
+  transform: rotate(-2deg);
+  clip-path: polygon(1.5% 12%, 9% 2%, 99% 0, 97.5% 48%, 100% 96%, 4% 100%, 0 70%, 2.5% 40%);
+}
+
+/* ---------- TakeawayLine ---------- */
+.tfg-takeaway {
+  margin: 0;
+  padding-top: var(--space-4, 16px);
+  border-top: var(--border-takeaway, 3px) solid var(--border-strong, #000000);
+  color: inherit;
+  font-family: var(--font-sans, "Inter", system-ui, sans-serif);
+  font-weight: 700;
+  font-size: var(--takeaway-size, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.tfg-scene .tfg-takeaway { border-top-color: var(--on-scene, #000000); }
+
+/* ---------- CreditLine ---------- */
+.tfg-credit {
+  margin: 0;
+  color: var(--ink-3, #6B675F);
+  font-family: var(--font-sans, "Inter", system-ui, sans-serif);
+  font-weight: 400;
+  font-size: var(--credit-size, 12px);
+  line-height: 1.5;
+}
+.tfg-scene .tfg-credit, .tfg-credit[data-on="scene"] { color: var(--on-scene, #000000); }
+.tfg-credit[data-on="ink"] { color: #A39F96; }
+
+/* ---------- Template artboards ---------- */
+.tfg-art {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--paper, #FAF8F2);
+  color: var(--ink, #000000);
+  font-family: var(--font-sans, "Inter", system-ui, sans-serif);
+}
+/* Social and video frames are artwork: they keep the light values in dark mode, like comic panels. */
+.tfg-art[data-fixed]:not(.tfg-scene) { background: #FAF8F2; }
+.tfg-art[data-fixed] { color: #000000; --ink: #000000; --ink-2: #4E4B45; --ink-3: #6B675F; --border-strong: #000000; --paper: #FAF8F2; --surface: #FFFFFF; --rule: #E1DFDA; }
+.tfg-art[data-fixed="ink"]:not(.tfg-scene) { background: #000000; color: #FAF8F2; }
+.tfg-art img.tfg-logo { display: block; height: auto; }

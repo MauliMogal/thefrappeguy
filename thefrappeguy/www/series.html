@@ -1,0 +1,23 @@
+{% extends "templates/tfg_base.html" %}
+{% from "templates/tfg_macros.html" import card, series_links %}
+{% block content %}
+<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb" style="padding-top:var(--space-6)"><a href="/explainers">Explainers</a><span>/</span><span>{{ series.title | e }}</span></nav></div>
+<div class="wrap" style="padding-top:var(--space-6)"><div class="tfg-scene series-hero" data-scene="{{ series.scene }}">
+  <span class="tfg-dot" style="right:38%;top:14%;--d:18px"></span><span class="tfg-dot" data-dot="blue" style="right:34%;top:22%;--d:11px"></span>
+  {{ tfg_char(series.pose or "dr-thinking") }}
+  <span class="label" style="color:var(--on-scene)">SERIES</span>
+  <h1 class="h1">{{ series.title | e }}</h1>
+  <p>{{ series.description | e }}</p>
+  {% if series.asked_by %}<p class="small">{{ series.asked_by | e }}</p>{% endif %}
+</div></div>
+<section class="section"><div class="wrap">
+  {% if explainers %}
+  <p class="meta count">{{ explainers | length }} explainer{{ "" if explainers | length == 1 else "s" }}</p>
+  <div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
+  {% else %}
+  <div class="empty"><p class="h3">The first {{ series.title | e }} explainer is on its way.</p><p class="muted">Tell me what you want answered first. Good questions become the next explainer.</p><div class="actions"><a class="btn" href="/ask?area={{ series.slug }}">Ask a question</a></div></div>
+  {% endif %}
+</div></section>
+<div class="wrap"><div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h3">Other series</h2></div>
+<nav class="series-nav" aria-label="Other series" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr))">{{ series_links(tfg_series, series.slug) }}</nav></div>
+{% endblock %}

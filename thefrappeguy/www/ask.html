@@ -1,0 +1,33 @@
+{% extends "templates/tfg_base.html" %}
+{% block content %}
+<div class="wrap">
+  <header class="article-head"><h1 class="h1">Ask a question</h1><p class="lede">Anything about Frappe, ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud or the Framework. No question is too basic.</p></header>
+  <div class="split" style="align-items:start">
+    <div>
+      <form class="form" id="ask" method="post" action="/api/method/thefrappeguy.api.ask" novalidate>
+        <div class="field"><label for="q">Your question</label><textarea class="input" id="q" name="question" required minlength="10" maxlength="4000" aria-describedby="q-hint q-err"></textarea><span class="hint" id="q-hint">The real question, in your own words. Context helps: your industry, your team size, what you use today.</span><span class="error" id="q-err" hidden>Write your question in a sentence or two, then send it.</span></div>
+        <div class="field"><label for="area">Which area is it about?</label><select class="input" id="area" name="area"><option value="">Not sure</option>{% for s in tfg_series %}<option value="{{ s.slug }}">{{ s.title | e }}</option>{% endfor %}</select></div>
+        <div class="field"><label for="full_name">Your name <span class="hint">(optional)</span></label><input class="input" id="full_name" name="full_name" autocomplete="name" maxlength="140"></div>
+        <div class="field"><label for="email">Email <span class="hint">(optional)</span></label><input class="input" id="email" name="email" type="email" autocomplete="email" aria-describedby="email-hint"><span class="hint" id="email-hint">Only if you want a reply.</span></div>
+        <div class="field" aria-hidden="true" style="position:absolute;left:-9999px"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="check" for="may_publish"><input type="checkbox" id="may_publish" name="may_publish" value="1"> <span>You can turn my question into an explainer. My name is never shown.</span></label>
+        <p class="form-error" id="form-err" role="alert" hidden></p>
+        <div class="actions"><button class="btn" type="submit" id="send">Send question</button></div>
+        <p class="meta"><a href="/privacy">Privacy</a></p>
+      </form>
+      <div class="done" id="done" hidden tabindex="-1"><p class="h3">Got it. Thank you.</p><p class="muted">If you left an email, I'll reply there. If I don't know the answer yet, I'll say so and find out.</p><div class="actions"><a class="btn btn--ghost" href="/explainers">Read the explainers</a></div></div>
+    </div>
+    <div class="stack">
+      <div class="panel-col">{{ tfg_panel(
+        tfg_char("cl-jammy-thinking", "--fig:60%;--x:3%")
+        ~ tfg_char("dr-listen", "--fig:60%;--x:4%")
+        ~ tfg_bubble("Hook or custom app? Asking for a friend.", "left", "left:4%;top:5%;--w:44%;--tail-x:62%"),
+        "env-cafe-counter"
+      ) }}</div>
+      <div class="stack" style="gap:var(--space-3)"><h2 class="h3">What happens next</h2>
+      <ol class="steps"><li>I read every question.</li><li>If you left an email, I reply there.</li><li>Questions many people ask become explainers. Your name never appears.</li></ol></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/assets/thefrappeguy/js/site.js?v={{ tfg_v }}" defer></script>{% endblock %}

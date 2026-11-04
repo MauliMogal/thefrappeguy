@@ -1,0 +1,18 @@
+{% extends "templates/tfg_base.html" %}
+{% set page_title = "Page not found" %}
+{% block content %}
+<div class="wrap split section" style="padding-bottom:0">
+  <div>
+    <p class="label">404</p>
+    <h1 class="h1">Page not found</h1>
+    <p class="lede">The link may be old, or the page may have moved. Here's where most people find what they came for.</p>
+    <div class="actions"><a class="btn" href="/explainers">Browse explainers</a><a class="btn btn--ghost" href="/series/basics">Start with the basics</a></div>
+    <p class="muted">Looking for something specific? <a href="/ask">Ask a question</a>.</p>
+  </div>
+  <div class="panel-col">{{ tfg_panel(
+    tfg_char("dr-no-idea", "--fig:64%;--x:8%")
+    ~ tfg_bubble("No idea where that page went. I'd rather say so than guess.", "right", "left:6%;top:8%;--w:50%;--tail-x:78%"),
+    "env-cafe-counter"
+  ) }}</div>
+</div>
+{% endblock %}

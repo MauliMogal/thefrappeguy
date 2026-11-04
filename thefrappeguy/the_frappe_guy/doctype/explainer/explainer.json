@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "autoname": "field:slug",
+ "creation": "2026-11-05 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "slug",
+  "column_break_1",
+  "series",
+  "published",
+  "published_on",
+  "section_card",
+  "dek",
+  "asked_by",
+  "card_pose",
+  "section_panel",
+  "cast_pose",
+  "question",
+  "column_break_2",
+  "deepak_pose",
+  "answer",
+  "environment",
+  "section_article",
+  "body",
+  "takeaway",
+  "section_share",
+  "og_image"
+ ],
+ "fields": [
+  {
+   "description": "The question, in the asker's words.",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1
+  },
+  {
+   "description": "Lowercase words joined by hyphens. It becomes /explainers/<slug>.",
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "series",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Series",
+   "options": "Explainer Series",
+   "reqd": 1
+  },
+  {
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Published"
+  },
+  {
+   "fieldname": "published_on",
+   "fieldtype": "Date",
+   "label": "Published on"
+  },
+  {
+   "fieldname": "section_card",
+   "fieldtype": "Section Break",
+   "label": "Card"
+  },
+  {
+   "fieldname": "dek",
+   "fieldtype": "Small Text",
+   "label": "One line under the title",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asked_by",
+   "fieldtype": "Select",
+   "label": "Asked by",
+   "options": "Ishita\nRaju\nSara\nJoseph\nSalman"
+  },
+  {
+   "default": "dr-idea",
+   "fieldname": "card_pose",
+   "fieldtype": "Select",
+   "label": "Deepak pose on the card",
+   "options": "dr-accomplished\ndr-adjusting-hair\ndr-boasting\ndr-book\ndr-bro-fist\ndr-coffee\ndr-coffee-offer\ndr-doubtful\ndr-express\ndr-idea\ndr-laptop\ndr-laughing\ndr-listen\ndr-no-idea\ndr-passing-files\ndr-scared\ndr-shock\ndr-sleeping\ndr-thinking\ndr-thumbsup\ndr-thumbsup-2\ndr-tierd\ndr-using-ipad\ndr-work-talk\ndr-yawning"
+  },
+  {
+   "description": "Max 20 words per bubble, 12 is the target. The asker sits on the left, Deepak answers from the right.",
+   "fieldname": "section_panel",
+   "fieldtype": "Section Break",
+   "label": "Comic panel"
+  },
+  {
+   "default": "cl-suman-expressing",
+   "fieldname": "cast_pose",
+   "fieldtype": "Select",
+   "label": "Asker pose (left)",
+   "options": "cl-ishita-doubtful\ncl-ishita-idea\ncl-ishita-laughing\ncl-ishita-thinking\ncl-jammy-doubtful\ncl-jammy-expressing\ncl-jammy-idea\ncl-jammy-laughing\ncl-jammy-thinking\ncl-raju-doubtful\ncl-raju-expressing\ncl-raju-idea\ncl-raju-laughing\ncl-raju-thinking\ncl-saara-doubtful\ncl-saara-expressing\ncl-saara-idea\ncl-saara-laughing\ncl-saara-thinking\ncl-suman-doubtful\ncl-suman-expressing\ncl-suman-idea\ncl-suman-laughing\ncl-suman-thinking",
+   "reqd": 1
+  },
+  {
+   "fieldname": "question",
+   "fieldtype": "Small Text",
+   "label": "Asker's bubble",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "dr-using-ipad",
+   "fieldname": "deepak_pose",
+   "fieldtype": "Select",
+   "label": "Deepak pose (right)",
+   "options": "dr-accomplished\ndr-adjusting-hair\ndr-boasting\ndr-book\ndr-bro-fist\ndr-coffee\ndr-coffee-offer\ndr-doubtful\ndr-express\ndr-idea\ndr-laptop\ndr-laughing\ndr-listen\ndr-no-idea\ndr-passing-files\ndr-scared\ndr-shock\ndr-sleeping\ndr-thinking\ndr-thumbsup\ndr-thumbsup-2\ndr-tierd\ndr-using-ipad\ndr-work-talk\ndr-yawning",
+   "reqd": 1
+  },
+  {
+   "description": "Leave empty when Deepak is listening.",
+   "fieldname": "answer",
+   "fieldtype": "Small Text",
+   "label": "Deepak's bubble"
+  },
+  {
+   "default": "env-cafeteria",
+   "fieldname": "environment",
+   "fieldtype": "Select",
+   "label": "Scenery",
+   "options": "env-cafeteria\nenv-cafe-counter\nnone"
+  },
+  {
+   "description": "Four parts: the answer first, one real example, the catch said plainly, then the takeaway. Write DocType names in backticks, like `Sales Invoice`.",
+   "fieldname": "section_article",
+   "fieldtype": "Section Break",
+   "label": "Article"
+  },
+  {
+   "fieldname": "body",
+   "fieldtype": "Markdown Editor",
+   "label": "Article",
+   "reqd": 1
+  },
+  {
+   "description": "One sentence, ideally under 12 words. No unchecked numbers.",
+   "fieldname": "takeaway",
+   "fieldtype": "Data",
+   "label": "Takeaway",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_share",
+   "fieldtype": "Section Break",
+   "label": "Sharing"
+  },
+  {
+   "description": "Optional. Without it the page uses its own image if one was generated, otherwise the series image.",
+   "fieldname": "og_image",
+   "fieldtype": "Attach Image",
+   "label": "Share image (1200 x 630)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-05 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "The Frappe Guy",
+ "name": "Explainer",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "published_on",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}
