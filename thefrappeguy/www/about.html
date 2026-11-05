@@ -1,5 +1,4 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import cast_grid %}
 {% block content %}
 <div class="wrap narrow">
   <header class="article-head about-head">
@@ -11,11 +10,7 @@
     <h2 class="h2" id="what">What this is</h2>
     <p>Frappe makes open source business software: ERPNext, Frappe HR, Frappe CRM, Frappe Helpdesk, Frappe Learning, Raven, and the Frappe Framework they are all built on, hosted on Frappe Cloud. There is a lot of it, and the words can get in the way.</p>
     <p>So this site tells it as one story. A small company is deciding whether Frappe can run its business, and The Frappe Guy helps the team find out. Each topic is told in short parts that follow on from each other. Every part answers one question with a real example, the real screen names and what it takes to set up, and ends with one thing to remember.</p>
-    <div class="actions"><a class="btn" href="/series/frappe-101">Start the story</a></div>
-  </section>
-  <section class="section" aria-labelledby="cast">
-    <div class="section-head"><h2 class="h2" id="cast">The team in the story</h2><p class="muted">{{ tfg_premise }} The company and its people are fictional.</p></div>
-    {{ cast_grid(tfg_cast) }}
+    <div class="actions"><a class="btn" href="/series/frappe-101">Start the story</a><a class="btn btn--ghost" href="/#team">Meet the team</a></div>
   </section>
   <section class="section stack" aria-labelledby="runs">
     <h2 class="h2" id="runs">Who writes it</h2>
@@ -23,17 +18,13 @@
     <p>This is my own project, not Frappe's official channel. Frappe's documentation and announcements live on <a href="https://frappe.io">frappe.io</a>. If anything here disagrees with frappe.io, frappe.io is right, and I'll fix my page.</p>
     <p>The Frappe Guy and the people around him come from Frappe's Character Library and are used with Frappe's permission.</p>
   </section>
-  <section class="stack" aria-labelledby="elsewhere">
+  <section class="section stack" aria-labelledby="elsewhere">
     <h2 class="h2" id="elsewhere">Find The Frappe Guy</h2>
-    <p>Feedback and suggestions are welcome at <a href="mailto:hello@thefrappeguy.com">hello@thefrappeguy.com</a>.</p>
-    <dl class="handles">
-      <dt>Email</dt><dd><a href="mailto:hello@thefrappeguy.com">hello@thefrappeguy.com</a></dd>
-      {%- for label, url, handle in socials if url %}<dt>{{ label }}</dt><dd><a href="{{ url }}" rel="me noopener">{{ handle }}</a></dd>{% endfor %}
-    </dl>
-  </section>
-  <section class="section stack" aria-labelledby="built">
-    <h2 class="h2" id="built">How this site is built</h2>
-    <p>It runs on the Frappe Framework, hosted on Frappe Cloud. The explainers, the topics and the questions you send are all Frappe DocTypes.</p>
+    <ul class="social" aria-label="The Frappe Guy elsewhere">
+      {%- for label, url, icon in socials %}<li><a href="{{ url }}" target="_blank" rel="me noopener" aria-label="{{ label }} (opens in a new tab)" title="{{ label }}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
+    </ul>
+    <p>Feedback and suggestions: <a href="mailto:hello@thefrappeguy.com">hello@thefrappeguy.com</a></p>
+    <p class="small muted">Built on the Frappe Framework and hosted on Frappe Cloud. Explainers, topics and questions are all Frappe DocTypes.</p>
   </section>
 </div>
 {% endblock %}

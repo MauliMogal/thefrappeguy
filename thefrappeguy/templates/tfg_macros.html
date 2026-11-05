@@ -32,5 +32,5 @@
 
 
 {% macro cast_grid(cast) -%}
-<ul class="cast">{% for key, name, role, line in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="cast__name">{{ name }}</span><span class="label">{{ role | upper }}</span><p class="small muted">{{ line }}</p></li>{% endfor %}</ul>
+<ul class="cast">{% for key, name, role, line in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="cast__name">{{ name }}</span>{% if role %}<span class="label">{{ role | upper }}</span>{% endif %}<p class="small muted">{{ line }}</p></li>{% endfor %}</ul>
 {%- endmacro %}

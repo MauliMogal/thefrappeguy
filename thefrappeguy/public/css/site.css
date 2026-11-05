@@ -187,6 +187,10 @@ h1, h2, h3 { text-wrap: balance; }
 .next-topic a { font-weight: 700; }
 .about-head { align-items: flex-start; }
 .about-head .avatar { border: 3px solid var(--ink); background: var(--comic-paper); }
+.social { display: flex; flex-wrap: wrap; gap: var(--space-3); list-style: none; margin: 0; padding: 0; }
+.social a { display: grid; place-items: center; width: 48px; height: 48px; border: 2px solid var(--ink); color: var(--ink); background: var(--surface); }
+.social svg { fill: currentColor; }
+.social a:hover, .social a:focus-visible { background: var(--ink); color: var(--paper); }
 .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
 .who { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-8); align-items: start; }
 @media (max-width: 599px) { .who { grid-template-columns: minmax(0, 1fr); } }

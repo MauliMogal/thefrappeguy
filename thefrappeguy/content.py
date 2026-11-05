@@ -103,12 +103,12 @@ SERIES = [
 STORY_PREMISE = (
 	"Ishita runs The Coffee Company. It roasts beans, packs them and sells to cafes and online, "
 	"and it has outgrown its spreadsheets. Her team is deciding whether Frappe can run the business. "
-	"The Frappe Guy is the product consultant who builds the system with them, one question at a time."
+	"The Frappe Guy helps them build it, one question at a time."
 )
 
 # (pose key, public name, role at the company, one line)
 CAST = [
-	("dr-coffee", "The Frappe Guy", "Product consultant", "Knows Frappe from the inside and builds the system with the team. Answers with a real example."),
+	("dr-coffee", "The Frappe Guy", "", "Knows Frappe from the inside and builds the system with the team. Answers with a real example."),
 	("cl-ishita-thinking", "Ishita", "Founder and CEO", "Started the company. Wants to know if this will really run it."),
 	("cl-raju-thinking", "Raju", "Sales", "Brings in the cafes. Promises a little too much."),
 	("cl-saara-thinking", "Sara", "Finance and data", "Numbers first. Asks you to prove it."),
