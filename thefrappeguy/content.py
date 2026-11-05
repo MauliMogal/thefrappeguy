@@ -14,24 +14,51 @@ CREDIT = "Characters from the Frappe Character Library, used with permission."
 # Raven's logo is black like Frappe's, so Raven takes orange to keep the two apart.
 SCENES = ("ink", "blue", "cyan", "yellow", "mint", "magenta", "violet", "grey", "green", "orange")
 
-# The story, in reading order (D-116). Each topic is one story told in parts; the last part hands over to the next topic.
+# The story, in reading order: twelve releases (D-142, D-145). ERPNext is told in three releases (R2 to R4),
+# and Pricing follows Frappe Cloud. Each release is one story told in parts; the last part hands over to the next.
+# "decision" is what a reader can decide after the release; "sections" are its part titles, one per line (story.md 3.1).
+# R2's "Selling online" stays off until Q-34 is decided.
 # Seeded on install and synced by patches; edit them in the desk afterwards.
 SERIES = [
 	{
 		"slug": "frappe-101",
 		"title": "Frappe 101",
 		"scene": "ink",
-		"description": "Who makes Frappe, how it started, what it believes and where it is going. The story starts here.",
+		"description": "Who makes Frappe, how it started, what it believes and what it makes. The story starts here.",
 		"asked_by": "Ishita wants to know who is behind the software before she trusts it with her company.",
 		"pose": "dr-coffee-offer",
+		"decision": "Whether you can trust the people who build Frappe.",
+		"sections": "Who is behind this?\nWhy it is open source\nEverything Frappe makes",
 	},
 	{
 		"slug": "erpnext",
-		"title": "ERPNext",
+		"title": "ERPNext I: Buying and selling",
 		"scene": "blue",
-		"description": "One order followed from the first quote to the money in the bank, and everything ERPNext does on the way.",
-		"asked_by": "Ishita and Sara follow one order through the whole company.",
+		"description": "One order followed from the first quote to the money in the bank, and how the beans get bought in the first place.",
+		"asked_by": "Raju sells the bags. Ishita buys the beans.",
 		"pose": "dr-using-ipad",
+		"decision": "Whether ERPNext can run how The Coffee Company buys beans and sells bags, to cafes and online.",
+		"sections": "What is an ERP, really?\nThe order that starts it all\nCafe prices and online prices\nBuying green beans\nWhat an imported bean really costs",
+	},
+	{
+		"slug": "erpnext-stock",
+		"title": "ERPNext II: Stock and the roastery",
+		"scene": "blue",
+		"description": "Green beans in, packed bags out: warehouses, batches, roasting as manufacturing and quality checks.",
+		"asked_by": "Ishita wants to know what happens to the beans once they arrive.",
+		"pose": "dr-thinking",
+		"decision": "Whether ERPNext can run the roastery, from green bean to packed bag.",
+		"sections": "Beans in, bags out\nOne coffee, many bags\nBatches and best-before\nRoasting is manufacturing\nFrom plan to batch\nQuality before it ships\nWhen packing happens outside",
+	},
+	{
+		"slug": "erpnext-accounts",
+		"title": "ERPNext III: Accounts, GST and reports",
+		"scene": "blue",
+		"description": "The books that write themselves from every order, GST on every invoice, and reports you can open down to the document.",
+		"asked_by": "Sara wants to see the money.",
+		"pose": "dr-book",
+		"decision": "Whether the books, GST and reports come out right without retyping.",
+		"sections": "The accounts write themselves\nGST on every invoice\nE-invoices and e-way bills\nGetting paid, and matching the bank\nReports you can trust\nWhere do we start?",
 	},
 	{
 		"slug": "cloud",
@@ -40,6 +67,8 @@ SERIES = [
 		"description": "Where the company's system lives, who keeps it running, and what happens on a bad day.",
 		"asked_by": "Joseph asks what every IT person loses sleep over.",
 		"pose": "dr-thumbsup",
+		"decision": "Where the system runs, and what is handled for you.",
+		"sections": "Where does it run?\nSites and benches\nBackups and bad days\nUpdates without fear\nAdding apps later",
 	},
 	{
 		"slug": "pricing",
@@ -48,6 +77,8 @@ SERIES = [
 		"description": "What the company will actually pay, line by line. Every figure is checked against a live source.",
 		"asked_by": "Sara wants every number proved.",
 		"pose": "dr-book",
+		"decision": "What running ERPNext on Frappe Cloud costs, all in, over the years.",
+		"sections": "What you are paying for\nAdding a person\nThe Cloud plans\nWhat implementation costs\nThe five year view",
 	},
 	{
 		"slug": "hr",
@@ -56,6 +87,8 @@ SERIES = [
 		"description": "Frappe HR for a growing team: people, leave, attendance, expense claims and the first payroll run.",
 		"asked_by": "Ishita hires faster than she can file paperwork.",
 		"pose": "dr-listen",
+		"decision": "Whether it can run hiring, attendance and Indian payroll.",
+		"sections": "Everyone in one place\nLeave and attendance\nThe first payroll run\nRaju's expense claims\nHR in your pocket",
 	},
 	{
 		"slug": "crm",
@@ -64,6 +97,8 @@ SERIES = [
 		"description": "Frappe CRM, from the first lead to a won deal that turns into an order without retyping.",
 		"asked_by": "Raju wants to sell faster. The Frappe Guy wants his promises written down.",
 		"pose": "dr-idea",
+		"decision": "Whether it can track every lead and promise until it becomes an order.",
+		"sections": "Leads, not sticky notes\nThe pipeline\nPromises in writing\nFrom won deal to order",
 	},
 	{
 		"slug": "helpdesk",
@@ -72,6 +107,8 @@ SERIES = [
 		"description": "Frappe Helpdesk for the day an order goes wrong: tickets, response times and a reply that points to the real order.",
 		"asked_by": "Salman takes the first complaint.",
 		"pose": "dr-work-talk",
+		"decision": "Whether every complaint can get an owner and an answer.",
+		"sections": "Tickets, not inboxes\nWho answers, and how fast\nAnswers customers find themselves\nFixing the order behind the ticket",
 	},
 	{
 		"slug": "framework",
@@ -80,6 +117,8 @@ SERIES = [
 		"description": "What to do when the company needs something the apps do not do yet: DocTypes, custom fields, scripts and apps.",
 		"asked_by": "Joseph writes the code and asks what breaks on upgrade.",
 		"pose": "dr-laptop",
+		"decision": "Whether you can change it when it doesn't fit, without breaking upgrades.",
+		"sections": "Everything is a DocType\nA new field, no code\nRules and approvals\nWhen you do need code\nWill upgrades break it?",
 	},
 	{
 		"slug": "learning",
@@ -88,6 +127,8 @@ SERIES = [
 		"description": "Frappe Learning: courses, quizzes and certificates to train a team and its partners.",
 		"asked_by": "Salman builds the first course.",
 		"pose": "dr-accomplished",
+		"decision": "Whether you can train partner cafes on the same system.",
+		"sections": "Courses for partner cafes\nLessons, quizzes, certificates\nWho finished what",
 	},
 	{
 		"slug": "raven",
@@ -96,6 +137,8 @@ SERIES = [
 		"description": "Team chat on the same Frappe site, so a question about an order sits next to the order.",
 		"asked_by": "Joseph moves the team off five different chat groups.",
 		"pose": "dr-laughing",
+		"decision": "Whether the whole team can work in one place.",
+		"sections": "Chat on the same site\nTalk about a document\nGo live",
 	},
 ]
 
@@ -145,6 +188,8 @@ BANNED = [
 	"revolutionise",
 	"cutting-edge",
 	"cutting edge",
+	# voice.md: "simply" and "just" get deleted; "simply" is checked (D-161)
+	"simply",
 ]
 _BANNED_RE = [(w, re.compile(r"\b" + re.sub(r"[-\s]", r"[-\\s]", w) + r"\b", re.I)) for w in BANNED]
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -175,7 +220,7 @@ def series_list():
 	try:
 		rows = frappe.get_all(
 			"Explainer Series",
-			fields=["name as slug", "title", "scene", "description", "asked_by", "pose"],
+			fields=["name as slug", "title", "scene", "description", "asked_by", "pose", "decision", "sections"],
 			order_by="sort_order asc, creation asc",
 		)
 	except Exception:

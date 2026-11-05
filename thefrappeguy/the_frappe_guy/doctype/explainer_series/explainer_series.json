@@ -11,7 +11,9 @@
   "sort_order",
   "description",
   "asked_by",
-  "pose"
+  "pose",
+  "decision",
+  "sections"
  ],
  "fields": [
   {
@@ -60,11 +62,23 @@
    "fieldtype": "Select",
    "label": "Deepak pose on the series header",
    "options": "dr-accomplished\ndr-adjusting-hair\ndr-boasting\ndr-book\ndr-bro-fist\ndr-coffee\ndr-coffee-offer\ndr-doubtful\ndr-express\ndr-idea\ndr-laptop\ndr-laughing\ndr-listen\ndr-no-idea\ndr-passing-files\ndr-scared\ndr-shock\ndr-sleeping\ndr-thinking\ndr-thumbsup\ndr-thumbsup-2\ndr-tierd\ndr-using-ipad\ndr-work-talk\ndr-yawning"
+  },
+  {
+   "description": "One line on what a reader can decide after this release. Shown on the roadmap.",
+   "fieldname": "decision",
+   "fieldtype": "Small Text",
+   "label": "What the reader can decide"
+  },
+  {
+   "description": "The release's part titles, one per line, in order. Shown on the roadmap until the parts are published.",
+   "fieldname": "sections",
+   "fieldtype": "Small Text",
+   "label": "Section titles"
   }
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-05 15:00:00.000000",
+ "modified": "2026-11-05 20:30:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer Series",

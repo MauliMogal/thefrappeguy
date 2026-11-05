@@ -11,7 +11,7 @@ class ExplainerSeries(Document):
 		issues = []
 		if not SLUG_RE.match(self.slug):
 			issues.append("Slug: use lowercase letters, numbers and single hyphens.")
-		for field, label in (("title", "Title"), ("description", "Description"), ("asked_by", "Who usually asks")):
+		for field, label in (("title", "Title"), ("description", "Description"), ("asked_by", "Who usually asks"), ("decision", "What the reader can decide"), ("sections", "Section titles")):
 			issues += copy_issues(self.get(field), label)
 		if issues:
 			frappe.throw("<br>".join(issues), title="Fix these before saving")

@@ -1,7 +1,7 @@
 app_name = "thefrappeguy"
 app_title = "The Frappe Guy"
 app_publisher = "Mauli Mogal"
-app_description = "thefrappeguy.com: Frappe, explained simply."
+app_description = "thefrappeguy.com: Frappe, one small scene at a time."
 app_email = "hello@thefrappeguy.com"
 app_license = "mit"
 

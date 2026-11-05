@@ -1,3 +1,5 @@
+import os
+
 import frappe
 
 from thefrappeguy.content import explainer_list, series_map
@@ -17,4 +19,7 @@ def get_context(context):
 	context.page_title = series.title
 	context.page_description = series.description
 	context.nav = "explainers"
-	context.og_image = f"/assets/thefrappeguy/og/og-series-{slug}.png"
+	# Releases added in 1.3 have no share image until tools/build_assets.py is run again; fall back to the home image.
+	og = f"og/og-series-{slug}.png"
+	exists = os.path.exists(frappe.get_app_path("thefrappeguy", "public", og))
+	context.og_image = f"/assets/thefrappeguy/{og}" if exists else "/assets/thefrappeguy/og/og-home.png"

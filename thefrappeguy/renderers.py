@@ -11,7 +11,7 @@ from frappe.website.page_renderers.base_renderer import BaseRenderer
 
 from thefrappeguy.content import explainer_list, series_list
 
-STATIC_ROUTES = ["", "explainers", "about", "ask", "brand", "privacy"]
+STATIC_ROUTES = ["", "explainers", "roadmap", "about", "ask", "brand", "privacy"]
 
 
 class FeedRenderer(BaseRenderer):

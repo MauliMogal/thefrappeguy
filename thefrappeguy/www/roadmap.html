@@ -1,0 +1,24 @@
+{% extends "templates/tfg_base.html" %}
+{% block content %}
+<div class="wrap">
+  <header class="article-head">
+    <p class="label">THE STORY, RELEASE BY RELEASE</p>
+    <h1 class="h1">Roadmap</h1>
+    <p class="lede">{{ releases | length }} releases follow The Coffee Company from “who builds this?” to running the whole business on Frappe. Each one ends with a decision you can make for your own company.</p>
+  </header>
+  <ol class="roadmap">
+  {%- for r in releases %}
+    <li class="release{% if not r.count %} release--soon{% endif %}" id="r{{ r.no }}" data-tone="{{ r.scene }}">
+      <span class="release__no">R{{ r.no }}</span>
+      <div class="release__body">
+        <h2 class="release__title">{% if r.count %}<a href="/series/{{ r.slug }}">{{ r.title | e }}</a>{% else %}{{ r.title | e }}{% endif %}</h2>
+        {% if r.decision %}<p class="release__decide"><span class="label">YOU'LL BE ABLE TO DECIDE</span> {{ r.decision | e }}</p>{% endif %}
+        {% if r.section_list %}<ol class="release__parts">{% for t in r.section_list %}<li>{{ t | e }}</li>{% endfor %}</ol>{% endif %}
+      </div>
+      <div class="release__status">{% if r.count %}<a class="btn" href="/series/{{ r.slug }}">Read {{ r.count }} part{{ "" if r.count == 1 else "s" }}</a>{% else %}<span class="soon soon--sm">Coming soon</span>{% endif %}</div>
+    </li>
+  {%- endfor %}
+  </ol>
+  <p class="small muted roadmap__note">Releases have no dates. Each one goes live once every fact in it has been checked against Frappe's own pages.</p>
+</div>
+{% endblock %}

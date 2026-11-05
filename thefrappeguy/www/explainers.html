@@ -2,8 +2,8 @@
 {% from "templates/tfg_macros.html" import card %}
 {% block content %}
 <div class="wrap">
-  <header class="article-head"><h1 class="h1">Explainers</h1><p class="lede">The whole story in reading order: ten topics, each told in short parts. Pick a topic, or start from the top.</p></header>
-  <div class="filters" role="group" aria-label="Filter by topic">
+  <header class="article-head"><h1 class="h1">Explainers</h1><p class="lede">The whole story in reading order: twelve releases, each told in short parts. Pick a topic, or start from the top.</p></header>
+  <div class="filters" role="group" aria-label="Filter by release">
     <a class="chip" href="/explainers" data-filter="all" aria-current="true">All</a>
     {%- for s in tfg_series %}<a class="chip" href="/explainers?series={{ s.slug }}" data-filter="{{ s.slug }}" data-name="{{ s.title | e }}" data-tone="{{ s.scene }}">{{ s.title | e }}</a>{% endfor %}
   </div>

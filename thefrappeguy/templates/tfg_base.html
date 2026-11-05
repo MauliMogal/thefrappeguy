@@ -1,5 +1,5 @@
 {%- set site_title = "The Frappe Guy" -%}
-{%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title ~ ": Frappe, explained simply" -%}
+{%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title -%}
 {%- set desc = page_description or "Learn Frappe the easy way: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more." -%}
 {%- set share = og_image or "/assets/thefrappeguy/og/og-home.png" -%}
 {%- set share_url = share if share.startswith("http") else tfg_base ~ share -%}
@@ -47,6 +47,7 @@
   </a>
   <nav class="site-nav" aria-label="Main"><ul>
     <li><a href="/explainers"{% if nav == "explainers" %} aria-current="page"{% endif %}>Explainers</a></li>
+    <li><a href="/roadmap"{% if nav == "roadmap" %} aria-current="page"{% endif %}>Roadmap</a></li>
     <li><a href="/about"{% if nav == "about" %} aria-current="page"{% endif %}>About</a></li>
   </ul></nav>
 </div></header>
@@ -57,7 +58,7 @@
   <div class="foot-grid">
     <a class="foot-logo" href="/"><img src="{{ asset }}logo/tfg-logo.svg" alt="the frappe guy" width="148" height="48"></a>
     <nav class="foot-links" aria-label="Footer">
-      <a href="/explainers">Explainers</a><a href="/about">About</a><a href="/ask">Ask a question</a><a href="/brand">Brand book</a><a href="/rss.xml">RSS</a><a href="/privacy">Privacy</a>
+      <a href="/explainers">Explainers</a><a href="/roadmap">Roadmap</a><a href="/about">About</a><a href="/ask">Ask a question</a><a href="/brand">Brand book</a><a href="/rss.xml">RSS</a><a href="/privacy">Privacy</a>
     </nav>
   </div>
   <div class="foot-base">
