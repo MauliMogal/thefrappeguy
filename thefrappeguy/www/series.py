@@ -16,6 +16,8 @@ def get_context(context):
 	context.topic_no = i + 1
 	context.next_series = series_map().get(slugs[i + 1]) if i + 1 < len(slugs) else None
 	context.explainers = explainer_list(series=slug)
+	total = len([t for t in (series.sections or "").splitlines() if t.strip()])
+	context.series_complete = bool(total) and len(context.explainers) >= total
 	context.page_title = series.title
 	context.page_description = series.description
 	context.nav = "explainers"

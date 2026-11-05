@@ -291,6 +291,9 @@ def series_with_counts():
 	for s in series_list():
 		s = frappe._dict(s)
 		s.count = counts.get(s.slug, 0)
+		# A release is complete when every planned section is published; then it only offers "Read".
+		s.total = len([t for t in (s.sections or "").splitlines() if t.strip()])
+		s.complete = bool(s.total) and s.count >= s.total
 		out.append(s)
 	return out
 

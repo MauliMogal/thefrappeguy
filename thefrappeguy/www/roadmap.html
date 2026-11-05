@@ -15,7 +15,7 @@
         {% if r.decision %}<p class="release__decide"><span class="label">YOU'LL BE ABLE TO DECIDE</span> {{ r.decision | e }}</p>{% endif %}
         {% if r.section_list %}<ol class="release__parts">{% for t in r.section_list %}<li>{{ t | e }}</li>{% endfor %}</ol>{% endif %}
       </div>
-      <div class="release__status">{% if r.count %}<a class="btn" href="/series/{{ r.slug }}">Read {{ r.count }} part{{ "" if r.count == 1 else "s" }}</a>{% else %}<span class="soon soon--sm">Coming soon</span>{% endif %}</div>
+      <div class="release__status">{% if r.count %}<a class="btn" href="/series/{{ r.slug }}">Read</a>{% else %}<span class="soon soon--sm">Coming soon</span>{% endif %}</div>
     </li>
   {%- endfor %}
   </ol>

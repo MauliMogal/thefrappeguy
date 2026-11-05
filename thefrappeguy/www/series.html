@@ -12,8 +12,8 @@
   {% if series.decision %}<p class="small"><strong>You'll be able to decide:</strong> {{ series.decision | e }}</p>{% endif %}
 </div></div>
 <section class="section"><div class="wrap">
-  <div class="section-head" style="margin-bottom:var(--space-4)"><h2 class="h3">The story so far</h2></div>
-  {{ parts(explainers, series.scene) }}
+  <div class="section-head" style="margin-bottom:var(--space-4)"><h2 class="h3">{{ "The parts" if series_complete else "The story so far" }}</h2></div>
+  {{ parts(explainers, series.scene, series_complete) }}
   {% if next_series %}<p class="next-topic">When this story ends, it carries on in <a href="/series/{{ next_series.slug }}" data-tone="{{ next_series.scene }}">{{ next_series.title | e }}</a>.</p>{% endif %}
 </div></section>
 <div class="wrap"><div class="section-head" style="margin-bottom:var(--space-4)"><h2 class="h3">Other releases</h2></div>
