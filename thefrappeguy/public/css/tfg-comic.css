@@ -151,29 +151,30 @@
 /* ---------- SceneGround ---------- */
 .tfg-scene { position: relative; overflow: hidden; background: var(--scene-tangerine, #F0A25A); color: var(--on-scene, #000000); }
 /* Ten scene colours, one per series. The first five are the library's app store colours (D-036); the other five sit in the same band (D-104). */
-.tfg-scene[data-scene="tangerine"] { background: var(--scene-tangerine, #F0A25A); }
-.tfg-scene[data-scene="sky"] { background: var(--scene-sky, #4B93E9); }
-.tfg-scene[data-scene="periwinkle"] { background: var(--scene-periwinkle, #7883E9); }
-.tfg-scene[data-scene="lilac"] { background: var(--scene-lilac, #B391E6); }
-.tfg-scene[data-scene="mustard"] { background: var(--scene-mustard, #F5C57D); }
-.tfg-scene[data-scene="teal"] { background: var(--scene-teal, #5FC4B4); }
-.tfg-scene[data-scene="lime"] { background: var(--scene-lime, #B7CF67); }
-.tfg-scene[data-scene="pink"] { background: var(--scene-pink, #EE9CC6); }
-.tfg-scene[data-scene="sage"] { background: var(--scene-sage, #789B7A); }
-.tfg-scene[data-scene="salmon"] { background: var(--scene-salmon, #F37E7E); }
-.tfg-scene[data-scene="grey"] { background: var(--scene-grey, #8F9198); }
-/* Series names set in their own colour on paper: the darker tone of each scene, 5.7:1 or better on paper. */
+/* Topic scenes: a tint of each product's own logo colour, so the characters stay readable (D-114). */
+.tfg-scene[data-scene="ink"] { background: var(--scene-ink, #171717); --on-scene: #FFFFFF; color: #FFFFFF; }
+.tfg-scene[data-scene="blue"] { background: var(--scene-blue, #70BBF9); }
+.tfg-scene[data-scene="cyan"] { background: var(--scene-cyan, #96DFF3); }
+.tfg-scene[data-scene="yellow"] { background: var(--scene-yellow, #ECCC84); }
+.tfg-scene[data-scene="mint"] { background: var(--scene-mint, #8CDAC4); }
+.tfg-scene[data-scene="magenta"] { background: var(--scene-magenta, #F594F3); }
+.tfg-scene[data-scene="violet"] { background: var(--scene-violet, #C2A4F8); }
+.tfg-scene[data-scene="grey"] { background: var(--scene-grey, #BABCBE); }
+.tfg-scene[data-scene="green"] { background: var(--scene-green, #84B4A5); }
+.tfg-scene[data-scene="orange"] { background: var(--scene-orange, #F4BC8E); }
+
+/* Topic text tones: the logo colour darkened to at least 5.5:1 on paper. */
 [data-tone] { color: var(--tone, #000000); }
-[data-tone="tangerine"] { --tone: #9C4A00; --tint: #FCEBDB; }
-[data-tone="sky"] { --tone: #1A5CAD; --tint: #E1ECFB; }
-[data-tone="periwinkle"] { --tone: #3B45B8; --tint: #E6E8FB; }
-[data-tone="lilac"] { --tone: #6B3DB3; --tint: #EFE7FB; }
-[data-tone="mustard"] { --tone: #835600; --tint: #FCF0DC; }
-[data-tone="teal"] { --tone: #0B6E62; --tint: #DDF3EF; }
-[data-tone="lime"] { --tone: #4F6514; --tint: #EEF4DA; }
-[data-tone="pink"] { --tone: #A3216A; --tint: #FBE5F0; }
-[data-tone="sage"] { --tone: #3B6A40; --tint: #E3ECE3; }
-[data-tone="salmon"] { --tone: #B02E2E; --tint: #FCE3E3; }
+[data-tone="ink"] { --tone: #171717; --tint: #E9E7E1; --logo: #171717; }
+[data-tone="blue"] { --tone: #0064BA; --tint: #DCEBF4; --logo: #0089FF; }
+[data-tone="cyan"] { --tone: #006C8E; --tint: #DCF1F2; --logo: #00BAF4; }
+[data-tone="yellow"] { --tone: #766130; --tint: #F8F1E0; --logo: #E8BE5F; }
+[data-tone="mint"] { --tone: #047258; --tint: #DDF0E6; --logo: #06B58B; }
+[data-tone="magenta"] { --tone: #B108B5; --tint: #F9DCF2; --logo: #EF0BF5; }
+[data-tone="violet"] { --tone: #7439ED; --tint: #EBE2F4; --logo: #7D3DFF; }
+[data-tone="grey"] { --tone: #60646C; --tint: #EBEAE6; --logo: #7B808A; }
+[data-tone="green"] { --tone: #0E7159; --tint: #DEE8E0; --logo: #0E7159; }
+[data-tone="orange"] { --tone: #925425; --tint: #F9EBDC; --logo: #F08A3C; }
 .tfg-dot { position: absolute; z-index: 0; width: var(--d, 18px); height: var(--d, 18px); border-radius: 50%; background: var(--dot-pink, #F3AFAD); }
 .tfg-dot[data-dot="blue"] { background: var(--dot-blue, #4B93EA); }
 

@@ -30,16 +30,16 @@ for line in (ROOT / "thefrappeguy" / "characters.py").read_text().splitlines():
 		N[key] = float(line.split(",")[3])
 
 SERIES = {
-	"frappe-101": ("Frappe 101", "tangerine", "dr-thinking", "Start here. What Frappe is, and what a site, an app and a DocType are."),
-	"cloud": ("Frappe Cloud", "sky", "dr-thumbsup", "Where your Frappe site lives: sites, plans, backups and updates."),
-	"erpnext": ("ERPNext", "periwinkle", "dr-using-ipad", "Accounting, stock, buying, selling and manufacturing for a real business."),
-	"hr": ("HR and Payroll", "lilac", "dr-coffee-offer", "Frappe HR: employees, leave, attendance, expense claims and payroll."),
-	"crm": ("CRM", "mustard", "dr-idea", "Frappe CRM, from the first lead to a closed deal."),
-	"helpdesk": ("Helpdesk", "teal", "dr-work-talk", "Frappe Helpdesk: tickets, teams and replying to customers on time."),
-	"lms": ("LMS", "lime", "dr-accomplished", "Frappe Learning: courses, quizzes and certificates for your team."),
-	"raven": ("Raven", "pink", "dr-laughing", "Team chat that runs on your Frappe site, documents included."),
-	"framework": ("Framework", "sage", "dr-laptop", "DocTypes, hooks, APIs and custom apps, for people who build."),
-	"pricing": ("Pricing", "salmon", "dr-book", "What things cost and how the pricing works, checked against live sources."),
+	"frappe-101": ("Frappe 101", "ink", "dr-coffee-offer", "Who makes Frappe, how it started, what it believes and where it is going."),
+	"erpnext": ("ERPNext", "blue", "dr-using-ipad", "One order, followed from the first quote to the money in the bank."),
+	"cloud": ("Frappe Cloud", "cyan", "dr-thumbsup", "Where the system lives, who keeps it running, and what happens on a bad day."),
+	"pricing": ("Pricing", "yellow", "dr-book", "What the company will actually pay, line by line, checked against live sources."),
+	"hr": ("HR and Payroll", "mint", "dr-listen", "People, leave, attendance, expense claims and the first payroll run."),
+	"crm": ("CRM", "magenta", "dr-idea", "From the first lead to a won deal that becomes an order without retyping."),
+	"helpdesk": ("Helpdesk", "violet", "dr-work-talk", "The day an order goes wrong: tickets, response times and a real reply."),
+	"framework": ("Framework", "grey", "dr-laptop", "When the company needs something the apps don't do yet."),
+	"lms": ("LMS", "green", "dr-accomplished", "Frappe Learning: courses, quizzes and certificates to train a team."),
+	"raven": ("Raven", "orange", "dr-laughing", "Team chat on the same site, next to the orders it talks about."),
 }
 
 
@@ -76,11 +76,13 @@ def page_home():
 
 def page_series(slug):
 	title, scene, pose, desc = SERIES[slug]
+	no = list(SERIES).index(slug) + 1
+	logo = "logo/tfg-logo-reverse.svg" if scene == "ink" else "logo/tfg-logo.svg"
 	return f"""{HEAD}<div class="art tfg-scene" data-scene="{scene}">
 <span class="tfg-dot" style="left:720px;top:90px;--d:22px"></span><span class="tfg-dot" data-dot="blue" style="left:770px;top:132px;--d:13px"></span>
-<img src="{u('logo/tfg-logo.svg')}" style="position:absolute;left:64px;top:56px;width:180px" alt="">
+<img src="{u(logo)}" style="position:absolute;left:64px;top:56px;width:180px" alt="">
 <div style="position:absolute;left:64px;top:180px;width:640px;display:flex;flex-direction:column;align-items:flex-start;gap:20px">
-<span class="tfg-tag" style="--tag-size:34px">Topic</span>
+<span class="tfg-tag" style="--tag-size:34px">Topic {no} of {len(SERIES)}</span>
 <h1 style="font:800 68px/72px var(--font-sans);letter-spacing:-.025em">{title}</h1>
 <p style="width:560px;margin:0;font:500 24px/32px var(--font-sans)">{desc}</p></div>
 {char(pose, "--fig:600px;--x:60px;--y:-70px")}

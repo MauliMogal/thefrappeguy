@@ -9,90 +9,111 @@ from thefrappeguy.characters import CHARACTERS
 
 CREDIT = "Characters from the Frappe Character Library, used with permission."
 
-SCENES = ("tangerine", "sky", "periwinkle", "lilac", "mustard", "teal", "lime", "pink", "sage", "salmon")
+# One scene per topic, taken from that product's own logo on frappe.io/products (D-114).
+# Frappe 101 uses Frappe's black. Pricing has no product, so it uses the library's highlight yellow.
+# Raven's logo is black like Frappe's, so Raven takes orange to keep the two apart.
+SCENES = ("ink", "blue", "cyan", "yellow", "mint", "magenta", "violet", "grey", "green", "orange")
 
-# The ten series, in display order. Seeded on install and synced by the v1_1 patch; edit them in the desk afterwards.
+# The story, in reading order (D-116). Each topic is one story told in parts; the last part hands over to the next topic.
+# Seeded on install and synced by patches; edit them in the desk afterwards.
 SERIES = [
 	{
 		"slug": "frappe-101",
 		"title": "Frappe 101",
-		"scene": "tangerine",
-		"description": "Start here. What Frappe is, and what a site, an app and a DocType are, explained from zero.",
-		"asked_by": "Usually asked by Salman, who is new to all of this.",
-		"pose": "dr-thinking",
-	},
-	{
-		"slug": "cloud",
-		"title": "Frappe Cloud",
-		"scene": "sky",
-		"description": "Where your Frappe site lives: sites, plans, backups and updates.",
-		"asked_by": "Usually asked by Ishita, who wants her company's data safe.",
-		"pose": "dr-thumbsup",
+		"scene": "ink",
+		"description": "Who makes Frappe, how it started, what it believes and where it is going. The story starts here.",
+		"asked_by": "Ishita wants to know who is behind the software before she trusts it with her company.",
+		"pose": "dr-coffee-offer",
 	},
 	{
 		"slug": "erpnext",
 		"title": "ERPNext",
-		"scene": "periwinkle",
-		"description": "Accounting, stock, buying, selling and manufacturing, and how they fit a real business.",
-		"asked_by": "Usually asked by Ishita, who runs a company.",
+		"scene": "blue",
+		"description": "One order followed from the first quote to the money in the bank, and everything ERPNext does on the way.",
+		"asked_by": "Ishita and Sara follow one order through the whole company.",
 		"pose": "dr-using-ipad",
+	},
+	{
+		"slug": "cloud",
+		"title": "Frappe Cloud",
+		"scene": "cyan",
+		"description": "Where the company's system lives, who keeps it running, and what happens on a bad day.",
+		"asked_by": "Joseph asks what every IT person loses sleep over.",
+		"pose": "dr-thumbsup",
+	},
+	{
+		"slug": "pricing",
+		"title": "Pricing",
+		"scene": "yellow",
+		"description": "What the company will actually pay, line by line. Every figure is checked against a live source.",
+		"asked_by": "Sara wants every number proved.",
+		"pose": "dr-book",
 	},
 	{
 		"slug": "hr",
 		"title": "HR and Payroll",
-		"scene": "lilac",
-		"description": "Frappe HR: employees, leave, attendance, expense claims and payroll.",
-		"asked_by": "Usually asked by Ishita, who hires faster than she can file paperwork.",
-		"pose": "dr-coffee-offer",
+		"scene": "mint",
+		"description": "Frappe HR for a growing team: people, leave, attendance, expense claims and the first payroll run.",
+		"asked_by": "Ishita hires faster than she can file paperwork.",
+		"pose": "dr-listen",
 	},
 	{
 		"slug": "crm",
 		"title": "CRM",
-		"scene": "mustard",
-		"description": "Frappe CRM, from the first lead to a closed deal.",
-		"asked_by": "Usually asked by Raju, who sells for a living.",
+		"scene": "magenta",
+		"description": "Frappe CRM, from the first lead to a won deal that turns into an order without retyping.",
+		"asked_by": "Raju wants to sell faster. The Frappe Guy wants his promises written down.",
 		"pose": "dr-idea",
 	},
 	{
 		"slug": "helpdesk",
 		"title": "Helpdesk",
-		"scene": "teal",
-		"description": "Frappe Helpdesk: tickets, teams and replying to customers on time.",
-		"asked_by": "Usually asked by Raju, whose customers call him first.",
+		"scene": "violet",
+		"description": "Frappe Helpdesk for the day an order goes wrong: tickets, response times and a reply that points to the real order.",
+		"asked_by": "Salman takes the first complaint.",
 		"pose": "dr-work-talk",
+	},
+	{
+		"slug": "framework",
+		"title": "Framework",
+		"scene": "grey",
+		"description": "What to do when the company needs something the apps do not do yet: DocTypes, custom fields, scripts and apps.",
+		"asked_by": "Joseph writes the code and asks what breaks on upgrade.",
+		"pose": "dr-laptop",
 	},
 	{
 		"slug": "lms",
 		"title": "LMS",
-		"scene": "lime",
-		"description": "Frappe Learning: courses, quizzes and certificates for your team or your customers.",
-		"asked_by": "Usually asked by Salman, who learns by doing.",
+		"scene": "green",
+		"description": "Frappe Learning: courses, quizzes and certificates to train a team and its partners.",
+		"asked_by": "Salman builds the first course.",
 		"pose": "dr-accomplished",
 	},
 	{
 		"slug": "raven",
 		"title": "Raven",
-		"scene": "pink",
-		"description": "Team chat that runs on your Frappe site, with your users, roles and documents in the conversation.",
-		"asked_by": "Usually asked by Joseph, who lives in chat.",
+		"scene": "orange",
+		"description": "Team chat on the same Frappe site, so a question about an order sits next to the order.",
+		"asked_by": "Joseph moves the team off five different chat groups.",
 		"pose": "dr-laughing",
 	},
-	{
-		"slug": "framework",
-		"title": "Framework",
-		"scene": "sage",
-		"description": "DocTypes, hooks, APIs and custom apps, for people who build on Frappe.",
-		"asked_by": "Usually asked by Joseph, who writes the code.",
-		"pose": "dr-laptop",
-	},
-	{
-		"slug": "pricing",
-		"title": "Pricing",
-		"scene": "salmon",
-		"description": "What things cost and how the pricing works. Every figure is checked against a live source.",
-		"asked_by": "Usually asked by Sara, who wants proof.",
-		"pose": "dr-book",
-	},
+]
+
+# The story's frame (D-115). A fictional company; the characters come from Frappe's Character Library.
+STORY_PREMISE = (
+	"Ishita runs a coffee company. It roasts beans, packs them and sells to cafes and online, "
+	"and it has outgrown its spreadsheets. Her team is deciding whether Frappe can run the business. "
+	"The Frappe Guy is the product consultant who builds the system with them, one question at a time."
+)
+
+# (pose key, public name, role at the company, one line)
+CAST = [
+	("dr-coffee", "The Frappe Guy", "Product consultant", "Knows Frappe from the inside and builds the system with the team. Answers with a real example."),
+	("cl-ishita-thinking", "Ishita", "Founder and CEO", "Started the company. Wants to know if this will really run it."),
+	("cl-raju-thinking", "Raju", "Sales", "Brings in the cafes. Promises a little too much."),
+	("cl-saara-thinking", "Sara", "Finance and data", "Numbers first. Asks you to prove it."),
+	("cl-jammy-thinking", "Joseph", "Tech", "Keeps everything running. Asks what breaks, and tells bad jokes."),
+	("cl-suman-thinking", "Salman", "Design", "New to business software. Asks what everyone else is afraid to ask."),
 ]
 
 # Old series slugs that now live elsewhere. Used by the redirect hook and the v1_1 patch.
@@ -166,7 +187,8 @@ def series_map():
 	return {s.slug if hasattr(s, "slug") else s["slug"]: frappe._dict(s) for s in series_list()}
 
 
-def explainer_list(series=None, limit=None):
+def explainer_list(series=None, limit=None, latest=False):
+	"""Published explainers. Story order (topic, then part) unless latest=True asks for newest first."""
 	filters = {"published": 1}
 	if series:
 		filters["series"] = series
@@ -174,29 +196,48 @@ def explainer_list(series=None, limit=None):
 		rows = frappe.get_all(
 			"Explainer",
 			filters=filters,
-			fields=["name as slug", "title", "series", "dek", "card_pose", "published_on", "takeaway", "body", "modified"],
+			fields=["name as slug", "title", "series", "part", "dek", "card_pose", "published_on", "takeaway", "body", "modified"],
 			order_by="published_on desc, creation desc",
-			limit_page_length=limit or 0,
+			limit_page_length=0,
 		)
 	except Exception:
 		return []
 	smap = series_map()
+	order = {slug: i for i, slug in enumerate(smap)}
 	for r in rows:
-		s = smap.get(r.series) or frappe._dict(title=r.series, scene="tangerine")
+		s = smap.get(r.series) or frappe._dict(title=r.series, scene="ink")
 		r.series_title = s.title
 		r.scene = s.scene
 		r.url = f"/explainers/{r.slug}"
 		r.read_minutes = max(1, round(word_count(r.body) / 200))
-	return rows
+	if not latest:
+		rows.sort(key=lambda r: (order.get(r.series, 99), r.part or 0))
+	return rows[:limit] if limit else rows
+
+
+def story_nav(slug):
+	"""Previous and next part in reading order. The last part of a topic leads into the first part of the next one."""
+	rows = explainer_list()
+	names = [r.slug for r in rows]
+	if slug not in names:
+		return None, None
+	i = names.index(slug)
+	prev = rows[i - 1] if i > 0 else None
+	nxt = rows[i + 1] if i + 1 < len(rows) else None
+	return prev, nxt
 
 
 def series_counts():
 	"""Published explainers per series, so empty series can say "Coming soon"."""
+	# Counted in Python: Frappe v16 refuses SQL functions written as strings in fields.
 	try:
-		rows = frappe.get_all("Explainer", filters={"published": 1}, fields=["series", "count(name) as n"], group_by="series")
+		rows = frappe.get_all("Explainer", filters={"published": 1}, pluck="series")
 	except Exception:
 		return {}
-	return {r.series: r.n for r in rows}
+	counts = {}
+	for series in rows:
+		counts[series] = counts.get(series, 0) + 1
+	return counts
 
 
 def series_with_counts():
@@ -215,4 +256,6 @@ def website_context(context):
 		"tfg_base": frappe.utils.get_url().rstrip("/"),
 		"tfg_v": __version__,
 		"tfg_credit": CREDIT,
+		"tfg_cast": CAST,
+		"tfg_premise": STORY_PREMISE,
 	}

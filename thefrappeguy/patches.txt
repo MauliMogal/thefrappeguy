@@ -2,3 +2,4 @@
 
 [post_model_sync]
 thefrappeguy.patches.v1_1.ten_series
+thefrappeguy.patches.v1_2.story_order

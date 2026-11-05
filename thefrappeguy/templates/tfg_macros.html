@@ -1,7 +1,7 @@
 {% macro card(e) -%}
 <a class="card" href="{{ e.url }}" data-series="{{ e.series }}">
   <div class="tfg-scene card__art" data-scene="{{ e.scene }}"><span class="tfg-dot" style="left:7%;top:12%;--d:14px"></span><span class="tfg-dot" data-dot="blue" style="left:12%;top:22%;--d:9px"></span>{{ tfg_char(e.card_pose or "dr-idea", "", True) }}</div>
-  <span class="label" data-tone="{{ e.scene }}">{{ (e.series_title or "") | upper | e }}</span>
+  <span class="label" data-tone="{{ e.scene }}">{{ (e.series_title or "") | upper | e }} · PART {{ e.part }}</span>
   <span class="h3">{{ e.title | e }}</span>
   {% if e.dek %}<p>{{ e.dek | e }}</p>{% endif %}
   <span class="meta">{{ frappe.format_date(e.published_on, "d MMM yyyy") if e.published_on else "" }}{% if e.published_on %} · {% endif %}{{ e.read_minutes }} min read</span>
@@ -9,9 +9,9 @@
 {%- endmacro %}
 
 {% macro topics(series) -%}
-<ul class="topics">
-{%- for s in series %}<li><a class="topic" href="/series/{{ s.slug }}" data-tone="{{ s.scene }}"><span class="topic__name">{{ s.title | e }}</span><span class="topic__desc">{{ s.description | e }}</span>{% if s.count %}<span class="topic__status">{{ s.count }} explainer{{ "" if s.count == 1 else "s" }}</span>{% else %}<span class="topic__status topic__status--soon">Coming soon</span>{% endif %}</a></li>{% endfor -%}
-</ul>
+<ol class="topics">
+{%- for s in series %}<li><a class="topic" href="/series/{{ s.slug }}" data-tone="{{ s.scene }}"><span class="topic__no">{{ "%02d" | format(loop.index) }}</span><span class="topic__name">{{ s.title | e }}</span><span class="topic__desc">{{ s.description | e }}</span>{% if s.count %}<span class="topic__status">{{ s.count }} part{{ "" if s.count == 1 else "s" }} so far</span>{% else %}<span class="topic__status topic__status--soon">Coming soon</span>{% endif %}</a></li>{% endfor -%}
+</ol>
 {%- endmacro %}
 
 {% macro series_links(series, skip=None) -%}
@@ -20,4 +20,17 @@
 
 {% macro empty(title, note=None) -%}
 <div class="empty"><span class="soon">Coming soon</span><p class="h3">{{ title | e }}</p>{% if note %}<p class="muted">{{ note }}</p>{% endif %}</div>
+{%- endmacro %}
+
+
+{% macro parts(rows, scene) -%}
+<ol class="parts" data-tone="{{ scene }}">
+{%- for e in rows %}<li><a class="part" href="{{ e.url }}"><span class="part__no">PART {{ e.part }}</span><span class="part__body"><span class="h3">{{ e.title | e }}</span>{% if e.dek %}<span>{{ e.dek | e }}</span>{% endif %}<span class="meta">{{ e.read_minutes }} min read</span></span></a></li>{% endfor %}
+<li><div class="part part--soon"><span class="part__no">PART {{ (rows[-1].part + 1) if rows else 1 }}</span><span class="part__body"><span class="h3">Coming soon</span><span class="muted">The story continues. Follow along by <a href="/rss.xml">RSS</a>.</span></span></div></li>
+</ol>
+{%- endmacro %}
+
+
+{% macro cast_grid(cast) -%}
+<ul class="cast">{% for key, name, role, line in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="cast__name">{{ name }}</span><span class="label">{{ role | upper }}</span><p class="small muted">{{ line }}</p></li>{% endfor %}</ul>
 {%- endmacro %}

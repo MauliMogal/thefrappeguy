@@ -34,7 +34,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Scene colour",
-   "options": "tangerine\nsky\nperiwinkle\nlilac\nmustard\nteal\nlime\npink\nsage\nsalmon",
+   "options": "ink\nblue\ncyan\nyellow\nmint\nmagenta\nviolet\ngrey\ngreen\norange",
    "reqd": 1
   },
   {
@@ -64,7 +64,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-05 12:00:00.000000",
+ "modified": "2026-11-05 15:00:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer Series",

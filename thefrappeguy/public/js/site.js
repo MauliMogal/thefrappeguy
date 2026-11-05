@@ -19,10 +19,10 @@
         if (c.dataset.filter === f) c.setAttribute("aria-current", "true"); else c.removeAttribute("aria-current");
       });
       cards.forEach(function (c) { var on = f === "all" || c.dataset.series === f; c.hidden = !on; if (on) shown++; });
-      count.textContent = shown === 1 ? "1 explainer" : shown + " explainers";
+      count.textContent = shown === 1 ? "1 part" : shown + " parts";
       count.hidden = shown === 0;
       empty.hidden = shown !== 0;
-      emptyTitle.textContent = f === "all" ? "The first explainers are being written." : "The first " + name + " explainers are being written.";
+      emptyTitle.textContent = f === "all" ? "The first parts of the story are being written." : "The first parts of " + name + " are being written.";
     };
     chips.forEach(function (c) {
       c.addEventListener("click", function (e) {

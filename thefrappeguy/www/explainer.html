@@ -4,7 +4,7 @@
 <article class="wrap article">
   <header class="article-head">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/explainers">Explainers</a><span>/</span><a href="/series/{{ series.slug }}">{{ series.title | e }}</a></nav>
-    <span><span class="tfg-tag">{{ series.title | e }}</span></span>
+    <span class="label" data-tone="{{ series.scene }}">{{ series.title | upper | e }} · PART {{ doc.part }}</span>
     <h1 class="h1">{{ doc.title | e }}</h1>
     <p class="meta">{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {{ tfg_read_minutes(doc.body) }} min read{% if doc.asked_by %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
   </header>
@@ -17,9 +17,10 @@
   ) }}</div>
   <div class="prose">{{ body_html | safe }}</div>
   <p class="tfg-takeaway">{{ doc.takeaway | e }}</p>
-  <div class="after">
-    <div><span class="label">STILL UNSURE?</span><a class="h3" href="/ask?area={{ series.slug }}">Ask a follow-up question</a></div>
-    {% if next %}<div><span class="label">READ NEXT</span><a class="h3" href="/explainers/{{ next[0].name }}">{{ next[0].title | e }}</a></div>{% endif %}
-  </div>
+  <nav class="story-nav" aria-label="Story">
+    {% if prev_part %}<a class="story-nav__prev" href="{{ prev_part.url }}"><span class="label">{{ "PREVIOUS" if prev_part.series == doc.series else "PREVIOUS TOPIC" }} · {{ prev_part.series_title | upper | e }}, PART {{ prev_part.part }}</span><span class="h3">{{ prev_part.title | e }}</span></a>{% else %}<span></span>{% endif %}
+    {% if next_part %}<a class="story-nav__next" href="{{ next_part.url }}"><span class="label" data-tone="{{ next_part.scene }}">{{ "NEXT" if next_part.series == doc.series else "NEXT TOPIC" }} · {{ next_part.series_title | upper | e }}, PART {{ next_part.part }}</span><span class="h3">{{ next_part.title | e }}</span></a>
+    {% else %}<div class="story-nav__next story-nav__end"><span class="label">WHAT HAPPENS NEXT</span><span class="h3">The next part is being written.</span><span class="muted">Follow along by <a href="/rss.xml">RSS</a>. Stuck on something? <a href="/ask?area={{ series.slug }}">Ask a question</a>.</span></div>{% endif %}
+  </nav>
 </article>
 {% endblock %}

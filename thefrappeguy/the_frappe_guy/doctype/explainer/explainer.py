@@ -38,6 +38,13 @@ class Explainer(Document):
 		if self.deepak_pose in ("dr-no-idea", "dr-tierd") and self.published:
 			issues.append("This pose is never the answer panel. Pick another Deepak pose.")
 
+		if (self.part or 0) < 1:
+			issues.append("Part: number the parts of a story from 1.")
+		elif self.series and frappe.db.exists(
+			"Explainer", {"series": self.series, "part": self.part, "name": ["!=", self.name or ""]}
+		):
+			issues.append(f"Part: this topic already has a Part {self.part}. Each part number is used once per story.")
+
 		if issues:
 			frappe.throw("<br>".join(issues), title="Fix these before saving")
 

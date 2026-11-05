@@ -44,7 +44,7 @@ def base():
 def rss():
 	b = base()
 	items = []
-	for e in explainer_list(limit=50):
+	for e in explainer_list(limit=50, latest=True):
 		when = get_datetime(e.published_on or e.modified)
 		desc = " ".join(x for x in [e.dek, e.takeaway] if x)
 		items.append(
@@ -63,7 +63,7 @@ def rss():
 		"<title>The Frappe Guy</title>"
 		f"<link>{b}/</link>"
 		f'<atom:link href="{b}/rss.xml" rel="self" type="application/rss+xml"/>'
-		"<description>Learn Frappe the easy way: short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk, LMS, Raven and the Framework.</description>"
+		"<description>Learn Frappe the easy way: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more.</description>"
 		"<language>en-in</language>"
 		+ "".join(items)
 		+ "</channel></rss>"

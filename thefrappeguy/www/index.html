@@ -1,13 +1,13 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import card, topics %}
+{% from "templates/tfg_macros.html" import card, topics, cast_grid %}
 {% block content %}
 <div class="wrap">
   <section class="hero">
     <div>
       <p class="label">FRAPPE, EXPLAINED</p>
       <h1 class="display">Learn Frappe the easy way.</h1>
-      <p class="lede">Short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk and more. Someone asks a question, The Frappe Guy answers with a real example, and you leave with one thing to remember.</p>
-      <div class="actions"><a class="btn" href="/series/frappe-101">Start with Frappe 101</a><a class="btn btn--ghost" href="/explainers">Browse all explainers</a></div>
+      <p class="lede">Follow one company as it finds out whether Frappe can run its business. The Frappe Guy walks the team through it, topic by topic, in short comic parts.</p>
+      <div class="actions"><a class="btn" href="/series/frappe-101">Start the story</a><a class="btn btn--ghost" href="/explainers">Browse all explainers</a></div>
     </div>
     <div class="panel-col">{{ tfg_panel(
       tfg_char("cl-ishita-thinking", "--fig:58%;--x:5%")
@@ -17,30 +17,17 @@
     ) }}</div>
   </section>
 </div>
-<section class="section" style="padding-top:var(--space-8)"><div class="wrap">
-  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">What do you want to learn?</h2><p class="lede">Pick a topic. Each one starts from zero.</p></div>
+<section class="section" style="padding-top:var(--space-8)" id="topics"><div class="wrap">
+  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">The story, in order</h2><p class="lede">Ten topics. Read them from the top, or jump to the one you need.</p></div>
   {{ topics(tfg_series) }}
 </div></section>
 <section class="section"><div class="wrap">
-  <div class="section-head"><h2 class="h2">How every explainer works</h2></div>
-  <ol class="beats">
-    <li><span class="label">1</span><span class="h3">Someone asks</span><p>A question, or something they've heard. Usually the thing you were about to ask.</p></li>
-    <li><span class="label">2</span><span class="h3">A real example</span><p>A business you can picture, the real screen names, and what it takes to set up.</p></li>
-    <li><span class="label">3</span><span class="h3">One takeaway</span><p>One line you can repeat to your team tomorrow.</p></li>
-  </ol>
+  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">Meet the team</h2><p class="lede">{{ tfg_premise }}</p></div>
+  {{ cast_grid(tfg_cast) }}
 </div></section>
 <section class="section"><div class="wrap">
-  <div class="section-head"><h2 class="h2">Latest explainers</h2></div>
+  <div class="section-head"><h2 class="h2">Latest parts</h2></div>
   {% if explainers %}<div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
-  {% else %}<div class="split" style="align-items:center">
-    <div class="empty" style="border-top:0;padding-top:0"><span class="soon">Coming soon</span><p class="h3">The first explainers are being written.</p><p class="muted">Questions people send in decide what comes first: <a href="/ask">ask yours</a>.</p></div>
-    <div class="panel-col">{{ tfg_panel(
-      tfg_char("cl-suman-thinking", "--fig:58%;--x:3%", True)
-      ~ tfg_char("dr-idea", "--fig:58%;--x:6%", True)
-      ~ tfg_bubble("Where do I even start?", "left", "left:4%;top:5%;--w:38%;--tail-x:62%")
-      ~ tfg_bubble("With one word: DocType. Most of Frappe is built from it.", "right", "right:4%;top:5%;--w:44%;--tail-x:52%"),
-      "env-cafe-counter"
-    ) }}</div>
-  </div>{% endif %}
+  {% else %}<div class="empty" style="border-top:0;padding-top:0"><span class="soon">Coming soon</span><p class="h3">The first parts of the story are being written.</p><p class="muted">Follow along by <a href="/rss.xml">RSS</a>.</p></div>{% endif %}
 </div></section>
 {% endblock %}

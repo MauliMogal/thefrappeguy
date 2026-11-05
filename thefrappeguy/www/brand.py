@@ -3,17 +3,18 @@ def get_context(context):
 	context.page_description = "How The Frappe Guy looks, sounds and behaves. The rules are public; the character files are not."
 	context.og_image = "/assets/thefrappeguy/og/og-brand.png"
 	context.pdf = "/assets/thefrappeguy/brand/the-frappe-guy-brand-book.pdf"
+	# Topic colours come from each product's logo on frappe.io/products (D-114). Panels use a softer tint.
 	context.scenes = [
-		("tangerine", "#F0A25A", "Frappe 101"),
-		("sky", "#4B93E9", "Frappe Cloud"),
-		("periwinkle", "#7883E9", "ERPNext"),
-		("lilac", "#B391E6", "HR and Payroll"),
-		("mustard", "#F5C57D", "CRM"),
-		("teal", "#5FC4B4", "Helpdesk"),
-		("lime", "#B7CF67", "LMS"),
-		("pink", "#EE9CC6", "Raven"),
-		("sage", "#789B7A", "Framework"),
-		("salmon", "#F37E7E", "Pricing"),
+		("ink", "#171717", "Frappe 101"),
+		("blue", "#0089FF", "ERPNext"),
+		("cyan", "#00BAF4", "Frappe Cloud"),
+		("yellow", "#E8BE5F", "Pricing"),
+		("mint", "#06B58B", "HR and Payroll"),
+		("magenta", "#EF0BF5", "CRM"),
+		("violet", "#7D3DFF", "Helpdesk"),
+		("grey", "#7B808A", "Framework"),
+		("green", "#0E7159", "LMS"),
+		("orange", "#F08A3C", "Raven"),
 	]
 	context.neutrals = [
 		("Ink", "#000000"),

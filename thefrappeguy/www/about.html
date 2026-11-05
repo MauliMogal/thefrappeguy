@@ -1,4 +1,5 @@
 {% extends "templates/tfg_base.html" %}
+{% from "templates/tfg_macros.html" import cast_grid %}
 {% block content %}
 <div class="wrap narrow">
   <header class="article-head about-head">
@@ -9,12 +10,12 @@
   <section class="stack" aria-labelledby="what">
     <h2 class="h2" id="what">What this is</h2>
     <p>Frappe makes open source business software: ERPNext, Frappe HR, Frappe CRM, Frappe Helpdesk, Frappe Learning, Raven, and the Frappe Framework they are all built on, hosted on Frappe Cloud. There is a lot of it, and the words can get in the way.</p>
-    <p>So every explainer here is one short scene. Someone asks a question you have probably wondered about. The Frappe Guy answers it with an example from a business you can picture, the real screen names, and what it takes to set up. You leave with one takeaway you can use the same day.</p>
-    <div class="actions"><a class="btn" href="/series/frappe-101">Start with Frappe 101</a></div>
+    <p>So this site tells it as one story. A small company is deciding whether Frappe can run its business, and The Frappe Guy helps the team find out. Each topic is told in short parts that follow on from each other. Every part answers one question with a real example, the real screen names and what it takes to set up, and ends with one thing to remember.</p>
+    <div class="actions"><a class="btn" href="/series/frappe-101">Start the story</a></div>
   </section>
   <section class="section" aria-labelledby="cast">
-    <div class="section-head"><h2 class="h2" id="cast">The people asking</h2><p class="muted">Each one asks the questions a real owner, seller, analyst, developer or beginner would ask.</p></div>
-    <ul class="cast">{% for key, name, role in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="h3">{{ name }}</span><p class="small muted">{{ role }}</p></li>{% endfor %}</ul>
+    <div class="section-head"><h2 class="h2" id="cast">The team in the story</h2><p class="muted">{{ tfg_premise }} The company and its people are fictional.</p></div>
+    {{ cast_grid(tfg_cast) }}
   </section>
   <section class="section stack" aria-labelledby="runs">
     <h2 class="h2" id="runs">Who writes it</h2>

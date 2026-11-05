@@ -38,7 +38,7 @@ open("thefrappeguy/the_frappe_guy/__init__.py", "a").close()
 write("Explainer Series", [
     f("slug", "Data", "Slug", reqd=1, unique=1, description="Lowercase words joined by hyphens. It becomes /series/<slug>."),
     f("title", "Data", "Title", reqd=1, in_list_view=1),
-    f("scene", "Select", "Scene colour", reqd=1, options="sky\nperiwinkle\nmustard\nsalmon\nsage\ngrey", in_list_view=1),
+    f("scene", "Select", "Scene colour", reqd=1, options="ink\nblue\ncyan\nyellow\nmint\nmagenta\nviolet\ngrey\ngreen\norange", in_list_view=1),
     f("sort_order", "Int", "Order"),
     f("description", "Small Text", "Description", reqd=1),
     f("asked_by", "Data", "Who usually asks", description="One sentence, for example: Usually asked by Sara, who wants proof."),

@@ -3,7 +3,7 @@ import os
 import frappe
 from frappe.utils import md_to_html
 
-from thefrappeguy.content import series_map
+from thefrappeguy.content import series_map, story_nav
 
 
 def get_context(context):
@@ -11,7 +11,7 @@ def get_context(context):
 	if not slug or not frappe.db.exists("Explainer", {"name": slug, "published": 1}):
 		raise frappe.PageDoesNotExistError
 	doc = frappe.get_doc("Explainer", slug)
-	series = series_map().get(doc.series) or frappe._dict(title=doc.series, slug=doc.series, scene="tangerine")
+	series = series_map().get(doc.series) or frappe._dict(title=doc.series, slug=doc.series, scene="ink")
 	context.doc = doc
 	context.series = series
 	context.body_html = md_to_html(doc.body or "")
@@ -26,10 +26,4 @@ def get_context(context):
 		context.og_image = f"/assets/thefrappeguy/og/explainers/{slug}.png"
 	else:
 		context.og_image = f"/assets/thefrappeguy/og/og-series-{series.slug}.png"
-	context.next = frappe.get_all(
-		"Explainer",
-		filters={"published": 1, "name": ["!=", slug]},
-		fields=["name", "title"],
-		order_by="published_on desc",
-		limit_page_length=1,
-	)
+	context.prev_part, context.next_part = story_nav(slug)

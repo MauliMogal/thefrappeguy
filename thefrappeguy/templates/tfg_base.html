@@ -1,6 +1,6 @@
 {%- set site_title = "The Frappe Guy" -%}
 {%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title ~ ": Frappe, explained simply" -%}
-{%- set desc = page_description or "Learn Frappe the easy way: short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk, LMS, Raven and the Framework." -%}
+{%- set desc = page_description or "Learn Frappe the easy way: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more." -%}
 {%- set share = og_image or "/assets/thefrappeguy/og/og-home.png" -%}
 {%- set share_url = share if share.startswith("http") else tfg_base ~ share -%}
 {%- set canonical_url = tfg_canonical() -%}
@@ -55,23 +55,15 @@
 </main>
 <footer class="site-foot"><div class="wrap">
   <div class="foot-grid">
-    <div>
-      <img src="{{ asset }}logo/tfg-logo.svg" alt="the frappe guy" width="176" height="57">
-      <p>Learn Frappe the easy way, one short comic at a time. Run by Mauli Mogal, Sales @ Frappe. This is not Frappe's official channel: Frappe's official word is on <a href="https://frappe.io">frappe.io</a>.</p>
-    </div>
-    <div><span class="label">TOPICS</span><ul class="foot-topics">
-      {%- for s in tfg_series %}<li><a href="/series/{{ s.slug }}">{{ s.title | e }}</a></li>{% endfor %}
-    </ul></div>
-    <div><span class="label">THE FRAPPE GUY</span><ul>
-      <li><a href="/explainers">All explainers</a></li>
-      <li><a href="/ask">Ask a question</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/brand">Brand book</a></li>
-      <li><a href="/rss.xml">RSS feed</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-    </ul></div>
+    <a class="foot-logo" href="/"><img src="{{ asset }}logo/tfg-logo.svg" alt="the frappe guy" width="148" height="48"></a>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/explainers">Explainers</a><a href="/about">About</a><a href="/ask">Ask a question</a><a href="/brand">Brand book</a><a href="/rss.xml">RSS</a><a href="/privacy">Privacy</a>
+    </nav>
   </div>
-  <div class="foot-base"><p class="tfg-credit">{{ tfg_credit }}</p><p class="meta">thefrappeguy.com</p></div>
+  <div class="foot-base">
+    <p>Run by Mauli Mogal, Sales @ Frappe. Not Frappe's official channel: Frappe's official word is on <a href="https://frappe.io">frappe.io</a>.</p>
+    <p class="tfg-credit">{{ tfg_credit }}</p>
+  </div>
 </div></footer>
 {%- block scripts %}{% endblock %}
 </body>
