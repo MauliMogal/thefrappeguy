@@ -5,3 +5,4 @@ thefrappeguy.patches.v1_1.ten_series
 thefrappeguy.patches.v1_2.story_order
 thefrappeguy.patches.v1_3.twelve_releases
 thefrappeguy.patches.v1_4.frappe_101_drafts
+thefrappeguy.patches.v1_5.publish_frappe_101
