@@ -36,6 +36,33 @@ def tfg_bubble(text, side="right", style=""):
 	return Markup(f'<p class="tfg-bubble" data-tail="{side}" style="{escape(style)}">{escape(text)}</p>')
 
 
+# The library's thought cloud: 12 scallops and two trailing circles toward the thinker on the left.
+_CLOUD = (
+	"M100.0 10.0 A26.4 26.4 0 0 1 145.0 16.7 A21.9 21.9 0 0 1 177.9 35.0 A16.1 16.1 0 0 1 190.0 60.0 "
+	"A16.1 16.1 0 0 1 177.9 85.0 A21.9 21.9 0 0 1 145.0 103.3 A26.4 26.4 0 0 1 100.0 110.0 "
+	"A26.4 26.4 0 0 1 55.0 103.3 A21.9 21.9 0 0 1 22.1 85.0 A16.1 16.1 0 0 1 10.0 60.0 "
+	"A16.1 16.1 0 0 1 22.1 35.0 A21.9 21.9 0 0 1 55.0 16.7 A26.4 26.4 0 0 1 100.0 10.0 Z"
+)
+
+
+def tfg_thought(text, style=""):
+	if not text:
+		return Markup("")
+	return Markup(
+		f'<p class="tfg-thought" data-tail="left" style="{escape(style)}">'
+		f'<svg viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true"><path d="{_CLOUD}"/>'
+		'<circle cx="40" cy="132" r="8"/><circle cx="24" cy="150" r="5"/></svg>'
+		f"{escape(text)}</p>"
+	)
+
+
+def tfg_caption(text):
+	"""Narration in the panel's top-left corner, no tail (D-158). Counts toward the 2-bubble limit."""
+	if not text:
+		return Markup("")
+	return Markup(f'<p class="tfg-caption">{escape(text)}</p>')
+
+
 def tfg_panel(inner, env="env-cafeteria", table=True, extra=""):
 	scenery = (
 		f'<img class="tfg-scenery" src="{IMG}{env}.webp" alt="" decoding="async">' if env in ENVIRONMENTS else ""

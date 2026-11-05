@@ -29,6 +29,8 @@ jinja = {
 	"methods": [
 		"thefrappeguy.jinja.tfg_char",
 		"thefrappeguy.jinja.tfg_bubble",
+		"thefrappeguy.jinja.tfg_thought",
+		"thefrappeguy.jinja.tfg_caption",
 		"thefrappeguy.jinja.tfg_panel",
 		"thefrappeguy.jinja.tfg_canonical",
 		"thefrappeguy.jinja.tfg_read_minutes",

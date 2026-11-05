@@ -17,9 +17,15 @@ class Explainer(Document):
 		if not SLUG_RE.match(self.slug):
 			issues.append("Slug: use lowercase letters, numbers and single hyphens, like what-is-a-doctype.")
 
+		# A comic-first part (D-157) fills the single-panel fields from its panels, for the card, feed and search.
+		if self.panels:
+			issues += self.check_panels()
+			self.fill_from_panels()
+
 		for field, label in (
 			("title", "Title"),
 			("dek", "One line under the title"),
+			("so_far", "So far"),
 			("question", "Asker's bubble"),
 			("answer", "Deepak's bubble"),
 			("body", "Article"),
@@ -53,8 +59,52 @@ class Explainer(Document):
 			name = CHARACTERS[self.cast_pose][0]
 			self.asked_by = DISPLAY.get(name, name)
 
+		if not self.preview_key:
+			self.preview_key = frappe.generate_hash(length=16)
+
 		if self.published and not self.published_on:
 			self.published_on = today()
+
+	def check_panels(self):
+		"""The comic grammar, panel by panel: 2 bubbles at most (a caption counts), 20 words each,
+		no exclamation marks from The Frappe Guy, and a listening pose never speaks."""
+		issues = []
+		for p in self.panels:
+			n = f"Panel {p.idx}"
+			for field, label in (
+				("caption", "caption"),
+				("thought", "thought"),
+				("left_bubble", "left bubble"),
+				("right_bubble", "The Frappe Guy's bubble"),
+				("text", "text"),
+			):
+				issues += copy_issues(p.get(field), f"{n}, {label}")
+			speech = [p.get(k) for k in ("caption", "thought", "left_bubble", "right_bubble") if p.get(k)]
+			if len(speech) > 2:
+				issues.append(f"{n}: {len(speech)} bubbles. A panel holds 2 at most, and a caption counts as one.")
+			for field in ("caption", "thought", "left_bubble", "right_bubble"):
+				if word_count(p.get(field)) > 20:
+					issues.append(f"{n}: a bubble has {word_count(p.get(field))} words. Bubbles hold 20 at most.")
+			if p.right_bubble and not p.right_pose:
+				issues.append(f"{n}: The Frappe Guy has a bubble but is not in the panel.")
+			if p.right_bubble and "!" in p.right_bubble:
+				issues.append(f"{n}: The Frappe Guy never uses exclamation marks.")
+			if p.right_pose == "dr-listen" and p.right_bubble:
+				issues.append(f"{n}: The Frappe Guy is listening in this pose, so he can't speak.")
+			if p.right_pose in ("dr-no-idea", "dr-tierd") and p.right_bubble:
+				issues.append(f"{n}: this pose never gives the answer. Pick another pose.")
+			if p.left_pose and not p.left_pose.startswith("cl-"):
+				issues.append(f"{n}: the left side is for the cast. The Frappe Guy answers from the right.")
+		return issues
+
+	def fill_from_panels(self):
+		first = self.panels[0]
+		self.cast_pose = first.left_pose
+		self.question = first.left_bubble or first.thought or self.title
+		if not self.deepak_pose:
+			self.deepak_pose = next((p.right_pose for p in self.panels if p.right_pose and p.right_bubble), "dr-coffee")
+		self.answer = ""
+		self.body = "\n\n".join((p.text or "").strip() for p in self.panels if p.text)
 
 	def on_update(self):
 		clear_cache()

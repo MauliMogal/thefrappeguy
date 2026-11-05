@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 21:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "left_pose",
+  "right_pose",
+  "caption",
+  "thought",
+  "column_break_p1",
+  "left_bubble",
+  "right_bubble",
+  "right_bubble_top",
+  "right_bubble_width",
+  "section_text",
+  "text",
+  "sources"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "description": "The person asking. Cast exports only; never drawn.",
+   "fieldname": "left_pose",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Left (cast)",
+   "options": "cl-ishita-doubtful\ncl-ishita-idea\ncl-ishita-laughing\ncl-ishita-thinking\ncl-jammy-doubtful\ncl-jammy-expressing\ncl-jammy-idea\ncl-jammy-laughing\ncl-jammy-thinking\ncl-raju-doubtful\ncl-raju-expressing\ncl-raju-idea\ncl-raju-laughing\ncl-raju-thinking\ncl-saara-doubtful\ncl-saara-expressing\ncl-saara-idea\ncl-saara-laughing\ncl-saara-thinking\ncl-suman-doubtful\ncl-suman-expressing\ncl-suman-idea\ncl-suman-laughing\ncl-suman-thinking",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "description": "Leave empty for a panel with the asker alone.",
+   "fieldname": "right_pose",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Right (The Frappe Guy)",
+   "options": "\ndr-accomplished\ndr-adjusting-hair\ndr-boasting\ndr-book\ndr-bro-fist\ndr-coffee\ndr-coffee-offer\ndr-doubtful\ndr-express\ndr-idea\ndr-laptop\ndr-laughing\ndr-listen\ndr-no-idea\ndr-passing-files\ndr-scared\ndr-shock\ndr-sleeping\ndr-thinking\ndr-thumbsup\ndr-thumbsup-2\ndr-tierd\ndr-using-ipad\ndr-work-talk\ndr-yawning"
+  },
+  {
+   "description": "Top-left narration, no tail. Counts toward the 2-bubble limit.",
+   "fieldname": "caption",
+   "fieldtype": "Small Text",
+   "label": "Caption box"
+  },
+  {
+   "description": "The asker's inner thought. Never dialogue.",
+   "fieldname": "thought",
+   "fieldtype": "Small Text",
+   "label": "Thought bubble (left)"
+  },
+  {
+   "fieldname": "column_break_p1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 3,
+   "fieldname": "left_bubble",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Left bubble"
+  },
+  {
+   "columns": 3,
+   "fieldname": "right_bubble",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "The Frappe Guy's bubble"
+  },
+  {
+   "description": "Optional nudge, like 8%, when the bubble would touch a hand or face.",
+   "fieldname": "right_bubble_top",
+   "fieldtype": "Data",
+   "label": "Right bubble top"
+  },
+  {
+   "description": "Optional, like 54%.",
+   "fieldname": "right_bubble_width",
+   "fieldtype": "Data",
+   "label": "Right bubble width"
+  },
+  {
+   "fieldname": "section_text",
+   "fieldtype": "Section Break",
+   "label": "Text after the panel"
+  },
+  {
+   "description": "40 to 90 words that add facts and detail. Never a point the panel doesn't make.",
+   "fieldname": "text",
+   "fieldtype": "Markdown Editor",
+   "label": "Text",
+   "reqd": 1
+  },
+  {
+   "description": "One URL per line. Every claim about Frappe needs one.",
+   "fieldname": "sources",
+   "fieldtype": "Small Text",
+   "label": "Sources"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-05 21:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "The Frappe Guy",
+ "name": "Explainer Panel",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

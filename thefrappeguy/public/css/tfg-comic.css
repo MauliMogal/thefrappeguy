@@ -132,6 +132,26 @@
 .tfg-thought > svg path,
 .tfg-thought > svg circle { fill: var(--comic-bubble, #FFFFFF); stroke: var(--comic-ink, #000000); stroke-width: var(--bw, 3px); vector-effect: non-scaling-stroke; }
 
+/* ---------- CaptionBox (D-158) ----------
+   Narration in the top-left corner, flush to the frame, no tail. One per panel; counts toward the 2-bubble limit. */
+.tfg-caption {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  margin: 0;
+  max-width: 100%;
+  padding: 0.3em 0.7em 0.36em;
+  background: var(--comic-bubble, #FFFFFF);
+  border: var(--bw, 3px) solid var(--comic-ink, #000000);
+  color: var(--comic-ink, #000000);
+  font-family: var(--font-hand, "Caveat", cursive);
+  font-weight: 600;
+  font-size: 4.2cqw;
+  line-height: 1.2;
+}
+
 /* ---------- Sticker ---------- */
 .tfg-sticker {
   position: absolute;

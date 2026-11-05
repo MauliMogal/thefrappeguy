@@ -1,13 +1,26 @@
 {% extends "templates/tfg_base.html" %}
+{% block head %}{% if is_preview %}<meta name="robots" content="noindex, nofollow">{% endif %}{% endblock %}
 {% block content %}
 {%- set env = doc.environment if doc.environment != "none" else None -%}
-<article class="wrap article">
+<article class="wrap article{% if beats %} article--beats{% endif %}">
   <header class="article-head">
+    {% if is_preview %}<p class="draft-note"><strong>Draft preview.</strong> This part is not published yet. Only people with this link can see it, and search engines are told to skip it.</p>{% endif %}
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/explainers">Explainers</a><span>/</span><a href="/series/{{ series.slug }}">{{ series.title | e }}</a></nav>
-    <span class="label" data-tone="{{ series.scene }}">{{ series.title | upper | e }} · PART {{ doc.part }}</span>
+    <span class="label" data-tone="{{ series.scene }}">{{ series.title | upper | e }} · PART {{ doc.part }}{% if doc.asked_by %} · ASKED BY {{ doc.asked_by | upper | e }}{% endif %}</span>
     <h1 class="h1">{{ doc.title | e }}</h1>
-    <p class="meta">{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {{ tfg_read_minutes(doc.body) }} min read{% if doc.asked_by %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
+    <p class="meta">{% if doc.published_on %}{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {% endif %}{{ tfg_read_minutes(doc.body) }} min read{% if doc.asked_by and not beats %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
+    {% if doc.so_far %}<p class="sofar"><strong>So far:</strong> {{ doc.so_far | e }}</p>{% endif %}
   </header>
+  {% if beats %}
+  <div class="beats">
+    {%- for b in beats %}
+    <div class="beat">
+      {{ b.panel }}
+      <div class="beat__text">{{ b.text }}{% if b.sources %}<p class="beat__src">Source{{ "s" if b.sources | length > 1 else "" }}: {% for url, label in b.sources %}<a href="{{ url }}" rel="noopener">{{ label | e }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}</div>
+    </div>
+    {%- endfor %}
+  </div>
+  {% else %}
   <div class="article-panel">{{ tfg_panel(
     tfg_char(doc.cast_pose, "--fig:56%;--x:3%")
     ~ tfg_char(doc.deepak_pose, "--fig:56%;--x:4%")
@@ -16,11 +29,12 @@
     env
   ) }}</div>
   <div class="prose">{{ body_html | safe }}</div>
+  {% endif %}
   <p class="tfg-takeaway">{{ doc.takeaway | e }}</p>
   <nav class="story-nav" aria-label="Story">
     {% if prev_part %}<a class="story-nav__prev" href="{{ prev_part.url }}"><span class="label">{{ "PREVIOUS" if prev_part.series == doc.series else "PREVIOUS TOPIC" }} · {{ prev_part.series_title | upper | e }}, PART {{ prev_part.part }}</span><span class="h3">{{ prev_part.title | e }}</span></a>{% else %}<span></span>{% endif %}
     {% if next_part %}<a class="story-nav__next" href="{{ next_part.url }}"><span class="label" data-tone="{{ next_part.scene }}">{{ "NEXT" if next_part.series == doc.series else "NEXT TOPIC" }} · {{ next_part.series_title | upper | e }}, PART {{ next_part.part }}</span><span class="h3">{{ next_part.title | e }}</span></a>
-    {% else %}<div class="story-nav__next story-nav__end"><span class="label">WHAT HAPPENS NEXT</span><span class="h3">The next part is being written.</span><span class="muted">Follow along by <a href="/rss.xml">RSS</a>. Stuck on something? <a href="/ask?area={{ series.slug }}">Ask a question</a>.</span></div>{% endif %}
+    {% else %}<div class="story-nav__next story-nav__end"><span class="label">WHAT HAPPENS NEXT</span><span class="h3">The next part is being written.</span><span class="muted">See what's coming on the <a href="/roadmap">roadmap</a>. Stuck on something? <a href="/ask?area={{ series.slug }}">Ask a question</a>.</span></div>{% endif %}
   </nav>
 </article>
 {% endblock %}

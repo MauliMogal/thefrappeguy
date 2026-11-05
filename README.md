@@ -10,7 +10,7 @@ The site is the brand system's "comic on a quiet page": pages stay ink and paper
 |---|---|---|
 | Pages | `thefrappeguy/www/` | Home, explainers index, release pages (`/series/<slug>`), the roadmap, explainer article, About, Ask, Brand book, Privacy, 404. All extend `templates/tfg_base.html`; no Frappe website chrome or desk JavaScript is loaded. |
 | Routes | `hooks.py` | `/explainers/<slug>` and `/series/<slug>` route to `www/explainer` and `www/series`. The site is light only. |
-| Content | DocTypes in module **The Frappe Guy** | **Explainer** (one numbered part of a topic's story: question, panel, article, takeaway), **Explainer Series** (the twelve releases: scene colour, what a reader can decide, and section titles for the roadmap), **Question** (what people send from /ask). |
+| Content | DocTypes in module **The Frappe Guy** | **Explainer** (one numbered part of a release: either one panel and an article, or comic first, with **Explainer Panel** rows: panel, text, panel, text), **Explainer Series** (the twelve releases: scene colour, what a reader can decide, and section titles for the roadmap), **Question** (what people send from /ask). |
 | Brand checks | `content.py`, `explainer.py` | Saving an explainer or a release fails on em or en dashes, banned words (including "simply"), bubbles over 20 words, exclamation marks from Deepak, or a pose that can't do the job. |
 | Feeds | `renderers.py` | `/rss.xml`, `/sitemap.xml`, `/robots.txt`, `/favicon.ico`, `/site.webmanifest`. |
 | Ask form | `api.py` | `thefrappeguy.api.ask`: guest POST, 5 per hour per IP, a hidden trap field for bots. |
@@ -29,6 +29,9 @@ bench --site yoursite install-app thefrappeguy
 ```
 
 ## Writing an explainer
+
+Comic first (D-157): fill **So far** and add **Panels**, one row per panel with its poses, at most 2 of caption, thought and bubbles, and the text that follows it. The asker, question and article for the card and feed are filled from the panels. An unpublished part opens at `/explainers/<slug>?preview=<Preview key>` for anyone with the link; it is never listed, cached or indexed.
+
 
 Desk → **Explainer** → New. Fill the card, the comic panel (asker on the left, Deepak on the right), the article in Markdown and one takeaway, then tick **Published**. The page goes live at `/explainers/<slug>` and appears in the feed and sitemap.
 

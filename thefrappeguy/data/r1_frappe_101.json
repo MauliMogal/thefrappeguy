@@ -1,0 +1,201 @@
+{
+ "about": "R1 Frappe 101, comic first (D-157). Loaded as unpublished drafts by patch v1_4.frappe_101_drafts; edit in the desk afterwards. Facts: r1-fact-sheet.md, read on frappe.io on 5 Nov 2026.",
+ "explainers": [
+  {
+   "slug": "who-is-behind-this",
+   "title": "Who is behind this?",
+   "series": "frappe-101",
+   "part": 1,
+   "published": 0,
+   "preview_key": "6e94a491b2541ffa",
+   "dek": "Before Ishita trusts Frappe with her company, she wants to know who builds it and how they work.",
+   "so_far": "The Coffee Company has outgrown its spreadsheets. Ishita, its founder, is looking at Frappe, and starts with the people.",
+   "card_pose": "dr-coffee-offer",
+   "deepak_pose": "dr-coffee-offer",
+   "environment": "env-cafe-counter",
+   "takeaway": "Before you pick software, look at who builds it and how.",
+   "panels": [
+    {
+     "left_pose": "cl-ishita-thinking",
+     "caption": "The Coffee Company has outgrown its spreadsheets.",
+     "thought": "Stock here, orders there, invoices somewhere else. Can Frappe run it all?",
+     "text": "The Coffee Company roasts beans, packs them and sells to cafes and online. Its stock lives in one sheet, its orders in another and its invoices in a third. Ishita, its founder, is deciding whether Frappe can run the whole business. Before she looks at a single screen, she wants to know who she would be trusting."
+    },
+    {
+     "left_pose": "cl-ishita-thinking",
+     "right_pose": "dr-listen",
+     "left_bubble": "Before I trust software with my company: who actually builds it?",
+     "text": "It is the right first question. An ERP holds a company’s stock, orders and money. If the people behind it vanish, or work in ways nobody can see, every other answer matters less. So before features, look at the builders: where they came from, how they make decisions, and whether any of it is out in the open."
+    },
+    {
+     "left_pose": "cl-ishita-thinking",
+     "right_pose": "dr-coffee-offer",
+     "right_bubble": "Coffee first. It started in a family furniture factory, with a bad ERP.",
+     "text": "Frappe’s founder is Rushabh Mehta. His family ran a furniture manufacturing business that was stuck with a bad ERP built by a local vendor: money spent, and the system still did not work. So he started writing his own. The base it grew on, the Frappe Framework, had begun as a side project in 2005.",
+     "sources": "https://frappe.io/about\nhttps://frappe.io/story\nhttps://frappe.io/18\nhttps://frappe.io/framework"
+    },
+    {
+     "left_pose": "cl-ishita-doubtful",
+     "right_pose": "dr-using-ipad",
+     "left_bubble": "So they built their own?",
+     "right_bubble": "Yes. Frappe was founded in 2008. ERPNext got its name in 2010.",
+     "text": "Frappe was founded in 2008. In 2010 the ERP got its name, ERPNext, and went on sale as an online service. Nabin Hait, Mohammad Umair Sayed and Prakash Hodage are Frappe’s co-founders; each says so on his own page on frappe.io. For Ishita the shape is familiar: a business that grew out of a real problem on a factory floor, not out of a slide deck.",
+     "sources": "https://frappe.io/18\nhttps://frappe.io/story\nhttps://frappe.io/about/nabin-hait\nhttps://frappe.io/about/mohammad-umair-sayed\nhttps://frappe.io/about/prakash-hodage"
+    },
+    {
+     "left_pose": "cl-ishita-thinking",
+     "right_pose": "dr-book",
+     "left_bubble": "Who runs Frappe now? Managers?",
+     "right_bubble": "No managers. They pick their work, set their pay, and vote.",
+     "text": "Frappe calls itself a collective with the loose structure of a for-profit company, and lists four values: excellence, democracy, freedom and authenticity. Its culture page goes further. There are no reporting managers. People choose what they work on and set their own pay, and big decisions are made democratically under a written constitution. People come first and capital second. Frappe’s about page also lists Zerodha and Rainmatter as investors.",
+     "sources": "https://frappe.io/about\nhttps://frappe.io/culture"
+    },
+    {
+     "left_pose": "cl-ishita-doubtful",
+     "right_pose": "dr-express",
+     "left_bubble": "No managers? That sounds risky.",
+     "right_bubble": "Early buyers thought so too. So check. It’s all public.",
+     "text": "The catch: a company that runs like this is unusual, and unusual can feel risky. Frappe’s own story says so: in the early years, buyers did not want an ERP from a startup. Checking who builds your software is still a fair worry. The difference now is that you can look. The founding story, the team and the values are all on Frappe’s site, so you don’t have to take anyone’s word for it, including mine.",
+     "sources": "https://frappe.io/story\nhttps://frappe.io/about\nhttps://frappe.io/culture"
+    },
+    {
+     "left_pose": "cl-ishita-idea",
+     "right_pose": "dr-thumbsup-2",
+     "left_bubble": "So I check the builders, not only the brochure.",
+     "right_bubble": "Same test you’d use on a green bean supplier.",
+     "text": "One more thing is out in the open, and it is why Sara, who runs finance, has already walked over with a frown: the code itself is public. Why would anyone give that away?"
+    }
+   ]
+  },
+  {
+   "slug": "why-it-is-open-source",
+   "title": "Why it is open source",
+   "series": "frappe-101",
+   "part": 2,
+   "published": 0,
+   "preview_key": "fe2eff2a39f8d883",
+   "dek": "Sara wants to know why Frappe gives its code away, and what that changes for The Coffee Company.",
+   "so_far": "Ishita has checked who builds Frappe and how they work. Sara, who runs finance and data, has a sharper question about the code itself.",
+   "card_pose": "dr-express",
+   "deepak_pose": "dr-express",
+   "environment": "env-cafeteria",
+   "takeaway": "You can read, run and change the code. Your system stays yours.",
+   "panels": [
+    {
+     "left_pose": "cl-saara-expressing",
+     "right_pose": "dr-listen",
+     "caption": "Sara runs the numbers. She checks everything.",
+     "left_bubble": "Open source? Why would anyone give their code away?",
+     "text": "Sara runs finance and data at The Coffee Company, and she distrusts anything that sounds too good. Open source sounds exactly like that. If anyone can read the code, what is the business behind it, and what is the trick she has not spotted yet?"
+    },
+    {
+     "left_pose": "cl-saara-thinking",
+     "right_pose": "dr-book",
+     "right_bubble": "It began by accident. Now it’s the core of Frappe.",
+     "text": "Frappe’s vision page answers that directly. Open source began as an accidental decision and became the core of how Frappe sees itself. Its view is that open software builds something everyone can use instead of charging rent, and that sharing the code should never tie users down unfairly.",
+     "sources": "https://frappe.io/vision"
+    },
+    {
+     "left_pose": "cl-saara-doubtful",
+     "right_pose": "dr-using-ipad",
+     "left_bubble": "Open how? Can we actually read it?",
+     "right_bubble": "Yes. ERPNext and the Framework are both fully open source.",
+     "text": "Frappe’s home page says it builds open source software. The ERPNext page says ERPNext is 100% open source, with no features held back, and that the code is yours to use, modify or resell. The Frappe Framework underneath it is open source too. ERPNext’s code was put under the General Public License early on and has been public since 2009.",
+     "sources": "https://frappe.io\nhttps://frappe.io/erpnext\nhttps://frappe.io/framework\nhttps://frappe.io/story"
+    },
+    {
+     "left_pose": "cl-saara-thinking",
+     "right_pose": "dr-idea",
+     "left_bubble": "Say we want a different partner later. Then what?",
+     "right_bubble": "Then you move. The code is open, so nobody can lock you in.",
+     "right_bubble_top": "8%",
+     "text": "This is what changes for The Coffee Company. Say that a few years from now Sara wants a different partner to look after the system, or a change to how roast batches post to the accounts. With closed software, both depend on the vendor saying yes. Here the code is open, so the work can go to whoever does it best, and the company’s records stay its own. ERPNext’s FAQ calls this no vendor lock-in.",
+     "sources": "https://frappe.io/erpnext"
+    },
+    {
+     "left_pose": "cl-saara-idea",
+     "right_pose": "dr-express",
+     "left_bubble": "So our books stay ours.",
+     "right_bubble": "Yes. But open code still needs good people to run it well.",
+     "text": "The catch: open code still needs good people. Someone has to set the system up for how the company roasts and sells, keep it running, update it and fix it when something breaks. Open source does not make that work disappear; it lets the company choose who does it. Frappe and its partners offer hosting, implementation and support. For running it, I point The Coffee Company to Frappe Cloud, the official cloud platform for Frappe apps.",
+     "sources": "https://frappe.io/framework\nhttps://frappe.io/products"
+    },
+    {
+     "left_pose": "cl-saara-laughing",
+     "right_pose": "dr-thumbsup-2",
+     "left_bubble": "Fine. Proven, for now.",
+     "right_bubble": "I’ll take ‘for now’ from you.",
+     "text": "Joseph, who looks after tech, has been listening from the next table. His question is simpler. If the code is open, what exactly is in the box?"
+    }
+   ]
+  },
+  {
+   "slug": "everything-frappe-makes",
+   "title": "Everything Frappe makes",
+   "series": "frappe-101",
+   "part": 3,
+   "published": 0,
+   "preview_key": "742a92d3efa82711",
+   "dek": "Joseph wants the whole map: business apps, developer tools and the cloud they run on.",
+   "so_far": "Ishita knows who builds Frappe. Sara knows the code is open and the system stays theirs. Joseph, who looks after tech, wants to see everything Frappe makes.",
+   "card_pose": "dr-using-ipad",
+   "deepak_pose": "dr-using-ipad",
+   "environment": "env-cafeteria",
+   "takeaway": "Frappe makes business apps, developer tools and a cloud, on one stack.",
+   "panels": [
+    {
+     "left_pose": "cl-jammy-expressing",
+     "right_pose": "dr-listen",
+     "caption": "Joseph runs tech. He wants the whole map first.",
+     "left_bubble": "So is Frappe one app, or a whole stack?",
+     "text": "Joseph keeps The Coffee Company’s laptops, phones and spreadsheets alive. Before anyone picks an app, he wants to see everything Frappe makes and how the pieces fit together, because whatever the company picks, he is the one who will keep it running."
+    },
+    {
+     "left_pose": "cl-jammy-thinking",
+     "right_pose": "dr-using-ipad",
+     "right_bubble": "Business apps, developer tools and a cloud. All from one stack.",
+     "text": "Here is the range, as frappe.io/products lists it today.\n\n- **Business apps:** ERPNext for accounting, inventory and operations; Frappe HR for people, attendance and payroll; Frappe CRM for leads and deals; Frappe Helpdesk for support tickets; Frappe Learning for online courses; Insights for dashboards; Lending for loans; Raven for team chat.\n- **Developer tools:** the Frappe Framework, Builder for websites without code, and Frappe UI.\n- **Infrastructure:** Frappe Cloud, the official cloud platform for Frappe apps.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "left_pose": "cl-jammy-idea",
+     "right_pose": "dr-laptop",
+     "left_bubble": "Which came first?",
+     "right_bubble": "The Framework. ERPNext was built on it, and the rest followed.",
+     "text": "Frappe’s vision page gives the order: to build ERPNext, Frappe first built the Framework, then its own deployment platform, then its own UI library. ERPNext was the first app built on the Framework. So the apps share one base: the same way of storing records, setting permissions and building forms. Learn how one is put together and you have a head start on the next.",
+     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
+    },
+    {
+     "left_pose": "cl-jammy-thinking",
+     "right_pose": "dr-using-ipad",
+     "left_bubble": "So stock, leads and complaints could live together?",
+     "right_bubble": "Separate apps, one site. Add each one when you’re ready.",
+     "text": "The Coffee Company’s problems are not only ERP problems. Ishita needs stock and accounts. Raju needs a place for every cafe lead. Salman will soon answer complaints about wrong orders. Each of those is a separate Frappe app, and several can be installed on the same site, so the company can start with one and add the next later. What I see in all of it is a company trying to build great products that inspire.",
+     "sources": "https://frappe.io/products\nhttps://frappe.io/cloud"
+    },
+    {
+     "left_pose": "cl-jammy-doubtful",
+     "right_pose": "dr-express",
+     "left_bubble": "So we install everything on day one?",
+     "right_bubble": "No. Range isn’t fit. Each app gets checked against your work.",
+     "text": "The catch: range is not the same as fit. A long list tells you Frappe can grow with a business. It does not tell you that any one app fits how The Coffee Company roasts, packs and sells. That needs a closer look, one app at a time. The list also changes, so check frappe.io/products for what is current.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "left_pose": "cl-jammy-laughing",
+     "right_pose": "dr-laughing",
+     "left_bubble": "So it’s Frappe all the way down.",
+     "right_bubble": "Pretty much.",
+     "text": "Ishita has been reading over Joseph’s shoulder. She has heard enough about the company. Now she wants to see the software."
+    },
+    {
+     "left_pose": "cl-ishita-doubtful",
+     "right_pose": "dr-coffee",
+     "left_bubble": "Fine. So what does the software actually do?",
+     "right_bubble": "That’s next. First up: buying and selling.",
+     "text": "That is the next release, ERPNext I: Buying and selling. The [roadmap](/roadmap) shows what every release covers, and what you will be able to decide after each one."
+    }
+   ]
+  }
+ ]
+}
