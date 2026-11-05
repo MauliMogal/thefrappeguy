@@ -120,7 +120,7 @@
    "fieldname": "cast_pose",
    "fieldtype": "Select",
    "label": "Asker pose (left)",
-   "options": "cl-ishita-doubtful\ncl-ishita-idea\ncl-ishita-laughing\ncl-ishita-thinking\ncl-jammy-doubtful\ncl-jammy-expressing\ncl-jammy-idea\ncl-jammy-laughing\ncl-jammy-thinking\ncl-raju-doubtful\ncl-raju-expressing\ncl-raju-idea\ncl-raju-laughing\ncl-raju-thinking\ncl-saara-doubtful\ncl-saara-expressing\ncl-saara-idea\ncl-saara-laughing\ncl-saara-thinking\ncl-suman-doubtful\ncl-suman-expressing\ncl-suman-idea\ncl-suman-laughing\ncl-suman-thinking",
+   "options": "cl-ishita-accomplished\ncl-ishita-adjusting-hair\ncl-ishita-boasting\ncl-ishita-book\ncl-ishita-bro-fist\ncl-ishita-coffee\ncl-ishita-doubtful\ncl-ishita-idea\ncl-ishita-laptop\ncl-ishita-laughing\ncl-ishita-listening\ncl-ishita-no-idea\ncl-ishita-offering\ncl-ishita-passing-files\ncl-ishita-phone\ncl-ishita-scared\ncl-ishita-shock\ncl-ishita-sleeping\ncl-ishita-speaking\ncl-ishita-thinking\ncl-ishita-thumbs-up\ncl-ishita-tierd\ncl-ishita-using-ipad\ncl-ishita-work-talk\ncl-ishita-yawning\ncl-jammy-accomplished\ncl-jammy-adjusting-hair\ncl-jammy-boasting\ncl-jammy-book\ncl-jammy-bro-fist\ncl-jammy-coffee\ncl-jammy-doubtful\ncl-jammy-expressing\ncl-jammy-idea\ncl-jammy-laptop\ncl-jammy-laughing\ncl-jammy-listening\ncl-jammy-no-dea\ncl-jammy-offering\ncl-jammy-passing-files\ncl-jammy-scared\ncl-jammy-shock\ncl-jammy-sleeping\ncl-jammy-thinking\ncl-jammy-thumbsup-1\ncl-jammy-thumbsup-2\ncl-jammy-tierd\ncl-jammy-using-ipad\ncl-jammy-work-talk\ncl-jammy-yawning\ncl-raju-accomplished\ncl-raju-adjusting-specs\ncl-raju-boasting\ncl-raju-book\ncl-raju-bro-fist\ncl-raju-coffee\ncl-raju-doubtful\ncl-raju-expressing\ncl-raju-idea\ncl-raju-laptop\ncl-raju-laughing\ncl-raju-listening\ncl-raju-no-idea\ncl-raju-passing-files\ncl-raju-phone\ncl-raju-scared\ncl-raju-shock\ncl-raju-sleeping\ncl-raju-speaking\ncl-raju-thinking\ncl-raju-thumbs-Up\ncl-raju-tierd\ncl-raju-using-ipad\ncl-raju-work-talk\ncl-raju-yawning\ncl-saara-accomplished\ncl-saara-adjusting-specs\ncl-saara-boasting\ncl-saara-book\ncl-saara-bro-fist\ncl-saara-coffee\ncl-saara-doubtful\ncl-saara-expressing\ncl-saara-expressing-2\ncl-saara-idea\ncl-saara-laptop\ncl-saara-laughing\ncl-saara-listening\ncl-saara-noidea\ncl-saara-offering\ncl-saara-passing-files\ncl-saara-scared\ncl-saara-shock\ncl-saara-sleeping\ncl-saara-thinking\ncl-saara-thumbsup\ncl-saara-tierd\ncl-saara-using-ipad\ncl-saara-work-talk\ncl-saara-yawning\ncl-suman-accomplished\ncl-suman-adjusting-hair\ncl-suman-boasting\ncl-suman-book\ncl-suman-bro-fist\ncl-suman-coffee\ncl-suman-doubtful\ncl-suman-expressing\ncl-suman-idea\ncl-suman-laptop\ncl-suman-laughing\ncl-suman-listening\ncl-suman-no-idea\ncl-suman-passing-files\ncl-suman-scared\ncl-suman-shock\ncl-suman-sleeping\ncl-suman-speaking\ncl-suman-speaking-1\ncl-suman-thinking\ncl-suman-thumbsup\ncl-suman-tierd\ncl-suman-using-ipad\ncl-suman-work-talk\ncl-suman-yawning",
    "reqd": 1
   },
   {
@@ -215,7 +215,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-05 21:00:00.000000",
+ "modified": "2026-11-06 00:30:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer",

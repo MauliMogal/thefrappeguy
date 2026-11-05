@@ -67,10 +67,34 @@ class Explainer(Document):
 
 	def check_panels(self):
 		"""The comic grammar, panel by panel: 2 bubbles at most (a caption counts), 20 words each,
-		no exclamation marks from The Frappe Guy, and a listening pose never speaks."""
+		no exclamation marks from The Frappe Guy, and a listening pose never speaks.
+		Full comic (D-166, D-168): small panels hold 6 words per item, one sticker per part,
+		wide panels stay silent, and a pose with the table drawn in needs the table."""
 		issues = []
+		stickers = [p.idx for p in self.panels if p.sticker]
+		if len(stickers) > 1:
+			issues.append(f"Stickers on panels {', '.join(map(str, stickers))}. One sticker per part at most.")
 		for p in self.panels:
 			n = f"Panel {p.idx}"
+			shot = p.shot or "medium"
+			if not p.left_pose and not p.right_pose:
+				issues.append(f"{n}: pick at least one character.")
+			if p.left_bubble and not p.left_pose:
+				issues.append(f"{n}: the left bubble needs someone on the left.")
+			if p.thought and not p.left_pose:
+				issues.append(f"{n}: thoughts belong to the cast member on the left.")
+			if shot == "small":
+				for field in ("caption", "thought", "left_bubble", "right_bubble"):
+					if word_count(p.get(field)) > 6:
+						issues.append(f"{n}: small panels hold 6 words per item; this one has {word_count(p.get(field))}.")
+			if shot == "wide" and any(p.get(k) for k in ("caption", "thought", "left_bubble", "right_bubble")):
+				issues.append(f"{n}: wide panels stay silent. On a phone they are too short to read (D-168).")
+			if shot == "flat":
+				for pose in (p.left_pose, p.right_pose):
+					if pose in CHARACTERS and CHARACTERS[pose][4]:
+						issues.append(f"{n}: {pose} has a table drawn in, so it can't sit on a flat ground.")
+			if p.sticker == "ww" and shot not in ("flat", "close"):
+				issues.append(f"{n}: W W goes on a close-up.")
 			for field, label in (
 				("caption", "caption"),
 				("thought", "thought"),
@@ -98,13 +122,31 @@ class Explainer(Document):
 		return issues
 
 	def fill_from_panels(self):
-		first = self.panels[0]
-		self.cast_pose = first.left_pose
+		first = next((p for p in self.panels if p.left_pose), self.panels[0])
+		if first.left_pose:
+			self.cast_pose = first.left_pose
 		self.question = first.left_bubble or first.thought or self.title
 		if not self.deepak_pose:
 			self.deepak_pose = next((p.right_pose for p in self.panels if p.right_pose and p.right_bubble), "dr-coffee")
 		self.answer = ""
-		self.body = "\n\n".join((p.text or "").strip() for p in self.panels if p.text)
+		texts = [(p.text or "").strip() for p in self.panels if p.text]
+		# A full comic has no text between panels, so the feed, search and card read the comic's own words.
+		self.body = "\n\n".join(texts) if texts else self.transcript()
+
+	def transcript(self):
+		"""The comic as plain text, panel by panel: captions, thoughts and who said what."""
+		lines = []
+		for p in self.panels:
+			left = DISPLAY.get(CHARACTERS[p.left_pose][0], CHARACTERS[p.left_pose][0]) if p.left_pose in CHARACTERS else ""
+			if p.caption:
+				lines.append(p.caption.strip())
+			if p.thought:
+				lines.append(f"{left} thinks: {p.thought.strip()}")
+			if p.left_bubble:
+				lines.append(f"{left}: {p.left_bubble.strip()}")
+			if p.right_bubble:
+				lines.append(f"The Frappe Guy: {p.right_bubble.strip()}")
+		return "\n\n".join(lines) or self.title
 
 	def on_update(self):
 		clear_cache()

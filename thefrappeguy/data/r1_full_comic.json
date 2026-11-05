@@ -1,0 +1,334 @@
+{
+ "about": "R1 Frappe 101 as full comic (D-166). Generated from brand-system/r1/r1_comic.py, the same file as the panel script and the preview. Facts: r1-fact-sheet.md, read on frappe.io on 5 Nov 2026. Loaded by patch v1_6.r1_full_comic.",
+ "explainers": [
+  {
+   "slug": "who-is-behind-this",
+   "environment": "env-cafe-counter",
+   "takeaway": "Before you pick software, look at who builds it and how.",
+   "panels": [
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-tierd",
+     "caption": "The Coffee Company. 11 PM. Three spreadsheets, and they disagree.",
+     "thought": "One of these sheets is lying. Which one?"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-raju-phone",
+     "left_bubble": "The Ethiopian roast? By tomorrow? Consider it done!"
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-raju-scared",
+     "thought": "Sold out. Since Tuesday."
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-phone",
+     "right_pose": "dr-listen",
+     "caption": "Next morning.",
+     "left_bubble": "Before I trust software with my company: who actually builds it?"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-thinking",
+     "right_pose": "dr-coffee-offer",
+     "right_bubble": "Coffee first. It started where you are: a family business stuck with bad software.",
+     "sources": "https://frappe.io/story"
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-ishita-idea",
+     "caption": "His family’s furniture business was stuck with a bad ERP. So Rushabh Mehta, Frappe’s founder, started writing his own.",
+     "thought": "So he was me.",
+     "sources": "https://frappe.io/about\nhttps://frappe.io/story"
+    },
+    {
+     "shot": "small",
+     "right_pose": "dr-book",
+     "row": "p1-years",
+     "caption": "2005. A side project begins.",
+     "sources": "https://frappe.io/18\nhttps://frappe.io/framework"
+    },
+    {
+     "shot": "small",
+     "right_pose": "dr-using-ipad",
+     "row": "p1-years",
+     "caption": "2008. Frappe is founded.",
+     "sources": "https://frappe.io/18\nhttps://frappe.io/story"
+    },
+    {
+     "shot": "small",
+     "left_pose": "cl-ishita-listening",
+     "row": "p1-years",
+     "caption": "2010. ERPNext gets its name.",
+     "sources": "https://frappe.io/story\nhttps://frappe.io/18"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-speaking",
+     "right_pose": "dr-listen",
+     "caption": "Its co-founders: Nabin Hait, Mohammad Umair Sayed and Prakash Hodage.",
+     "left_bubble": "And who runs Frappe now? Managers?",
+     "sources": "https://frappe.io/about/nabin-hait\nhttps://frappe.io/about/mohammad-umair-sayed\nhttps://frappe.io/about/prakash-hodage"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-thinking",
+     "right_pose": "dr-book",
+     "right_bubble": "No managers. People pick their work, set their own pay, and vote.",
+     "sources": "https://frappe.io/culture"
+    },
+    {
+     "shot": "flat",
+     "left_pose": "cl-ishita-shock",
+     "sticker": "whoa",
+     "sources": "https://frappe.io/culture"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-listening",
+     "right_pose": "dr-using-ipad",
+     "right_bubble": "They call themselves a collective. People first, capital second.",
+     "sources": "https://frappe.io/about\nhttps://frappe.io/culture"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-doubtful",
+     "right_pose": "dr-express",
+     "left_bubble": "No managers? That sounds risky.",
+     "right_bubble": "Unusual, yes. Don’t take my word for it. It’s all public.",
+     "sources": "https://frappe.io/about\nhttps://frappe.io/culture"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-idea",
+     "right_pose": "dr-thumbsup-2",
+     "left_bubble": "So I check the builders, not only the brochure.",
+     "right_bubble": "Same test you’d use on a bean supplier."
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-saara-doubtful",
+     "caption": "Across the room, Sara, who runs finance, heard all of it.",
+     "thought": "Their code is public? So what’s the catch?"
+    }
+   ]
+  },
+  {
+   "slug": "why-it-is-open-source",
+   "environment": "env-cafeteria",
+   "takeaway": "You can read, run and change the code. Your system stays yours.",
+   "panels": [
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-laptop",
+     "caption": "Sara runs finance. She trusts numbers, not brochures.",
+     "thought": "Nobody gives things away. There’s always a catch."
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-expressing",
+     "right_pose": "dr-listen",
+     "left_bubble": "Frappe lets anyone read its code. Why would anyone do that?"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-listening",
+     "right_pose": "dr-book",
+     "right_bubble": "It began as an accident. Now it’s the core of Frappe.",
+     "sources": "https://frappe.io/vision"
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-saara-thinking",
+     "caption": "Frappe’s view: open software builds something everyone can use, and never ties its users down.",
+     "thought": "An accident is not a business plan.",
+     "sources": "https://frappe.io/vision"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-doubtful",
+     "right_pose": "dr-using-ipad",
+     "left_bubble": "Open how? Can we actually read it?",
+     "right_bubble": "Yes. ERPNext and the Framework are fully open. Nothing held back.",
+     "sources": "https://frappe.io/erpnext\nhttps://frappe.io/framework"
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-saara-book",
+     "caption": "ERPNext’s code has been public since 2009. On GitHub since 2011.",
+     "thought": "Old enough to check.",
+     "sources": "https://frappe.io/story"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-boasting",
+     "caption": "At the next table: Joseph, who runs tech.",
+     "left_bubble": "I’ve read their code. Twice. For fun."
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-saara-noidea"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-thinking",
+     "right_pose": "dr-idea",
+     "left_bubble": "Say we want a different partner in a few years. Then what?",
+     "right_bubble": "Then you move. The code is open, so nobody can lock you in.",
+     "sources": "https://frappe.io/erpnext"
+    },
+    {
+     "shot": "flat",
+     "left_pose": "cl-saara-idea",
+     "sticker": "ww",
+     "left_bubble": "And our books come with us.",
+     "sources": "https://frappe.io/erpnext"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-listening",
+     "right_pose": "dr-express",
+     "right_bubble": "One catch. Open code still needs good people to set it up and run it.",
+     "sources": "https://frappe.io/framework"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-expressing-2",
+     "right_pose": "dr-using-ipad",
+     "left_bubble": "Which people?",
+     "right_bubble": "Frappe and its partners. To run it, I’d start with Frappe Cloud.",
+     "sources": "https://frappe.io/framework\nhttps://frappe.io/products"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-laughing",
+     "right_pose": "dr-thumbsup-2",
+     "left_bubble": "Fine. Proven, for now.",
+     "right_bubble": "I’ll take ‘for now’ from you."
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-jammy-expressing",
+     "left_bubble": "Open code, fine. But what’s actually in the box?"
+    }
+   ]
+  },
+  {
+   "slug": "everything-frappe-makes",
+   "environment": "env-cafeteria",
+   "takeaway": "Frappe makes business apps, developer tools and a cloud, on one stack.",
+   "panels": [
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-laptop",
+     "caption": "Joseph keeps the laptops, the phones and every sheet that breaks.",
+     "thought": "Before anyone picks an app, I want the whole map."
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-expressing",
+     "right_pose": "dr-listen",
+     "left_bubble": "So is Frappe one app, or a whole stack?"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-listening",
+     "right_pose": "dr-using-ipad",
+     "right_bubble": "Business apps, tools for developers, and a cloud. All from one stack.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "shot": "small",
+     "left_pose": "cl-ishita-idea",
+     "row": "p3-roll",
+     "caption": "Ishita: ERPNext and Frappe HR.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "shot": "small",
+     "left_pose": "cl-raju-phone",
+     "row": "p3-roll",
+     "caption": "Raju: Frappe CRM.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "shot": "small",
+     "left_pose": "cl-suman-listening",
+     "row": "p3-roll",
+     "caption": "Salman: Frappe Helpdesk.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-thinking",
+     "right_pose": "dr-laptop",
+     "caption": "Also: Learning, Insights, Lending, Raven. For builders: the Framework, Builder, Frappe UI. Under it all: Frappe Cloud.",
+     "sources": "https://frappe.io/products"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-raju-boasting",
+     "left_bubble": "A CRM? I keep every lead up here!"
+    },
+    {
+     "shot": "close",
+     "left_pose": "cl-raju-phone",
+     "left_bubble": "Hello? Sorry, which cafe wanted the decaf?"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-idea",
+     "right_pose": "dr-laptop",
+     "left_bubble": "Which came first?",
+     "right_bubble": "The Framework. They built it so they could build ERPNext.",
+     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
+    },
+    {
+     "shot": "wide",
+     "left_pose": "cl-jammy-shock",
+     "sticker": "whoa",
+     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-listening",
+     "right_pose": "dr-using-ipad",
+     "caption": "Then their own deployment platform. Then their own UI library.",
+     "left_bubble": "They built the tools to build the tool.",
+     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-thinking",
+     "right_pose": "dr-idea",
+     "left_bubble": "So stock, leads and complaints could all run on Frappe?",
+     "right_bubble": "Yes. On Frappe Cloud you choose which apps to install.",
+     "sources": "https://frappe.io/products\nhttps://frappe.io/cloud"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-doubtful",
+     "right_pose": "dr-express",
+     "left_bubble": "So we install everything on day one?",
+     "right_bubble": "No. Range isn’t fit. Check each app against how you work."
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-jammy-laughing",
+     "right_pose": "dr-laughing",
+     "left_bubble": "So it’s Frappe all the way down.",
+     "right_bubble": "Pretty much."
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-ishita-doubtful",
+     "right_pose": "dr-coffee",
+     "left_bubble": "Enough about the company. What does the software actually do?",
+     "right_bubble": "That’s next. First up: buying and selling."
+    }
+   ]
+  }
+ ]
+}

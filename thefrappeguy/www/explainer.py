@@ -1,4 +1,5 @@
 import os
+from html import escape
 
 import frappe
 from frappe.utils import md_to_html
@@ -27,7 +28,10 @@ def get_context(context):
 	context.doc = doc
 	context.series = series
 	context.body_html = md_to_html(doc.body or "")
-	context.beats = beats(doc) if doc.panels else []
+	full_comic = bool(doc.panels) and not any((p.text or "").strip() for p in doc.panels)
+	context.comic = comic(doc) if full_comic else None
+	context.comic_sources = comic_sources(doc) if full_comic else []
+	context.beats = beats(doc) if doc.panels and not full_comic else []
 	context.page_title = doc.title
 	context.page_description = doc.dek
 	context.og_type = "article"
@@ -94,3 +98,88 @@ def beats(doc):
 			)
 		)
 	return out
+
+
+# ---- Full comic (D-166, D-168, D-172): the panels carry everything; sources follow the last panel ----
+
+# Shot defaults: fig (how tall a large pose stands, as a share of panel height), x and y offsets.
+SHOTS = {
+	"medium": {"fig": None, "x": "8%", "y": "0%"},
+	"close": {"fig": "104%", "x": "5%", "y": "-16%"},
+	"flat": {"fig": "112%", "x": "6%", "y": "-30%"},
+	"small": {"fig": "76%", "x": "10%", "y": "0%"},
+	"wide": {"fig": "128%", "x": "6%", "y": "-30%"},
+}
+
+
+def comic_panel(p, env):
+	shot = p.shot if p.shot in SHOTS else "medium"
+	d = SHOTS[shot]
+	items = sum(1 for k in ("caption", "thought", "left_bubble", "right_bubble") if p.get(k))
+	both = p.left_bubble and p.right_bubble
+	fig = d["fig"] or ("56%" if both else "60%" if items >= 2 else "64%")
+	y = d["y"]
+	inner = Markup("")
+	if shot in ("medium", "close", "small") and env:
+		inner += Markup(f'<img class="tfg-scenery" src="/assets/thefrappeguy/img/{env}.webp" alt="" decoding="async">')
+	if p.sticker == "ww":
+		inner += Markup('<img class="tfg-sticker st-ww" src="/assets/thefrappeguy/img/st-ww.webp" alt="W W">')
+	if p.left_pose and p.right_pose:
+		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:5%;--y:{y}") + tfg_char(p.right_pose, f"--fig:{fig};--x:4%;--y:{y}")
+	elif p.left_pose:
+		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:{d['x']};--y:{y}")
+	elif p.right_pose:
+		inner += tfg_char(p.right_pose, f"--fig:{fig};--x:{d['x']};--y:{y}")
+	if p.sticker == "whoa":
+		inner += Markup('<img class="tfg-sticker st-whoa" src="/assets/thefrappeguy/img/st-whoa.webp" alt="WHOA!">')
+
+	stack = Markup("")
+	if p.caption:
+		stack += tfg_caption(p.caption)
+	lone_left = p.left_pose and not p.right_pose
+	if p.left_bubble:
+		stack += bubble(p.left_bubble, "left", "is-across" if lone_left else "")
+	if p.thought:
+		stack += tfg_thought(p.thought)
+	if p.right_bubble:
+		stack += bubble(p.right_bubble, "right", "is-reply" if p.left_bubble else "")
+	if stack:
+		inner += Markup(f'<div class="tfg-stack{" has-cap" if p.caption else ""}">') + stack + Markup("</div>")
+	if shot != "flat":
+		inner += Markup('<div class="tfg-table"></div>')
+	return Markup(f'<figure class="tfg-panel" data-shot="{shot}">') + inner + Markup("</figure>")
+
+
+def bubble(text, side, cls=""):
+	long = " data-long" if len(text.split()) > 14 else ""
+	klass = f"tfg-bubble {cls}".strip()
+	return Markup(f'<p class="{klass}" data-tail="{side}"{long}>{escape(text)}</p>')
+
+
+def comic(doc):
+	"""Panels in order; consecutive panels that share a row name sit side by side."""
+	env = doc.environment if doc.environment and doc.environment != "none" else None
+	out, rows = Markup(""), list(doc.panels)
+	i = 0
+	while i < len(rows):
+		row = (rows[i].row or "").strip()
+		if row:
+			group = Markup("")
+			while i < len(rows) and (rows[i].row or "").strip() == row:
+				group += comic_panel(rows[i], env)
+				i += 1
+			out += Markup('<div class="comic-row">') + group + Markup("</div>")
+		else:
+			out += comic_panel(rows[i], env)
+			i += 1
+	return out
+
+
+def comic_sources(doc):
+	seen = []
+	for p in doc.panels:
+		for s in (p.sources or "").splitlines():
+			s = s.strip()
+			if s and s not in seen:
+				seen.append(s)
+	return [(s, s.replace("https://", "").replace("http://", "")) for s in seen]

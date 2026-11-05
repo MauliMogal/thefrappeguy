@@ -30,7 +30,9 @@ bench --site yoursite install-app thefrappeguy
 
 ## Writing an explainer
 
-Comic first (D-157): fill **So far** and add **Panels**, one row per panel with its poses, at most 2 of caption, thought and bubbles, and the text that follows it. The asker, question and article for the card and feed are filled from the panels. An unpublished part opens at `/explainers/<slug>?preview=<Preview key>` for anyone with the link; it is never listed, cached or indexed.
+Full comic (D-166, site 1.5): add **Panels** and leave every panel's **Text** empty. Each row is one panel: its **Shot** (medium, close, flat, small, wide), the poses, at most 2 of caption, thought and bubbles, an optional **Sticker** (one per part), and the **Sources** for its facts, which are listed together after the last panel. Panels that share a **Row** name sit side by side (rows of three small panels, 6 words per item). The page also offers the comic as text, built from the panels. R1 is loaded by patch `v1_6.r1_full_comic` from `data/r1_full_comic.json`.
+
+Comic first (D-157), the earlier format, still renders when any panel has text: fill **So far** and add **Panels**, one row per panel with its poses, at most 2 of caption, thought and bubbles, and the text that follows it. The asker, question and article for the card and feed are filled from the panels. An unpublished part opens at `/explainers/<slug>?preview=<Preview key>` for anyone with the link; it is never listed, cached or indexed.
 
 
 Desk → **Explainer** → New. Fill the card, the comic panel (asker on the left, Deepak on the right), the article in Markdown and one takeaway, then tick **Published**. The page goes live at `/explainers/<slug>` and appears in the feed and sitemap.

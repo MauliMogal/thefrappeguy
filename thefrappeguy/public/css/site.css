@@ -324,3 +324,14 @@ textarea.input { min-height: 160px; resize: vertical; }
 .beat__src a { color: inherit; }
 .article--beats .tfg-takeaway { margin-top: var(--space-12); max-width: 30ch; }
 .draft-note { border: 2px solid var(--ink); padding: var(--space-3) var(--space-4); font-size: 14px; line-height: 22px; max-width: 760px; }
+
+/* Full comic (D-166): one column of panels, rows of three side by side, sources after the last panel */
+.comic { display: flex; flex-direction: column; gap: 10px; max-width: 680px; }
+.comic-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 520px) { .comic-row { grid-template-columns: minmax(0, 1fr); } }
+.comic-sources { display: flex; flex-direction: column; gap: var(--space-2); font-size: 13px; line-height: 20px; color: var(--ink-3); }
+.comic-sources ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 2px 14px; overflow-wrap: anywhere; }
+.comic-sources a { color: var(--ink-3); }
+.comic-text { font-size: 14px; color: var(--ink-2); max-width: 65ch; }
+.comic-text summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.comic-text .prose { margin-top: var(--space-3); white-space: pre-line; }

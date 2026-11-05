@@ -253,3 +253,26 @@
 .tfg-art[data-fixed] { color: #000000; --ink: #000000; --ink-2: #4E4B45; --ink-3: #6B675F; --border-strong: #000000; --paper: #FAF8F2; --surface: #FFFFFF; --rule: #E1DFDA; }
 .tfg-art[data-fixed="ink"]:not(.tfg-scene) { background: #000000; color: #FAF8F2; }
 .tfg-art img.tfg-logo { display: block; height: auto; }
+
+/* ---------- Full comic (D-166, D-168, D-172) ----------
+   Shots: medium (two at the table), close (one, bigger, scenery kept), flat (close-up on the library highlight),
+   small (one of a row of three), wide (the library strip, silent). Text sits in one stack: the caption runs full
+   width at the top, the left bubble in the left half, the reply in the right half one step lower. */
+.tfg-panel[data-shot] { width: 100%; }
+.tfg-panel[data-shot="wide"] { aspect-ratio: 1600 / 576; }
+.tfg-panel[data-shot="flat"] { background: var(--highlight, #E8BE5F); }
+.tfg-stack { position: absolute; z-index: 4; top: 0; left: 0; right: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 4cqw; row-gap: 2.4cqw; align-items: start; padding: 3cqw 3cqw 0; }
+.tfg-stack.has-cap { padding-top: 0; }
+.tfg-stack > * { grid-row: 1; }
+.tfg-stack.has-cap > * { grid-row: 2; }
+.tfg-stack > .tfg-caption { position: relative; grid-column: 1 / -1; grid-row: 1; justify-self: start; margin: 0 0 0 -3cqw; max-width: 78%; border-width: 0 var(--bw, 3px) var(--bw, 3px) 0; line-height: 1.18; }
+.tfg-stack > .tfg-bubble { position: relative; grid-column: 1; justify-self: start; max-width: 100%; font-size: 4.7cqw; line-height: 1.16; --tail-x: 64%; }
+.tfg-stack > .tfg-bubble[data-long] { font-size: 3.9cqw; }
+.tfg-stack > .tfg-bubble[data-tail="right"] { grid-column: 2; justify-self: end; --tail-x: 58%; }
+.tfg-stack > .tfg-bubble.is-reply { margin-top: 7cqw; }
+.tfg-stack > .tfg-bubble.is-across { grid-column: 2; justify-self: start; --tail-x: 82%; }
+.tfg-stack > .tfg-thought { position: relative; grid-column: 2; justify-self: end; margin: 2cqw 0 0; width: 100%; padding: 1em 1.2em 1.1em; font-size: 4.2cqw; line-height: 1.12; isolation: isolate; }
+.tfg-panel[data-shot] .st-whoa { z-index: 5; right: 4%; top: 14%; width: 44%; }
+.tfg-panel[data-shot="wide"] .st-whoa { right: 5%; top: 30%; width: 52%; }
+.tfg-panel[data-shot] .st-ww { z-index: 0; left: 4%; width: 92%; top: 30%; }
+.tfg-panel[data-shot="small"] .tfg-stack > .tfg-caption { font-size: 6.4cqw; max-width: 100%; }

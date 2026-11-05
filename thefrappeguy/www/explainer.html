@@ -8,10 +8,12 @@
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/explainers">Explainers</a><span>/</span><a href="/series/{{ series.slug }}">{{ series.title | e }}</a></nav>
     <span class="label" data-tone="{{ series.scene }}">{{ series.title | upper | e }} · PART {{ doc.part }}{% if doc.asked_by %} · ASKED BY {{ doc.asked_by | upper | e }}{% endif %}</span>
     <h1 class="h1">{{ doc.title | e }}</h1>
-    <p class="meta">{% if doc.published_on %}{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {% endif %}{{ tfg_read_minutes(doc.body) }} min read{% if doc.asked_by and not beats %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
-    {% if doc.so_far %}<p class="sofar"><strong>So far:</strong> {{ doc.so_far | e }}</p>{% endif %}
+    <p class="meta">{% if doc.published_on %}{{ frappe.format_date(doc.published_on, "d MMM yyyy") }} · {% endif %}{% if comic %}A comic in {{ doc.panels | length }} panels{% else %}{{ tfg_read_minutes(doc.body) }} min read{% endif %}{% if doc.asked_by and not beats and not comic %} · Asked by {{ doc.asked_by | e }}{% endif %}</p>
+    {% if doc.so_far and not comic %}<p class="sofar"><strong>So far:</strong> {{ doc.so_far | e }}</p>{% endif %}
   </header>
-  {% if beats %}
+  {% if comic %}
+  <div class="comic" aria-label="The comic, panel by panel">{{ comic }}</div>
+  {% elif beats %}
   <div class="beats">
     {%- for b in beats %}
     <div class="beat">
@@ -31,6 +33,8 @@
   <div class="prose">{{ body_html | safe }}</div>
   {% endif %}
   <p class="tfg-takeaway">{{ doc.takeaway | e }}</p>
+  {% if comic_sources %}<div class="comic-sources"><p class="label">SOURCES</p><ul>{% for url, label in comic_sources %}<li><a href="{{ url }}" rel="noopener">{{ label | e }}</a></li>{% endfor %}</ul></div>{% endif %}
+  {% if comic %}<details class="comic-text"><summary>Read the comic as text</summary><div class="prose">{{ body_html | safe }}</div></details>{% endif %}
   <nav class="story-nav" aria-label="Story">
     {% if prev_part %}<a class="story-nav__prev" href="{{ prev_part.url }}"><span class="label">{{ "PREVIOUS" if prev_part.series == doc.series else "PREVIOUS TOPIC" }} · {{ prev_part.series_title | upper | e }}, PART {{ prev_part.part }}</span><span class="h3">{{ prev_part.title | e }}</span></a>{% else %}<span></span>{% endif %}
     {% if next_part %}<a class="story-nav__next" href="{{ next_part.url }}"><span class="label" data-tone="{{ next_part.scene }}">{{ "NEXT" if next_part.series == doc.series else "NEXT TOPIC" }} · {{ next_part.series_title | upper | e }}, PART {{ next_part.part }}</span><span class="h3">{{ next_part.title | e }}</span></a>
