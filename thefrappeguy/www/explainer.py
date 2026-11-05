@@ -11,7 +11,7 @@ def get_context(context):
 	if not slug or not frappe.db.exists("Explainer", {"name": slug, "published": 1}):
 		raise frappe.PageDoesNotExistError
 	doc = frappe.get_doc("Explainer", slug)
-	series = series_map().get(doc.series) or frappe._dict(title=doc.series, slug=doc.series, scene="grey")
+	series = series_map().get(doc.series) or frappe._dict(title=doc.series, slug=doc.series, scene="tangerine")
 	context.doc = doc
 	context.series = series
 	context.body_html = md_to_html(doc.body or "")

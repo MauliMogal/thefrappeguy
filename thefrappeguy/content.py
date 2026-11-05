@@ -9,61 +9,102 @@ from thefrappeguy.characters import CHARACTERS
 
 CREDIT = "Characters from the Frappe Character Library, used with permission."
 
-SCENES = ("sky", "periwinkle", "mustard", "salmon", "sage", "grey")
+SCENES = ("tangerine", "sky", "periwinkle", "lilac", "mustard", "teal", "lime", "pink", "sage", "salmon")
 
-# The six series, in display order. Seeded on install; edit them in the desk afterwards.
+# The ten series, in display order. Seeded on install and synced by the v1_1 patch; edit them in the desk afterwards.
 SERIES = [
+	{
+		"slug": "frappe-101",
+		"title": "Frappe 101",
+		"scene": "tangerine",
+		"description": "Start here. What Frappe is, and what a site, an app and a DocType are, explained from zero.",
+		"asked_by": "Usually asked by Salman, who is new to all of this.",
+		"pose": "dr-thinking",
+	},
 	{
 		"slug": "cloud",
 		"title": "Frappe Cloud",
 		"scene": "sky",
-		"description": "Where your Frappe site lives: plans, backups, updates, and what you pay for.",
-		"asked_by": "Usually asked by Salman, who is new to all of this.",
+		"description": "Where your Frappe site lives: sites, plans, backups and updates.",
+		"asked_by": "Usually asked by Ishita, who wants her company's data safe.",
 		"pose": "dr-thumbsup",
 	},
 	{
 		"slug": "erpnext",
-		"title": "ERPNext and business apps",
+		"title": "ERPNext",
 		"scene": "periwinkle",
-		"description": "ERPNext, Frappe HR and Frappe Helpdesk: what each one does for a real business, and where you'll need setup.",
+		"description": "Accounting, stock, buying, selling and manufacturing, and how they fit a real business.",
 		"asked_by": "Usually asked by Ishita, who runs a company.",
 		"pose": "dr-using-ipad",
 	},
 	{
+		"slug": "hr",
+		"title": "HR and Payroll",
+		"scene": "lilac",
+		"description": "Frappe HR: employees, leave, attendance, expense claims and payroll.",
+		"asked_by": "Usually asked by Ishita, who hires faster than she can file paperwork.",
+		"pose": "dr-coffee-offer",
+	},
+	{
 		"slug": "crm",
-		"title": "CRM and selling",
+		"title": "CRM",
 		"scene": "mustard",
-		"description": "Frappe CRM and the selling side of ERPNext, from the first lead to a paid invoice.",
+		"description": "Frappe CRM, from the first lead to a closed deal.",
 		"asked_by": "Usually asked by Raju, who sells for a living.",
 		"pose": "dr-idea",
 	},
 	{
-		"slug": "pricing",
-		"title": "Pricing and proof",
-		"scene": "salmon",
-		"description": "What things cost, how the pricing works, and the numbers behind every claim. Each figure is checked against a live source.",
-		"asked_by": "Usually asked by Sara, who wants proof.",
-		"pose": "dr-book",
+		"slug": "helpdesk",
+		"title": "Helpdesk",
+		"scene": "teal",
+		"description": "Frappe Helpdesk: tickets, teams and replying to customers on time.",
+		"asked_by": "Usually asked by Raju, whose customers call him first.",
+		"pose": "dr-work-talk",
+	},
+	{
+		"slug": "lms",
+		"title": "LMS",
+		"scene": "lime",
+		"description": "Frappe Learning: courses, quizzes and certificates for your team or your customers.",
+		"asked_by": "Usually asked by Salman, who learns by doing.",
+		"pose": "dr-accomplished",
+	},
+	{
+		"slug": "raven",
+		"title": "Raven",
+		"scene": "pink",
+		"description": "Team chat that runs on your Frappe site, with your users, roles and documents in the conversation.",
+		"asked_by": "Usually asked by Joseph, who lives in chat.",
+		"pose": "dr-laughing",
 	},
 	{
 		"slug": "framework",
-		"title": "Framework and developers",
+		"title": "Framework",
 		"scene": "sage",
-		"description": "The Frappe Framework for people who build: DocTypes, hooks, APIs and custom apps.",
+		"description": "DocTypes, hooks, APIs and custom apps, for people who build on Frappe.",
 		"asked_by": "Usually asked by Joseph, who writes the code.",
 		"pose": "dr-laptop",
 	},
 	{
-		"slug": "basics",
-		"title": "Basics",
-		"scene": "grey",
-		"description": "Start here. The words and ideas everything else builds on, explained from zero.",
-		"asked_by": "Usually asked by Salman, who asks what everyone wonders.",
-		"pose": "dr-thinking",
+		"slug": "pricing",
+		"title": "Pricing",
+		"scene": "salmon",
+		"description": "What things cost and how the pricing works. Every figure is checked against a live source.",
+		"asked_by": "Usually asked by Sara, who wants proof.",
+		"pose": "dr-book",
 	},
 ]
 
+# Old series slugs that now live elsewhere. Used by the redirect hook and the v1_1 patch.
+RENAMED_SERIES = {"basics": "frappe-101"}
+
 BANNED = [
+	# Never claim it, show it (D-102)
+	"honest",
+	"honestly",
+	"unbiased",
+	"no sales pitch",
+	"costs a sale",
 	"delve",
 	"leverage",
 	"leverages",
@@ -141,7 +182,7 @@ def explainer_list(series=None, limit=None):
 		return []
 	smap = series_map()
 	for r in rows:
-		s = smap.get(r.series) or frappe._dict(title=r.series, scene="grey")
+		s = smap.get(r.series) or frappe._dict(title=r.series, scene="tangerine")
 		r.series_title = s.title
 		r.scene = s.scene
 		r.url = f"/explainers/{r.slug}"
@@ -149,9 +190,28 @@ def explainer_list(series=None, limit=None):
 	return rows
 
 
+def series_counts():
+	"""Published explainers per series, so empty series can say "Coming soon"."""
+	try:
+		rows = frappe.get_all("Explainer", filters={"published": 1}, fields=["series", "count(name) as n"], group_by="series")
+	except Exception:
+		return {}
+	return {r.series: r.n for r in rows}
+
+
+def series_with_counts():
+	counts = series_counts()
+	out = []
+	for s in series_list():
+		s = frappe._dict(s)
+		s.count = counts.get(s.slug, 0)
+		out.append(s)
+	return out
+
+
 def website_context(context):
 	return {
-		"tfg_series": series_list(),
+		"tfg_series": series_with_counts(),
 		"tfg_base": frappe.utils.get_url().rstrip("/"),
 		"tfg_v": __version__,
 		"tfg_credit": CREDIT,

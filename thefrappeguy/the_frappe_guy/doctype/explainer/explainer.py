@@ -3,7 +3,11 @@ from frappe.model.document import Document
 from frappe.utils import today
 from frappe.website.utils import clear_cache
 
+from thefrappeguy.characters import CHARACTERS
 from thefrappeguy.content import SLUG_RE, copy_issues, word_count
+
+# Figma component names to the display names approved in D-022
+DISPLAY = {"Saara": "Sara", "Jammy": "Joseph", "Suman": "Salman"}
 
 
 class Explainer(Document):
@@ -36,6 +40,11 @@ class Explainer(Document):
 
 		if issues:
 			frappe.throw("<br>".join(issues), title="Fix these before saving")
+
+		# "Asked by" always matches the character in the panel, so the page never names the wrong person.
+		if self.cast_pose in CHARACTERS:
+			name = CHARACTERS[self.cast_pose][0]
+			self.asked_by = DISPLAY.get(name, name)
 
 		if self.published and not self.published_on:
 			self.published_on = today()

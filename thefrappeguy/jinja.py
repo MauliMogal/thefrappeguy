@@ -15,11 +15,13 @@ def tfg_char(key, style="", lazy=False):
 	if key not in CHARACTERS:
 		return Markup("")
 	name, pose, side, n, drop = CHARACTERS[key]
+	# In public copy the hero is The Frappe Guy; "Deepak" is the library's component name only (D-107).
+	public = "The Frappe Guy" if name == "Deepak" else name
 	css = f"--n:{n};" + (f"--drop:{drop};" if drop else "") + (style or "")
 	attrs = ' data-baked-table=""' if drop else ""
 	loading = ' loading="lazy"' if lazy else ""
 	return Markup(
-		f'<img class="tfg-char" src="{IMG}{key}.webp" alt="{escape(name)}, {escape(pose.replace("-", " "))}" '
+		f'<img class="tfg-char" src="{IMG}{key}.webp" alt="{escape(public)}, {escape(pose.replace("-", " "))}" '
 		f'data-character="{escape(name)}" data-pose="{escape(pose)}" data-side="{side}"{attrs} '
 		f'style="{escape(css)}"{loading} decoding="async">'
 	)
@@ -28,6 +30,9 @@ def tfg_char(key, style="", lazy=False):
 def tfg_bubble(text, side="right", style=""):
 	if not text:
 		return Markup("")
+	# Long bubbles (over 14 words) letter a little smaller, so the bubble ends above the faces.
+	if len(text.split()) > 14 and "--letter" not in (style or ""):
+		style = "--letter:3.9cqw;" + (style or "")
 	return Markup(f'<p class="tfg-bubble" data-tail="{side}" style="{escape(style)}">{escape(text)}</p>')
 
 

@@ -149,13 +149,31 @@
 .tfg-grid[data-layout="3+1"] > :last-child { grid-column: 1 / -1; aspect-ratio: 1600 / 576; }
 
 /* ---------- SceneGround ---------- */
-.tfg-scene { position: relative; overflow: hidden; background: var(--scene-grey, #8F9198); color: var(--on-scene, #000000); }
+.tfg-scene { position: relative; overflow: hidden; background: var(--scene-tangerine, #F0A25A); color: var(--on-scene, #000000); }
+/* Ten scene colours, one per series. The first five are the library's app store colours (D-036); the other five sit in the same band (D-104). */
+.tfg-scene[data-scene="tangerine"] { background: var(--scene-tangerine, #F0A25A); }
 .tfg-scene[data-scene="sky"] { background: var(--scene-sky, #4B93E9); }
 .tfg-scene[data-scene="periwinkle"] { background: var(--scene-periwinkle, #7883E9); }
+.tfg-scene[data-scene="lilac"] { background: var(--scene-lilac, #B391E6); }
 .tfg-scene[data-scene="mustard"] { background: var(--scene-mustard, #F5C57D); }
-.tfg-scene[data-scene="salmon"] { background: var(--scene-salmon, #F37E7E); }
+.tfg-scene[data-scene="teal"] { background: var(--scene-teal, #5FC4B4); }
+.tfg-scene[data-scene="lime"] { background: var(--scene-lime, #B7CF67); }
+.tfg-scene[data-scene="pink"] { background: var(--scene-pink, #EE9CC6); }
 .tfg-scene[data-scene="sage"] { background: var(--scene-sage, #789B7A); }
+.tfg-scene[data-scene="salmon"] { background: var(--scene-salmon, #F37E7E); }
 .tfg-scene[data-scene="grey"] { background: var(--scene-grey, #8F9198); }
+/* Series names set in their own colour on paper: the darker tone of each scene, 5.7:1 or better on paper. */
+[data-tone] { color: var(--tone, #000000); }
+[data-tone="tangerine"] { --tone: #9C4A00; --tint: #FCEBDB; }
+[data-tone="sky"] { --tone: #1A5CAD; --tint: #E1ECFB; }
+[data-tone="periwinkle"] { --tone: #3B45B8; --tint: #E6E8FB; }
+[data-tone="lilac"] { --tone: #6B3DB3; --tint: #EFE7FB; }
+[data-tone="mustard"] { --tone: #835600; --tint: #FCF0DC; }
+[data-tone="teal"] { --tone: #0B6E62; --tint: #DDF3EF; }
+[data-tone="lime"] { --tone: #4F6514; --tint: #EEF4DA; }
+[data-tone="pink"] { --tone: #A3216A; --tint: #FBE5F0; }
+[data-tone="sage"] { --tone: #3B6A40; --tint: #E3ECE3; }
+[data-tone="salmon"] { --tone: #B02E2E; --tint: #FCE3E3; }
 .tfg-dot { position: absolute; z-index: 0; width: var(--d, 18px); height: var(--d, 18px); border-radius: 50%; background: var(--dot-pink, #F3AFAD); }
 .tfg-dot[data-dot="blue"] { background: var(--dot-blue, #4B93EA); }
 

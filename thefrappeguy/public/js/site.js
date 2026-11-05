@@ -22,7 +22,7 @@
       count.textContent = shown === 1 ? "1 explainer" : shown + " explainers";
       count.hidden = shown === 0;
       empty.hidden = shown !== 0;
-      emptyTitle.textContent = f === "all" ? "The first explainers are on their way." : "Nothing in " + name + " yet.";
+      emptyTitle.textContent = f === "all" ? "The first explainers are being written." : "The first " + name + " explainers are being written.";
     };
     chips.forEach(function (c) {
       c.addEventListener("click", function (e) {

@@ -1,50 +1,51 @@
 {% extends "templates/tfg_base.html" %}
 {% block content %}
 <div class="wrap">
-  <header class="article-head"><img class="print-only" src="/assets/thefrappeguy/logo/tfg-logo.svg" alt="the frappe guy" width="220"><p class="label">PUBLIC EDITION 1.0</p><h1 class="h1">Brand book</h1><p class="lede">How The Frappe Guy looks, sounds and behaves. The rules are public so anyone can see how this works.</p>
+  <header class="article-head"><img class="print-only" src="/assets/thefrappeguy/logo/tfg-logo.svg" alt="the frappe guy" width="220"><p class="label">PUBLIC EDITION 1.1</p><h1 class="h1">Brand book</h1><p class="lede">How The Frappe Guy looks, sounds and behaves. The rules are public so anyone can see how this works.</p>
   <div class="actions no-print"><a class="btn" href="{{ pdf }}">Download the brand book (PDF)</a></div></header>
   <div class="book">
     <nav class="toc" aria-label="Brand book sections">{% for id, t in toc %}<a href="#{{ id }}">{{ t }}</a>{% endfor %}</nav>
     <div class="book-body">
 
       <section id="core"><h2 class="h2">Brand core</h2>
-        <p class="lede" style="max-width:none">The Frappe Guy is the engineer who would rather tell you the truth than sell you something.</p>
-        <p>The Frappe Guy explains Frappe, ERPNext, Frappe CRM, Frappe Helpdesk, Frappe HR, Frappe Cloud and the Frappe Framework so anyone can understand them. He is Deepak, from Frappe's own Character Library: a talented engineer and natural leader who always brings "do the right thing" into the discussion.</p>
-        <p><b>Promise.</b> Ask anything about Frappe. You get a straight answer, a real example, and one thing to remember. Including when the answer is "not yet" or "you'll need a customisation".</p>
-        <div class="table-scroll"><table class="table"><thead><tr><th>DEEPAK IS</th><th>NOT</th><th>IN PRACTICE</th></tr></thead><tbody>
+        <p class="lede" style="max-width:none">The Frappe Guy makes Frappe easy to learn, one small scene at a time.</p>
+        <p>The Frappe Guy explains Frappe, ERPNext, Frappe Cloud, Frappe HR, Frappe CRM, Helpdesk, Frappe Learning, Raven and the Frappe Framework so anyone can understand them. He comes from Frappe's own Character Library, where his component is named Deepak: a talented engineer who always brings "do the right thing" into the discussion.</p>
+        <p><b>Promise.</b> Ask anything about Frappe. You get a clear answer, a real example, and one thing to remember, including when the answer is "not yet" or "you'll need a customisation".</p>
+        <p><b>Show it, never say it.</b> Being straight with people is how The Frappe Guy works, so it shows in every answer: the limitation named next to the feature, the setup work named next to the result. It is never something we say about ourselves.</p>
+        <div class="table-scroll"><table class="table"><thead><tr><th>THE FRAPPE GUY IS</th><th>NOT</th><th>IN PRACTICE</th></tr></thead><tbody>
           <tr><td>Calm</td><td>Hyped</td><td>Speaks like it's 4pm at the whiteboard, not launch day on stage.</td></tr>
-          <tr><td>Honest</td><td>Salesy</td><td>Says the limitation in the same breath as the feature.</td></tr>
+          <tr><td>Straight</td><td>Salesy</td><td>Says the limitation in the same breath as the feature.</td></tr>
           <tr><td>Plain</td><td>Clever</td><td>Short sentences, everyday words, one example every time.</td></tr>
           <tr><td>Warm</td><td>Cute</td><td>Kind to the person asking. Dry humour, never at a customer's expense.</td></tr></tbody></table></div>
         <h3 class="h3">Every piece is one small scene</h3>
-        <ul><li><b>A question or a wrong belief.</b> Someone from the cast asks what the audience is thinking.</li><li><b>An honest answer with a real example.</b> Deepak explains with a business you can picture, and names the trade-off.</li><li><b>One takeaway.</b> A sentence the reader can repeat to their boss tomorrow.</li></ul>
+        <ul><li><b>A question or a wrong belief.</b> Someone from the cast asks what the audience is thinking.</li><li><b>An answer with a real example.</b> The Frappe Guy explains with a business you can picture, and names the trade-off.</li><li><b>One takeaway.</b> A sentence the reader can repeat to their boss tomorrow.</li></ul>
         <h3 class="h3">Do the right thing, in practice</h3>
         <ul><li>Say what it can't do as clearly as what it can.</li><li>Show the whole cost, not the first month: hosting, implementation, support and training.</li><li>Compare facts, never trash a competitor.</li><li>Point people to Frappe Cloud.</li><li>If we don't know, say so and find out.</li><li>Make no per-user pricing easy to see.</li></ul>
         <h3 class="h3">What we never do</h3>
-        <ul><li>Draw, generate or redraw Deepak or any cast member.</li><li>Invent prices, plans, policies, dates, customers, quotes or numbers.</li><li>Put words in a real person's mouth.</li><li>Use the characters in political, religious, medical, violent or mocking contexts.</li><li>Use em dashes, or the banned words listed under Voice.</li></ul>
+        <ul><li>Draw, generate or redraw The Frappe Guy or any cast member.</li><li>Call ourselves honest, unbiased or anything like it. The answers show it.</li><li>Invent prices, plans, policies, dates, customers, quotes or numbers.</li><li>Put words in a real person's mouth.</li><li>Use the characters in political, religious, medical, violent or mocking contexts.</li><li>Use em dashes, or the banned words listed under Voice.</li></ul>
       </section>
 
       <section id="characters"><h2 class="h2">Characters</h2>
-        <p>Deepak and the cast belong to Frappe. Nobody draws, traces, generates or redraws them, with any tool. Every image is composed from the library's own exports, and a missing pose is requested from Frappe's designer.</p>
+        <p>The Frappe Guy and the cast belong to Frappe. Nobody draws, traces, generates or redraws them, with any tool. Every image is composed from the library's own exports, and a missing pose is requested from Frappe's designer.</p>
         <div class="table-scroll"><table class="table"><thead><tr><th>CHARACTER</th><th>STANDS FOR</th><th>TYPICAL QUESTION</th></tr></thead><tbody>
-          <tr><td>Deepak</td><td>The Frappe Guy</td><td>He answers.</td></tr>
+          <tr><td>The Frappe Guy</td><td>Library component: Deepak</td><td>He answers.</td></tr>
           <tr><td>Ishita</td><td>Business owners and decision makers</td><td>"Will this actually run my company?"</td></tr>
           <tr><td>Raju</td><td>Every big claim a buyer has already heard</td><td>"Can I tell the client it'll be live by Monday?"</td></tr>
           <tr><td>Sara</td><td>Finance, analysts, anyone comparing vendors</td><td>"Prove it. What's the total cost?"</td></tr>
           <tr><td>Joseph</td><td>Developers and implementers</td><td>"Hook or custom app?"</td></tr>
           <tr><td>Salman</td><td>First-time users and beginners</td><td>"This might be a silly question, but what's a DocType?"</td></tr></tbody></table></div>
         <h3 class="h3">Poses follow the story</h3>
-        <div class="table-scroll"><table class="table"><thead><tr><th>BEAT</th><th>DEEPAK'S POSE</th></tr></thead><tbody>
+        <div class="table-scroll"><table class="table"><thead><tr><th>BEAT</th><th>THE FRAPPE GUY'S POSE</th></tr></thead><tbody>
           <tr><td>Hear the question</td><td>listen</td></tr>
           <tr><td>Frame the problem</td><td>thinking, book</td></tr>
           <tr><td>Question a myth</td><td>doubtful, no-idea</td></tr>
           <tr><td>Show the pain</td><td>shock, scared</td></tr>
           <tr><td>The old way</td><td>yawning, tierd, sleeping</td></tr>
-          <tr><td>Explain and show</td><td>idea, using-ipad, laptop, express for the honest catch</td></tr>
+          <tr><td>Explain and show</td><td>idea, using-ipad, laptop, express for the catch</td></tr>
           <tr><td>Hand over and team up</td><td>passing-files, bro-fist, work-talk</td></tr>
           <tr><td>Confirm and close</td><td>thumbsup-2, thumbsup, accomplished, coffee-offer</td></tr>
           <tr><td>Signature</td><td>coffee: Frappe is named after a coffee drink, so the mug carries the brand</td></tr></tbody></table></div>
-        <ul><li>Deepak answers from the right. The person asking sits on the left.</li><li>Two characters per frame at most. Up to six only for celebrations.</li><li>Jokes come from Joseph and Raju, at their own expense. Never at a customer's.</li><li>Never Raju alone with Ishita. Sara is wrong only when the numbers say so.</li></ul>
+        <ul><li>The Frappe Guy answers from the right. The person asking sits on the left.</li><li>Two characters per frame at most. Up to six only for celebrations.</li><li>Jokes come from Joseph and Raju, at their own expense. Never at a customer's.</li><li>Never Raju alone with Ishita. Sara is wrong only when the numbers say so.</li></ul>
       </section>
 
       <section id="comic"><h2 class="h2">Comic grammar</h2>
@@ -53,16 +54,16 @@
           tfg_char("cl-suman-expressing", "--fig:60%;--x:3%")
           ~ tfg_char("dr-using-ipad", "--fig:60%;--x:4%")
           ~ tfg_bubble("How long can a bubble be?", "left", "left:4%;top:4%;--w:42%;--tail-x:64%")
-          ~ tfg_bubble("20 words at most. 12 reads better.", "right", "right:4%;top:14%;--w:45%;--tail-x:60%")
+          ~ tfg_bubble("20 words at most. 12 reads better.", "right", "right:4%;top:4%;--w:45%;--tail-x:52%")
         ) }}</div>
         <ul><li>Read left to right, top to bottom. A reply never sits above its question.</li><li>Two bubbles per panel at most, hand-lettered in Caveat. Bubbles never cover a face or a meaningful hand.</li><li>Every character in a panel is scaled the same way, so heads match. Nobody sizes a character by eye.</li><li>One sticker per piece at most: WHOA! for a checked surprising fact, W W for the win, VS for two models compared, emphasis lines for the insight.</li><li>Two scenes: the cafeteria and the cafe counter, always faint, always behind the characters.</li><li>Every scene ends on exactly one takeaway.</li></ul>
       </section>
 
       <section id="look"><h2 class="h2">Logo, colour and type</h2>
-        <p>The logo is "the caption": "the frappe guy" hand-lettered inside the library's speech box, its tail pointing toward Deepak, who answers from the right. The short mark always reads "tfg".</p>
+        <p>The logo is "the caption": "the frappe guy" hand-lettered inside the library's speech box, its tail pointing toward The Frappe Guy, who answers from the right. The short mark always reads "tfg".</p>
         <div class="logo-tiles"><div class="logo-tile logo-tile--paper"><img src="/assets/thefrappeguy/logo/tfg-logo.svg" alt="The Frappe Guy logo, black on paper" width="200"></div><div class="logo-tile logo-tile--ink"><img src="/assets/thefrappeguy/logo/tfg-logo-reverse.svg" alt="The Frappe Guy logo, white on ink" width="200"></div><div class="logo-tile logo-tile--paper"><img src="/assets/thefrappeguy/logo/tfg-mark.svg" alt="The tfg mark" width="64"></div></div>
         <ul><li>Black on paper or white, or white on ink. Never in another colour.</li><li>Clear space equals the tail height on every side. At least 120 px wide on screen; the mark works down to 16 px.</li><li>Never fill the box, round its corners, stretch, rotate or retype it.</li></ul>
-        <p>Comic on a quiet page: pages stay ink and paper, and colour belongs to the characters and to one scene colour per series. Text on a scene colour is always black.</p>
+        <p>Comic on a quiet page: pages stay ink and paper, and colour belongs to the characters and to one scene colour per topic. Text on a scene colour is always black; a topic name on paper is set in its darker tone.</p>
         <div class="swatches">{% for k, hx, n in scenes %}<figure><div class="tfg-scene chip-colour" data-scene="{{ k }}"></div><figcaption><b>{{ n }}</b><br><code>{{ hx }}</code></figcaption></figure>{% endfor %}</div>
         <div class="swatches">{% for n, hx in neutrals %}<figure><div class="chip-colour" style="background:{{ hx }}"></div><figcaption><b>{{ n }}</b><br><code>{{ hx }}</code></figcaption></figure>{% endfor %}</div>
         <div class="specimen"><span class="h2">Inter for everything you read</span><span class="hand">Caveat, only inside bubbles and tags</span><span><span class="doctype">Sales Invoice</span> JetBrains Mono for DocType and code names</span></div>
@@ -70,7 +71,7 @@
       </section>
 
       <section id="templates"><h2 class="h2">Templates</h2>
-        <p>Twelve layouts cover every format. Social cards, carousel covers, thumbnails and WhatsApp squares sit on the series colour; pages, slides, emails and strips stay on paper.</p>
+        <p>Twelve layouts cover every format. Social cards, carousel covers, thumbnails and WhatsApp squares sit on the topic colour; pages, slides, emails and strips stay on paper.</p>
         <div class="table-scroll"><table class="table"><thead><tr><th>TEMPLATE</th><th>SIZE</th><th>GROUND</th></tr></thead><tbody>
           <tr><td>Explainer card</td><td>1080 x 1350</td><td>Series colour</td></tr>
           <tr><td>4-panel comic strip</td><td>1080 x 1350</td><td>Paper</td></tr>
@@ -87,20 +88,20 @@
       </section>
 
       <section id="voice"><h2 class="h2">Voice</h2>
-        <p>Deepak sounds like a calm senior engineer at a whiteboard. Every answer has four parts, in this order: the answer first, one real example with real DocType names, the catch said plainly, and one takeaway.</p>
+        <p>The Frappe Guy sounds like a calm senior engineer at a whiteboard. Every answer has four parts, in this order: the answer first, one real example with real DocType names, the catch said plainly, and one takeaway.</p>
         <div class="table-scroll"><table class="table"><thead><tr><th>DO</th><th>DON'T</th></tr></thead><tbody>
           <tr><td>Short answer: yes. You'll need one custom field for the vehicle number.</td><td>Absolutely! ERPNext handles everything out of the box!</td></tr>
           <tr><td>Take a distributor with <span class="ph">[NUMBER]</span> warehouses.</td><td>Imagine a company.</td></tr>
           <tr><td>Not silly at all. A DocType is a form and a database table, defined once.</td><td>Great question!! So basically a DocType is kind of like a model thing.</td></tr>
           <tr><td>I don't know yet. Let me check and come back to you.</td><td>Trust me, it'll work.</td></tr>
           <tr><td>Pricing per user grows with your team. Pricing per plan grows with your usage.</td><td>A negative sentence with a competitor's name in it.</td></tr></tbody></table></div>
-        <ul><li>Short sentences, active voice, Indian English spelling. Sentence case for every headline and button.</li><li>No em dashes or en dashes. No exclamation marks from Deepak. No emoji.</li><li>Never "free" on its own: say open source, then what you do pay for.</li><li>Every price, plan, date, customer and number is checked against a live source, or stays a placeholder like <span class="ph">[PRICE]</span>.</li><li>Never these words: delve, leverage, unlock, seamless, robust, game-changer, elevate, empower, journey, revolutionize, cutting-edge.</li></ul>
+        <ul><li>Short sentences, active voice, Indian English spelling. Sentence case for every headline and button.</li><li>No em dashes or en dashes. No exclamation marks from The Frappe Guy. No emoji.</li><li>Never "free" on its own: say open source, then what you do pay for.</li><li>Every price, plan, date, customer and number is checked against a live source, or stays a placeholder like <span class="ph">[PRICE]</span>.</li><li>Never these words: delve, leverage, unlock, seamless, robust, game-changer, elevate, empower, journey, revolutionize, cutting-edge. Never call ourselves honest or unbiased.</li></ul>
       </section>
 
       <section id="usage"><h2 class="h2">Usage rules</h2>
         <div class="table-scroll"><table class="table"><thead><tr><th>DO</th><th>NEVER</th></tr></thead><tbody>
           <tr><td>Use the library exports as they are.</td><td><span class="never">Never</span> draw, trace, generate or redraw a character.</td></tr>
-          <tr><td>Use the Right export to put Deepak on the right.</td><td><span class="never">Never</span> flip a character.</td></tr>
+          <tr><td>Use the Right export to put The Frappe Guy on the right.</td><td><span class="never">Never</span> flip a character.</td></tr>
           <tr><td>Keep pages ink and paper, one scene colour per piece.</td><td><span class="never">Never</span> white text on a scene colour.</td></tr>
           <tr><td>Use the logo files black on paper, white on ink.</td><td><span class="never">Never</span> fill the box, round its corners or recolour it.</td></tr>
           <tr><td>Keep unchecked facts as placeholders like <span class="ph">[PRICE]</span>.</td><td><span class="never">Never</span> invent prices, dates, customers or quotes.</td></tr>

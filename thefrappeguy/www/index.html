@@ -1,47 +1,46 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import card, series_links %}
+{% from "templates/tfg_macros.html" import card, topics %}
 {% block content %}
 <div class="wrap">
   <section class="hero">
     <div>
       <p class="label">FRAPPE, EXPLAINED</p>
-      <h1 class="display">The engineer who tells you the truth about Frappe.</h1>
-      <p class="lede">ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud and the Framework, in plain words with a real example every time.</p>
-      <div class="actions"><a class="btn" href="/series/basics">Start with the basics</a><a class="btn btn--ghost" href="/ask">Ask a question</a></div>
+      <h1 class="display">Learn Frappe the easy way.</h1>
+      <p class="lede">Short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk and more. Someone asks a question, The Frappe Guy answers with a real example, and you leave with one thing to remember.</p>
+      <div class="actions"><a class="btn" href="/series/frappe-101">Start with Frappe 101</a><a class="btn btn--ghost" href="/explainers">Browse all explainers</a></div>
     </div>
     <div class="panel-col">{{ tfg_panel(
-      tfg_char("cl-ishita-thinking", "--fig:62%;--x:5%")
-      ~ tfg_char("dr-coffee", "--fig:62%;--x:7%")
+      tfg_char("cl-ishita-thinking", "--fig:58%;--x:5%")
+      ~ tfg_char("dr-coffee", "--fig:58%;--x:7%")
       ~ tfg_bubble("Will this actually run my company?", "left", "left:4%;top:4%;--w:40%;--tail-x:62%")
-      ~ tfg_bubble("Let's find out together. You'll get a straight answer, even if it costs a sale.", "right", "right:4%;top:15%;--w:48%;--tail-x:56%")
+      ~ tfg_bubble("Tell me what you sell. I'll show you how one order moves through ERPNext.", "right", "right:4%;top:4%;--w:47%;--tail-x:52%")
     ) }}</div>
   </section>
-  <nav class="series-nav" aria-label="Series">{{ series_links(tfg_series) }}</nav>
 </div>
-<section class="section"><div class="wrap">
-  <div class="section-head"><h2 class="h2">Start here</h2><p class="lede">Three questions almost everyone asks first.</p></div>
-  {% if explainers %}<div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
-  {% else %}<div class="empty"><p class="h3">The first explainers are on their way.</p><p class="muted">Ask the question you want answered first.</p><div class="actions"><a class="btn" href="/ask">Ask a question</a></div></div>{% endif %}
+<section class="section" style="padding-top:var(--space-8)"><div class="wrap">
+  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">What do you want to learn?</h2><p class="lede">Pick a topic. Each one starts from zero.</p></div>
+  {{ topics(tfg_series) }}
 </div></section>
 <section class="section"><div class="wrap">
   <div class="section-head"><h2 class="h2">How every explainer works</h2></div>
   <ol class="beats">
     <li><span class="label">1</span><span class="h3">Someone asks</span><p>A question, or something they've heard. Usually the thing you were about to ask.</p></li>
-    <li><span class="label">2</span><span class="h3">I answer honestly</span><p>One real example, the catch said plainly, and no sales pitch.</p></li>
-    <li><span class="label">3</span><span class="h3">You get one takeaway</span><p>One line you can repeat to your boss tomorrow.</p></li>
+    <li><span class="label">2</span><span class="h3">A real example</span><p>A business you can picture, the real screen names, and what it takes to set up.</p></li>
+    <li><span class="label">3</span><span class="h3">One takeaway</span><p>One line you can repeat to your team tomorrow.</p></li>
   </ol>
 </div></section>
-<section class="section"><div class="wrap split">
-  <div>
-    <h2 class="h2">Ask the question you're afraid to ask.</h2>
-    <p class="lede">Salman does it all the time, and his questions turn out to matter most. If I don't know the answer, I'll say so and find out.</p>
-    <div class="actions"><a class="btn" href="/ask">Ask a question</a></div>
-  </div>
-  <div class="panel-col">{{ tfg_panel(
-    tfg_char("cl-suman-expressing", "--fig:60%;--x:3%", True)
-    ~ tfg_char("dr-listen", "--fig:60%;--x:4%", True)
-    ~ tfg_bubble("This might be a silly question, but can I ask anything?", "left", "left:4%;top:5%;--w:46%;--tail-x:64%"),
-    "env-cafe-counter"
-  ) }}</div>
+<section class="section"><div class="wrap">
+  <div class="section-head"><h2 class="h2">Latest explainers</h2></div>
+  {% if explainers %}<div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
+  {% else %}<div class="split" style="align-items:center">
+    <div class="empty" style="border-top:0;padding-top:0"><span class="soon">Coming soon</span><p class="h3">The first explainers are being written.</p><p class="muted">Questions people send in decide what comes first: <a href="/ask">ask yours</a>.</p></div>
+    <div class="panel-col">{{ tfg_panel(
+      tfg_char("cl-suman-thinking", "--fig:58%;--x:3%", True)
+      ~ tfg_char("dr-idea", "--fig:58%;--x:6%", True)
+      ~ tfg_bubble("Where do I even start?", "left", "left:4%;top:5%;--w:38%;--tail-x:62%")
+      ~ tfg_bubble("With one word: DocType. Most of Frappe is built from it.", "right", "right:4%;top:5%;--w:44%;--tail-x:52%"),
+      "env-cafe-counter"
+    ) }}</div>
+  </div>{% endif %}
 </div></section>
 {% endblock %}

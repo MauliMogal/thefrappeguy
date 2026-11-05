@@ -63,7 +63,7 @@ def rss():
 		"<title>The Frappe Guy</title>"
 		f"<link>{b}/</link>"
 		f'<atom:link href="{b}/rss.xml" rel="self" type="application/rss+xml"/>'
-		"<description>Frappe, ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud and the Framework, explained in plain words.</description>"
+		"<description>Learn Frappe the easy way: short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk, LMS, Raven and the Framework.</description>"
 		"<language>en-in</language>"
 		+ "".join(items)
 		+ "</channel></rss>"

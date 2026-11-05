@@ -4,12 +4,16 @@ def get_context(context):
 	context.og_image = "/assets/thefrappeguy/og/og-brand.png"
 	context.pdf = "/assets/thefrappeguy/brand/the-frappe-guy-brand-book.pdf"
 	context.scenes = [
+		("tangerine", "#F0A25A", "Frappe 101"),
 		("sky", "#4B93E9", "Frappe Cloud"),
-		("periwinkle", "#7883E9", "ERPNext and business apps"),
-		("mustard", "#F5C57D", "CRM and selling"),
-		("salmon", "#F37E7E", "Pricing and proof"),
-		("sage", "#789B7A", "Framework and developers"),
-		("grey", "#8F9198", "Basics"),
+		("periwinkle", "#7883E9", "ERPNext"),
+		("lilac", "#B391E6", "HR and Payroll"),
+		("mustard", "#F5C57D", "CRM"),
+		("teal", "#5FC4B4", "Helpdesk"),
+		("lime", "#B7CF67", "LMS"),
+		("pink", "#EE9CC6", "Raven"),
+		("sage", "#789B7A", "Framework"),
+		("salmon", "#F37E7E", "Pricing"),
 	]
 	context.neutrals = [
 		("Ink", "#000000"),

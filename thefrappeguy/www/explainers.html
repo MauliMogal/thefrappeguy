@@ -2,14 +2,14 @@
 {% from "templates/tfg_macros.html" import card %}
 {% block content %}
 <div class="wrap">
-  <header class="article-head"><h1 class="h1">Explainers</h1><p class="lede">Each one is a question, an honest answer and one takeaway. Pick a series or read them all.</p></header>
-  <div class="filters" role="group" aria-label="Filter by series">
+  <header class="article-head"><h1 class="h1">Explainers</h1><p class="lede">Each one is a question, an answer with a real example, and one takeaway. Pick a topic or read them all.</p></header>
+  <div class="filters" role="group" aria-label="Filter by topic">
     <a class="chip" href="/explainers" data-filter="all" aria-current="true">All</a>
-    {%- for s in tfg_series %}<a class="chip" href="/explainers?series={{ s.slug }}" data-filter="{{ s.slug }}" data-name="{{ s.title | e }}"><i class="tfg-scene swatch--sm" data-scene="{{ s.scene }}"></i>{{ s.title | e }}</a>{% endfor %}
+    {%- for s in tfg_series %}<a class="chip" href="/explainers?series={{ s.slug }}" data-filter="{{ s.slug }}" data-name="{{ s.title | e }}" data-tone="{{ s.scene }}">{{ s.title | e }}</a>{% endfor %}
   </div>
   <p class="meta count" id="count" aria-live="polite"{% if not explainers %} hidden{% endif %}>{{ explainers | length }} explainer{{ "" if explainers | length == 1 else "s" }}</p>
   <div class="cards" id="list">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
-  <div class="empty" id="empty"{% if explainers %} hidden{% endif %}><p class="h3" id="empty-title">The first explainers are on their way.</p><p class="muted">Ask the question you want answered here. Good questions become the next explainer.</p><div class="actions"><a class="btn" href="/ask">Ask a question</a></div></div>
+  <div class="empty" id="empty"{% if explainers %} hidden{% endif %}><span class="soon">Coming soon</span><p class="h3" id="empty-title">The first explainers are being written.</p><p class="muted">Check back soon, or follow along by <a href="/rss.xml">RSS</a>.</p></div>
 </div>
 {% endblock %}
 {% block scripts %}<script src="/assets/thefrappeguy/js/site.js?v={{ tfg_v }}" defer></script>{% endblock %}

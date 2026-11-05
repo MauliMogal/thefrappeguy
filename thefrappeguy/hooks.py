@@ -1,7 +1,7 @@
 app_name = "thefrappeguy"
 app_title = "The Frappe Guy"
 app_publisher = "Mauli Mogal"
-app_description = "thefrappeguy.com: Frappe, explained honestly."
+app_description = "thefrappeguy.com: Frappe, explained simply."
 app_email = "hello@thefrappeguy.com"
 app_license = "mit"
 
@@ -11,6 +11,11 @@ home_page = "index"
 website_route_rules = [
 	{"from_route": "/explainers/<slug>", "to_route": "explainer"},
 	{"from_route": "/series/<slug>", "to_route": "series"},
+]
+
+# Old addresses that moved (D-103)
+website_redirects = [
+	{"source": "/series/basics", "target": "/series/frappe-101", "redirect_http_status": 301},
 ]
 
 # rss.xml, sitemap.xml, robots.txt, favicon.ico and site.webmanifest

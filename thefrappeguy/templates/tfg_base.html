@@ -1,6 +1,6 @@
 {%- set site_title = "The Frappe Guy" -%}
-{%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title ~ ": Frappe, explained honestly" -%}
-{%- set desc = page_description or "Frappe, ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud and the Framework, explained in plain words with a real example every time." -%}
+{%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title ~ ": Frappe, explained simply" -%}
+{%- set desc = page_description or "Learn Frappe the easy way: short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk, LMS, Raven and the Framework." -%}
 {%- set share = og_image or "/assets/thefrappeguy/og/og-home.png" -%}
 {%- set share_url = share if share.startswith("http") else tfg_base ~ share -%}
 {%- set canonical_url = tfg_canonical() -%}
@@ -26,11 +26,12 @@
 <meta name="twitter:title" content="{{ (page_title or full_title) | e }}">
 <meta name="twitter:description" content="{{ desc | e }}">
 <meta name="twitter:image" content="{{ share_url }}">
-<meta name="theme-color" content="#FAF8F2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12110F" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="{{ asset }}icons/favicon-32.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="{{ asset }}icons/apple-touch-icon.png">
+<meta name="theme-color" content="#FAF8F2">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="{{ asset }}icons/favicon-32.png?v={{ tfg_v }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ asset }}icons/favicon-16.png?v={{ tfg_v }}" sizes="16x16" type="image/png">
+<link rel="shortcut icon" href="/favicon.ico?v={{ tfg_v }}">
+<link rel="apple-touch-icon" href="{{ asset }}icons/apple-touch-icon.png?v={{ tfg_v }}">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="The Frappe Guy: explainers" href="/rss.xml">
 <link rel="preload" href="{{ asset }}fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -42,13 +43,11 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap">
   <a class="brand" href="/" aria-label="The Frappe Guy, home">
-    <img class="logo--light" src="{{ asset }}logo/tfg-logo-small.svg" alt="the frappe guy" width="136" height="46">
-    <img class="logo--dark" src="{{ asset }}logo/tfg-logo-small-reverse.svg" alt="the frappe guy" width="136" height="46">
+    <img src="{{ asset }}logo/tfg-logo-small.svg" alt="the frappe guy" width="136" height="46">
   </a>
   <nav class="site-nav" aria-label="Main"><ul>
     <li><a href="/explainers"{% if nav == "explainers" %} aria-current="page"{% endif %}>Explainers</a></li>
     <li><a href="/about"{% if nav == "about" %} aria-current="page"{% endif %}>About</a></li>
-    <li><a class="btn btn--sm" href="/ask">Ask a question</a></li>
   </ul></nav>
 </div></header>
 <main id="main">
@@ -57,11 +56,10 @@
 <footer class="site-foot"><div class="wrap">
   <div class="foot-grid">
     <div>
-      <img class="logo--light" src="{{ asset }}logo/tfg-logo.svg" alt="the frappe guy" width="176" height="57" loading="lazy">
-      <img class="logo--dark" src="{{ asset }}logo/tfg-logo-reverse.svg" alt="the frappe guy" width="176" height="57" loading="lazy">
-      <p>Frappe, ERPNext, Frappe CRM, Helpdesk, HR, Frappe Cloud and the Framework, explained in plain words. Run by Mauli Mogal, Sales @ Frappe. Frappe's official word is on <a href="https://frappe.io">frappe.io</a>.</p>
+      <img src="{{ asset }}logo/tfg-logo.svg" alt="the frappe guy" width="176" height="57">
+      <p>Learn Frappe the easy way, one short comic at a time. Run by Mauli Mogal, Sales @ Frappe. This is not Frappe's official channel: Frappe's official word is on <a href="https://frappe.io">frappe.io</a>.</p>
     </div>
-    <div><span class="label">SERIES</span><ul>
+    <div><span class="label">TOPICS</span><ul class="foot-topics">
       {%- for s in tfg_series %}<li><a href="/series/{{ s.slug }}">{{ s.title | e }}</a></li>{% endfor %}
     </ul></div>
     <div><span class="label">THE FRAPPE GUY</span><ul>

@@ -1,25 +1,29 @@
 {% extends "templates/tfg_base.html" %}
 {% block content %}
 <div class="wrap narrow">
-  <header class="article-head"><h1 class="h1">About</h1><p class="lede">Who The Frappe Guy is, who asks the questions, and who runs this site.</p></header>
-  <section class="stack" aria-labelledby="deepak">
-    <div class="who"><img class="avatar" src="/assets/thefrappeguy/img/avatar-deepak-400.webp" alt="Deepak, holding a coffee mug" width="120" height="120">
-    <div class="stack" style="gap:var(--space-4)"><h2 class="h2" id="deepak">The Frappe Guy is Deepak</h2>
-    <p>Deepak is an engineer from Frappe's Character Library. He leads the engineering team, he always brings "do the right thing" into the discussion, and he would rather tell you the truth than sell you something.</p>
-    <p>That is the whole idea of this site. Every explainer is a short scene: someone asks, Deepak answers honestly with a real example, and you leave with one takeaway.</p></div></div>
+  <header class="article-head about-head">
+    <img class="avatar" src="/assets/thefrappeguy/img/avatar-deepak-400.webp" alt="The Frappe Guy, holding a coffee mug" width="120" height="120">
+    <h1 class="h1">The Frappe Guy</h1>
+    <p class="lede">Frappe, explained in small comic scenes anyone can follow.</p>
+  </header>
+  <section class="stack" aria-labelledby="what">
+    <h2 class="h2" id="what">What this is</h2>
+    <p>Frappe makes open source business software: ERPNext, Frappe HR, Frappe CRM, Frappe Helpdesk, Frappe Learning, Raven, and the Frappe Framework they are all built on, hosted on Frappe Cloud. There is a lot of it, and the words can get in the way.</p>
+    <p>So every explainer here is one short scene. Someone asks a question you have probably wondered about. The Frappe Guy answers it with an example from a business you can picture, the real screen names, and what it takes to set up. You leave with one takeaway you can use the same day.</p>
+    <div class="actions"><a class="btn" href="/series/frappe-101">Start with Frappe 101</a></div>
   </section>
-  <section class="section" style="padding-bottom:0" aria-labelledby="cast">
-    <div class="section-head"><h2 class="h2" id="cast">The people asking</h2><p class="muted">Each one asks the questions a real buyer, owner or developer would ask.</p></div>
+  <section class="section" aria-labelledby="cast">
+    <div class="section-head"><h2 class="h2" id="cast">The people asking</h2><p class="muted">Each one asks the questions a real owner, seller, analyst, developer or beginner would ask.</p></div>
     <ul class="cast">{% for key, name, role in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="h3">{{ name }}</span><p class="small muted">{{ role }}</p></li>{% endfor %}</ul>
   </section>
   <section class="section stack" aria-labelledby="runs">
-    <h2 class="h2" id="runs">Who runs this site</h2>
-    <p>The Frappe Guy is run by me, Mauli Mogal, Sales @ Frappe. I write the explainers and read every question.</p>
-    <p>I work at Frappe, and you should know that when you read anything here. I'll still tell you when ERPNext needs a customisation, when a plan is more than you need, and when the honest answer is "not yet".</p>
-    <p>This is not Frappe's official channel. Frappe's documentation and announcements are on <a href="https://frappe.io">frappe.io</a>. If something here disagrees with frappe.io, frappe.io is right, and I'll fix my page.</p>
+    <h2 class="h2" id="runs">Who writes it</h2>
+    <p>I'm Mauli Mogal, and I work in sales at Frappe. I write every explainer and read every question that comes in.</p>
+    <p>This is my own project, not Frappe's official channel. Frappe's documentation and announcements live on <a href="https://frappe.io">frappe.io</a>. If anything here disagrees with frappe.io, frappe.io is right, and I'll fix my page.</p>
+    <p>The Frappe Guy and the people around him come from Frappe's Character Library and are used with Frappe's permission.</p>
   </section>
   <section class="stack" aria-labelledby="elsewhere">
-    <h2 class="h2" id="elsewhere">Find me elsewhere</h2>
+    <h2 class="h2" id="elsewhere">Find The Frappe Guy</h2>
     <dl class="handles">
       <dt>Email</dt><dd>hello@thefrappeguy.com</dd>
       {%- for label, url, handle in socials if url %}<dt>{{ label }}</dt><dd><a href="{{ url }}">{{ handle }}</a></dd>{% endfor %}
@@ -27,7 +31,7 @@
   </section>
   <section class="section stack" aria-labelledby="built">
     <h2 class="h2" id="built">How this site is built</h2>
-    <p>It runs on the Frappe Framework, hosted on Frappe Cloud. The explainers, the series and the questions you send are all Frappe DocTypes.</p>
+    <p>It runs on the Frappe Framework, hosted on Frappe Cloud. The explainers, the topics and the questions you send are all Frappe DocTypes.</p>
   </section>
 </div>
 {% endblock %}

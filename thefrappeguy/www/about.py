@@ -1,6 +1,6 @@
 def get_context(context):
 	context.page_title = "About"
-	context.page_description = "Who The Frappe Guy is, who asks the questions, and who runs this site."
+	context.page_description = "What The Frappe Guy is, who asks the questions, and who writes the explainers."
 	context.nav = "about"
 	context.cast = [
 		("cl-ishita-thinking", "Ishita", "Runs a company. Asks if this will run hers."),
@@ -10,11 +10,11 @@ def get_context(context):
 		("cl-suman-thinking", "Salman", "New to all of this. Asks what everyone wonders."),
 	]
 
-	# Filled in when each profile is live (launch phase 4). Empty URLs are hidden.
+	# Filled in when each profile is set up (Stage 3). Empty URLs are hidden. Handles as in D-100.
 	context.socials = [
 		("LinkedIn", "", "The Frappe Guy"),
-		("YouTube", "", "@thefrappeguy"),
+		("YouTube", "", "@TheFrappeGuy"),
 		("Instagram", "", "@thefrappeguy"),
-		("X", "", "@thefrappeguy"),
-		("Reddit", "https://www.reddit.com/user/thefrappeguy/", "u/thefrappeguy"),
+		("X", "", "@TheFrappeGuy"),
+		("Reddit", "", "u/TheFrappeGuy"),
 	]

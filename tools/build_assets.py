@@ -10,6 +10,7 @@ Share images for explainers come from tools/explainers.json. Add an entry, run t
 """
 
 import argparse
+import os
 import asyncio
 import json
 import pathlib
@@ -29,12 +30,16 @@ for line in (ROOT / "thefrappeguy" / "characters.py").read_text().splitlines():
 		N[key] = float(line.split(",")[3])
 
 SERIES = {
-	"cloud": ("Frappe Cloud", "sky", "dr-thumbsup", "Where your Frappe site lives: plans, backups, updates, and what you pay for."),
-	"erpnext": ("ERPNext and business apps", "periwinkle", "dr-using-ipad", "What ERPNext, Frappe HR and Frappe Helpdesk do for a real business."),
-	"crm": ("CRM and selling", "mustard", "dr-idea", "Frappe CRM and the selling side of ERPNext, from first lead to paid invoice."),
-	"pricing": ("Pricing and proof", "salmon", "dr-book", "What things cost and the numbers behind every claim, checked."),
-	"framework": ("Framework and developers", "sage", "dr-laptop", "DocTypes, hooks, APIs and custom apps, for people who build."),
-	"basics": ("Basics", "grey", "dr-thinking", "The words and ideas everything else builds on, explained from zero."),
+	"frappe-101": ("Frappe 101", "tangerine", "dr-thinking", "Start here. What Frappe is, and what a site, an app and a DocType are."),
+	"cloud": ("Frappe Cloud", "sky", "dr-thumbsup", "Where your Frappe site lives: sites, plans, backups and updates."),
+	"erpnext": ("ERPNext", "periwinkle", "dr-using-ipad", "Accounting, stock, buying, selling and manufacturing for a real business."),
+	"hr": ("HR and Payroll", "lilac", "dr-coffee-offer", "Frappe HR: employees, leave, attendance, expense claims and payroll."),
+	"crm": ("CRM", "mustard", "dr-idea", "Frappe CRM, from the first lead to a closed deal."),
+	"helpdesk": ("Helpdesk", "teal", "dr-work-talk", "Frappe Helpdesk: tickets, teams and replying to customers on time."),
+	"lms": ("LMS", "lime", "dr-accomplished", "Frappe Learning: courses, quizzes and certificates for your team."),
+	"raven": ("Raven", "pink", "dr-laughing", "Team chat that runs on your Frappe site, documents included."),
+	"framework": ("Framework", "sage", "dr-laptop", "DocTypes, hooks, APIs and custom apps, for people who build."),
+	"pricing": ("Pricing", "salmon", "dr-book", "What things cost and how the pricing works, checked against live sources."),
 }
 
 
@@ -56,15 +61,15 @@ def page_home():
 	panel = (
 		'<figure class="tfg-panel" style="--letter:23px">'
 		f'<img class="tfg-scenery" src="{u("img/env-cafeteria.webp")}" alt="">'
-		+ char("cl-ishita-thinking", "--fig:62%;--x:5%")
-		+ char("dr-coffee", "--fig:62%;--x:7%")
+		+ char("cl-ishita-thinking", "--fig:58%;--x:5%")
+		+ char("dr-coffee", "--fig:58%;--x:7%")
 		+ '<p class="tfg-bubble" data-tail="left" style="left:4%;top:4%;--w:40%;--tail-x:62%">Will this actually run my company?</p>'
-		+ '<p class="tfg-bubble" data-tail="right" style="right:4%;top:15%;--w:48%;--tail-x:56%">Let\'s find out together. You\'ll get a straight answer, even if it costs a sale.</p>'
+		+ '<p class="tfg-bubble" data-tail="right" style="right:4%;top:4%;--w:47%;--tail-x:52%">Tell me what you sell. I\'ll show you how one order moves through ERPNext.</p>'
 		+ '<div class="tfg-table"></div></figure>'
 	)
 	return f"""{HEAD}<div class="art" style="background:#FAF8F2;color:#000">
 <img src="{u('logo/tfg-logo.svg')}" style="position:absolute;left:64px;top:56px;width:180px" alt="">
-<h1 style="position:absolute;left:64px;top:170px;width:520px;font:800 58px/62px var(--font-sans);letter-spacing:-.02em">The engineer who tells you the truth about Frappe.</h1>
+<h1 style="position:absolute;left:64px;top:170px;width:520px;font:800 58px/62px var(--font-sans);letter-spacing:-.02em">Learn Frappe the easy way.</h1>
 <div style="position:absolute;right:64px;top:110px;width:520px">{panel}</div>
 <p class="url" style="margin:0">thefrappeguy.com</p></div></body></html>"""
 
@@ -75,7 +80,7 @@ def page_series(slug):
 <span class="tfg-dot" style="left:720px;top:90px;--d:22px"></span><span class="tfg-dot" data-dot="blue" style="left:770px;top:132px;--d:13px"></span>
 <img src="{u('logo/tfg-logo.svg')}" style="position:absolute;left:64px;top:56px;width:180px" alt="">
 <div style="position:absolute;left:64px;top:180px;width:640px;display:flex;flex-direction:column;align-items:flex-start;gap:20px">
-<span class="tfg-tag" style="--tag-size:34px">Series</span>
+<span class="tfg-tag" style="--tag-size:34px">Topic</span>
 <h1 style="font:800 68px/72px var(--font-sans);letter-spacing:-.025em">{title}</h1>
 <p style="width:560px;margin:0;font:500 24px/32px var(--font-sans)">{desc}</p></div>
 {char(pose, "--fig:600px;--x:60px;--y:-70px")}
@@ -124,12 +129,14 @@ async def favicon(browser):
 		await page.screenshot(path=str(p), omit_background=True)
 		pngs[size] = Image.open(p).convert("RGBA")
 		await page.close()
+	pngs[16].save(PUB / "icons" / "favicon-16.png")
+	pngs[32].save(PUB / "icons" / "favicon-32.png")
 	pngs[48].save(PUB / "icons" / "favicon.ico", format="ICO", sizes=[(16, 16), (32, 32), (48, 48)], append_images=[pngs[16], pngs[32]])
 
 
 async def main(pdf_url):
 	async with async_playwright() as p:
-		browser = await p.chromium.launch()
+		browser = await p.chromium.launch(executable_path=os.environ.get("CHROME") or None)
 		await favicon(browser)
 		(PUB / "og" / "explainers").mkdir(parents=True, exist_ok=True)
 		await shoot(browser, page_home(), PUB / "og" / "og-home.png")
