@@ -25,9 +25,10 @@
   </section>
   <section class="stack" aria-labelledby="elsewhere">
     <h2 class="h2" id="elsewhere">Find The Frappe Guy</h2>
+    <p>Feedback and suggestions are welcome at <a href="mailto:hello@thefrappeguy.com">hello@thefrappeguy.com</a>.</p>
     <dl class="handles">
-      <dt>Email</dt><dd>hello@thefrappeguy.com</dd>
-      {%- for label, url, handle in socials if url %}<dt>{{ label }}</dt><dd><a href="{{ url }}">{{ handle }}</a></dd>{% endfor %}
+      <dt>Email</dt><dd><a href="mailto:hello@thefrappeguy.com">hello@thefrappeguy.com</a></dd>
+      {%- for label, url, handle in socials if url %}<dt>{{ label }}</dt><dd><a href="{{ url }}" rel="me noopener">{{ handle }}</a></dd>{% endfor %}
     </dl>
   </section>
   <section class="section stack" aria-labelledby="built">

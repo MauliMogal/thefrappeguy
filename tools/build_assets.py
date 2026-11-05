@@ -125,11 +125,18 @@ async def favicon(browser):
 	pngs = {}
 	for size, svg in ((16, "favicon-16.svg"), (32, "favicon-32.svg"), (48, "favicon-32.svg")):
 		page = await browser.new_page(viewport={"width": size, "height": size})
-		await page.set_content(f'<html><body style="margin:0;background:transparent"><img src="{u("icons/" + svg)}" style="display:block;width:{size}px;height:{size}px"></body></html>')
-		await page.wait_for_timeout(200)
+		# Load from a file, not set_content: Chrome blocks file:// images on about:blank, which left the
+		# 16 px icon blank in 1.1 and 1.2 (D-125). Wait for the image, then refuse to save an empty icon.
+		src = OUT / f"fav-{size}.html"
+		src.write_text(f'<html><body style="margin:0;background:transparent"><img id="i" src="{u("icons/" + svg)}" style="display:block;width:{size}px;height:{size}px"></body></html>')
+		await page.goto(src.as_uri())
+		await page.evaluate("document.getElementById('i').decode()")
 		p = OUT / f"fav-{size}.png"
 		await page.screenshot(path=str(p), omit_background=True)
-		pngs[size] = Image.open(p).convert("RGBA")
+		img = Image.open(p).convert("RGBA")
+		if img.getchannel("A").getextrema()[1] == 0:
+			raise SystemExit(f"favicon {size}px rendered blank")
+		pngs[size] = img
 		await page.close()
 	pngs[16].save(PUB / "icons" / "favicon-16.png")
 	pngs[32].save(PUB / "icons" / "favicon-32.png")
