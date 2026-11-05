@@ -38,7 +38,7 @@ SERIES = {
 	"crm": ("CRM", "magenta", "dr-idea", "From the first lead to a won deal that becomes an order without retyping."),
 	"helpdesk": ("Helpdesk", "violet", "dr-work-talk", "The day an order goes wrong: tickets, response times and a real reply."),
 	"framework": ("Framework", "grey", "dr-laptop", "When the company needs something the apps don't do yet."),
-	"lms": ("LMS", "green", "dr-accomplished", "Frappe Learning: courses, quizzes and certificates to train a team."),
+	"learning": ("Learning", "green", "dr-accomplished", "Frappe Learning: courses, quizzes and certificates to train a team."),
 	"raven": ("Raven", "orange", "dr-laughing", "Team chat on the same site, next to the orders it talks about."),
 }
 

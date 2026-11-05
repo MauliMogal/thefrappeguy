@@ -1,6 +1,6 @@
 # The Frappe Guy
 
-The Frappe app behind **thefrappeguy.com**: learn Frappe the easy way, with short comic explainers on ERPNext, Frappe Cloud, HR and Payroll, CRM, Helpdesk, LMS, Raven and the Framework. Run by Mauli Mogal, Sales @ Frappe.
+The Frappe app behind **thefrappeguy.com**: learn Frappe the easy way by following one fictional business, The Coffee Company, through ERPNext, Frappe Cloud, Pricing, HR and Payroll, CRM, Helpdesk, Framework, Learning and Raven. Run by Mauli Mogal, Sales @ Frappe.
 
 The site is the brand system's "comic on a quiet page": pages stay ink and paper, and all colour comes from Deepak and the cast of Frappe's Character Library.
 
@@ -10,7 +10,7 @@ The site is the brand system's "comic on a quiet page": pages stay ink and paper
 |---|---|---|
 | Pages | `thefrappeguy/www/` | Home, explainers index, series pages, explainer article, About, Ask, Brand book, Privacy, 404. All extend `templates/tfg_base.html`; no Frappe website chrome or desk JavaScript is loaded. |
 | Routes | `hooks.py` | `/explainers/<slug>` and `/series/<slug>` route to `www/explainer` and `www/series`. The site is light only. |
-| Content | DocTypes in module **The Frappe Guy** | **Explainer** (one question, panel, article, takeaway), **Explainer Series** (the ten topics and their scene colours), **Question** (what people send from /ask). |
+| Content | DocTypes in module **The Frappe Guy** | **Explainer** (one numbered part of a topic's story: question, panel, article, takeaway), **Explainer Series** (the ten topics and their scene colours), **Question** (what people send from /ask). |
 | Brand checks | `content.py`, `explainer.py` | Saving an explainer fails on em or en dashes, banned words, bubbles over 20 words, exclamation marks from Deepak, or a pose that can't do the job. |
 | Feeds | `renderers.py` | `/rss.xml`, `/sitemap.xml`, `/robots.txt`, `/favicon.ico`, `/site.webmanifest`. |
 | Ask form | `api.py` | `thefrappeguy.api.ask`: guest POST, 5 per hour per IP, a hidden trap field for bots. |
@@ -19,7 +19,7 @@ The site is the brand system's "comic on a quiet page": pages stay ink and paper
 
 ## Install
 
-On Frappe Cloud: add this repository to the bench as an app, deploy, then install `thefrappeguy` on the site. The ten topics are created on install; the `v1_1.ten_series` patch moves an older site from six series to ten and redirects `/series/basics` to `/series/frappe-101`.
+On Frappe Cloud: add this repository to the bench as an app, deploy, then install `thefrappeguy` on the site. The ten topics are created on install; the `v1_1.ten_series` and `v1_2.story_order` patches move an older site to the ten topics in story order, number existing explainers as parts, and redirect `/series/basics` and `/series/lms` to their new pages.
 
 Locally:
 

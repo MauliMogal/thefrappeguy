@@ -16,6 +16,7 @@ website_route_rules = [
 # Old addresses that moved (D-103)
 website_redirects = [
 	{"source": "/series/basics", "target": "/series/frappe-101", "redirect_http_status": 301},
+	{"source": "/series/lms", "target": "/series/learning", "redirect_http_status": 301},
 ]
 
 # rss.xml, sitemap.xml, robots.txt, favicon.ico and site.webmanifest

@@ -82,8 +82,8 @@ SERIES = [
 		"pose": "dr-laptop",
 	},
 	{
-		"slug": "lms",
-		"title": "LMS",
+		"slug": "learning",
+		"title": "Learning",
 		"scene": "green",
 		"description": "Frappe Learning: courses, quizzes and certificates to train a team and its partners.",
 		"asked_by": "Salman builds the first course.",
@@ -101,7 +101,7 @@ SERIES = [
 
 # The story's frame (D-115). A fictional company; the characters come from Frappe's Character Library.
 STORY_PREMISE = (
-	"Ishita runs a coffee company. It roasts beans, packs them and sells to cafes and online, "
+	"Ishita runs The Coffee Company. It roasts beans, packs them and sells to cafes and online, "
 	"and it has outgrown its spreadsheets. Her team is deciding whether Frappe can run the business. "
 	"The Frappe Guy is the product consultant who builds the system with them, one question at a time."
 )
@@ -117,7 +117,7 @@ CAST = [
 ]
 
 # Old series slugs that now live elsewhere. Used by the redirect hook and the v1_1 patch.
-RENAMED_SERIES = {"basics": "frappe-101"}
+RENAMED_SERIES = {"basics": "frappe-101", "lms": "learning"}
 
 BANNED = [
 	# Never claim it, show it (D-102)

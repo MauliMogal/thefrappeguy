@@ -13,7 +13,7 @@ def get_context(context):
 		("magenta", "#EF0BF5", "CRM"),
 		("violet", "#7D3DFF", "Helpdesk"),
 		("grey", "#7B808A", "Framework"),
-		("green", "#0E7159", "LMS"),
+		("green", "#0E7159", "Learning"),
 		("orange", "#F08A3C", "Raven"),
 	]
 	context.neutrals = [
