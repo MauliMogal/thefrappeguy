@@ -20,14 +20,17 @@
     <p>This is my own project, not Frappe's official channel. Frappe's documentation and announcements live on <a href="https://frappe.io">frappe.io</a>. If anything here disagrees with frappe.io, frappe.io is right, and I'll fix my page.</p>
     <p>The Frappe Guy and the people around him come from Frappe's Character Library and are used with Frappe's permission.</p>
     {%- if mauli_socials %}
-    <h3 class="h3" id="mauli">Find me</h3>
-    <ul class="social" aria-label="Mauli Mogal elsewhere">
-      {%- for label, url, icon in mauli_socials %}<li>{% if url.startswith("mailto:") %}<a href="{{ url }}" aria-label="Email Mauli Mogal at {{ url[7:] }}" title="{{ url[7:] }}">{% else %}<a href="{{ url }}" target="_blank" rel="me noopener" aria-label="Mauli Mogal on {{ label }} (opens in a new tab)" title="{{ label }}">{% endif %}<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
-    </ul>
+    <div class="signoff">
+      <p class="signoff__name">Mauli Mogal</p>
+      <p class="signoff__role">Sales at Frappe. Maker of The Frappe Guy.</p>
+      <ul class="signoff__links" aria-label="Talk to Mauli">
+        {%- for label, url, icon in mauli_socials %}<li>{% if url.startswith("mailto:") %}<a href="{{ url }}">{% else %}<a href="{{ url }}" target="_blank" rel="me noopener">{% endif %}<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg><span>{{ label }}</span></a></li>{% endfor %}
+      </ul>
+    </div>
     {%- endif %}
   </section>
   <section class="section stack" aria-labelledby="elsewhere">
-    <h2 class="h2" id="elsewhere">Find The Frappe Guy</h2>
+    <h2 class="h2" id="elsewhere">Follow The Frappe Guy</h2>
     <ul class="social" aria-label="The Frappe Guy elsewhere">
       {%- for label, url, icon in socials %}<li><a href="{{ url }}" target="_blank" rel="me noopener" aria-label="{{ label }} (opens in a new tab)" title="{{ label }}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
     </ul>

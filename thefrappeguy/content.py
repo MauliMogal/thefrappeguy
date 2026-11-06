@@ -209,11 +209,11 @@ def copy_issues(text, label):
 
 
 # Mauli's own profiles for the About page (D-187, D-189): (icon key, label, url). Icon keys: linkedin, youtube,
-# instagram, x, reddit, website, email. An empty list hides the "Find me" block.
+# instagram, x, reddit, website, email. An empty list hides the sign-off links.
 MAULI_LINKS = [
 	("website", "maulimogal.com", "https://maulimogal.com/"),
 	("linkedin", "LinkedIn", "https://www.linkedin.com/in/maulimogal/"),
-	("email", "Email", "mailto:maulimogal@gmail.com"),
+	("email", "maulimogal@gmail.com", "mailto:maulimogal@gmail.com"),
 ]
 
 DIAGRAM_TEMPLATES = ("one-record", "timeline", "closed-open", "lock-in", "family", "one-site")
