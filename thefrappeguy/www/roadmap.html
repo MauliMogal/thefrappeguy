@@ -1,4 +1,5 @@
 {% extends "templates/tfg_base.html" %}
+{% from "templates/tfg_macros.html" import subscribe %}
 {% block content %}
 <div class="wrap">
   <header class="article-head">
@@ -20,5 +21,6 @@
   {%- endfor %}
   </ol>
   <p class="small muted roadmap__note">Releases have no dates. Each one goes live once every fact in it has been checked against Frappe's own pages.</p>
+  {{ subscribe("/roadmap") }}
 </div>
 {% endblock %}

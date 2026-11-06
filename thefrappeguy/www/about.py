@@ -9,7 +9,7 @@ ICONS = {
 
 def get_context(context):
 	context.page_title = "About"
-	context.page_description = "What The Frappe Guy is, the team in the story, and who writes it."
+	context.page_description = "What The Frappe Guy is, the team in the story, and who makes it."
 	context.nav = "about"
 
 	# Profiles set up in Stage 3 (D-126). Icons: Simple Icons 13.21.0 (CC0), inlined so the page loads nothing
@@ -21,3 +21,8 @@ def get_context(context):
 		("X", "https://x.com/TheFrappeGuy", ICONS["x"]),
 		("Reddit", "https://www.reddit.com/user/TheFrappeGuy", ICONS["reddit"]),
 	]
+
+	# Mauli's own profiles (D-187), from content.MAULI_LINKS. The block hides itself while the list is empty.
+	from thefrappeguy.content import MAULI_LINKS
+
+	context.mauli_socials = [(label, url, ICONS[key]) for key, label, url in MAULI_LINKS if key in ICONS and url]

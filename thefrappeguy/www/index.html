@@ -1,5 +1,5 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import card, topics, cast_grid %}
+{% from "templates/tfg_macros.html" import card, topics, cast_grid, subscribe %}
 {% block content %}
 <div class="wrap">
   <section class="hero">
@@ -30,4 +30,5 @@
   {% if explainers %}<div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
   {% else %}<div class="empty" style="border-top:0;padding-top:0"><span class="soon">Coming soon</span><p class="h3">The first parts of the story are being written.</p><p class="muted">Follow along by <a href="/rss.xml">RSS</a>.</p></div>{% endif %}
 </div></section>
+<div class="wrap">{{ subscribe("/") }}</div>
 {% endblock %}

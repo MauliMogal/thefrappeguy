@@ -13,10 +13,18 @@
     <div class="actions"><a class="btn" href="/series/frappe-101">Start the story</a><a class="btn btn--ghost" href="/#team">Meet the team</a></div>
   </section>
   <section class="section stack" aria-labelledby="runs">
-    <h2 class="h2" id="runs">Who writes it</h2>
-    <p>I'm Mauli Mogal, and I work in sales at Frappe. I write every explainer and read every question that comes in.</p>
+    <h2 class="h2" id="runs">Who makes it</h2>
+    <p>I'm Mauli Mogal, and I work in sales at Frappe. I make The Frappe Guy with the help of AI. I decide what each part teaches, check every fact against frappe.io and approve every panel. Claude, an AI model by Anthropic, helps me write the scripts, compose the panels and build this site.</p>
+    <p>The characters are never drawn by AI. Every panel is put together from Frappe's own character art.</p>
+    <p>I read every question that comes in.</p>
     <p>This is my own project, not Frappe's official channel. Frappe's documentation and announcements live on <a href="https://frappe.io">frappe.io</a>. If anything here disagrees with frappe.io, frappe.io is right, and I'll fix my page.</p>
     <p>The Frappe Guy and the people around him come from Frappe's Character Library and are used with Frappe's permission.</p>
+    {%- if mauli_socials %}
+    <h3 class="h3" id="mauli">Find me</h3>
+    <ul class="social" aria-label="Mauli Mogal elsewhere">
+      {%- for label, url, icon in mauli_socials %}<li><a href="{{ url }}" target="_blank" rel="me noopener" aria-label="Mauli Mogal on {{ label }} (opens in a new tab)" title="{{ label }}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
+    </ul>
+    {%- endif %}
   </section>
   <section class="section stack" aria-labelledby="elsewhere">
     <h2 class="h2" id="elsewhere">Find The Frappe Guy</h2>

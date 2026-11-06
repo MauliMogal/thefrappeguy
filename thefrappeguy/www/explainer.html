@@ -1,4 +1,5 @@
 {% extends "templates/tfg_base.html" %}
+{% from "templates/tfg_macros.html" import subscribe %}
 {% block head %}{% if is_preview %}<meta name="robots" content="noindex, nofollow">{% endif %}{% endblock %}
 {% block content %}
 {%- set env = doc.environment if doc.environment != "none" else None -%}
@@ -40,5 +41,6 @@
     {% if next_part %}<a class="story-nav__next" href="{{ next_part.url }}"><span class="label" data-tone="{{ next_part.scene }}">{{ "NEXT" if next_part.series == doc.series else "NEXT TOPIC" }} · {{ next_part.series_title | upper | e }}, PART {{ next_part.part }}</span><span class="h3">{{ next_part.title | e }}</span></a>
     {% else %}<div class="story-nav__next story-nav__end"><span class="label">WHAT HAPPENS NEXT</span><span class="h3">The next part is being written.</span><span class="muted">See what's coming on the <a href="/roadmap">roadmap</a>. Stuck on something? <a href="/ask?area={{ series.slug }}">Ask a question</a>.</span></div>{% endif %}
   </nav>
+  {{ subscribe("/explainers/" ~ doc.name) }}
 </article>
 {% endblock %}

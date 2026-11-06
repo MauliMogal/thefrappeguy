@@ -1,5 +1,5 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import parts, series_links %}
+{% from "templates/tfg_macros.html" import parts, series_links, subscribe %}
 {% block content %}
 <div class="wrap"><nav class="crumbs" aria-label="Breadcrumb" style="padding-top:var(--space-6)"><a href="/explainers">Explainers</a><span>/</span><span>{{ series.title | e }}</span></nav></div>
 <div class="wrap" style="padding-top:var(--space-6)"><div class="tfg-scene series-hero" data-scene="{{ series.scene }}">
@@ -17,5 +17,6 @@
   {% if next_series %}<p class="next-topic">When this story ends, it carries on in <a href="/series/{{ next_series.slug }}" data-tone="{{ next_series.scene }}">{{ next_series.title | e }}</a>.</p>{% endif %}
 </div></section>
 <div class="wrap"><div class="section-head" style="margin-bottom:var(--space-4)"><h2 class="h3">Other releases</h2></div>
-{{ series_links(tfg_series, series.slug) }}</div>
+{{ series_links(tfg_series, series.slug) }}
+{{ subscribe("/series/" ~ series.slug) }}</div>
 {% endblock %}

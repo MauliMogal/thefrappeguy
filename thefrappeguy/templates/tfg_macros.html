@@ -26,11 +26,30 @@
 {% macro parts(rows, scene, complete=False) -%}
 <ol class="parts" data-tone="{{ scene }}">
 {%- for e in rows %}<li><a class="part" href="{{ e.url }}"><span class="part__no">PART {{ e.part }}</span><span class="part__body"><span class="h3">{{ e.title | e }}</span>{% if e.dek %}<span>{{ e.dek | e }}</span>{% endif %}<span class="meta">{{ e.read_minutes }} min read</span></span></a></li>{% endfor %}
-{% if not complete %}<li><div class="part part--soon"><span class="part__no">PART {{ (rows[-1].part + 1) if rows else 1 }}</span><span class="part__body"><span class="h3">Coming soon</span><span class="muted">The story continues. Follow along by <a href="/rss.xml">RSS</a>.</span></span></div></li>{% endif %}
+{% if not complete %}<li><div class="part part--soon"><span class="part__no">PART {{ (rows[-1].part + 1) if rows else 1 }}</span><span class="part__body"><span class="h3">Coming soon</span><span class="muted">The story continues. Get it <a href="#subscribe">by email</a> or by <a href="/rss.xml">RSS</a>.</span></span></div></li>{% endif %}
 </ol>
 {%- endmacro %}
 
 
 {% macro cast_grid(cast) -%}
 <ul class="cast">{% for key, name, role, line in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="cast__name">{{ name }}</span>{% if role %}<span class="label">{{ role | upper }}</span>{% endif %}<p class="small muted">{{ line }}</p></li>{% endfor %}</ul>
+{%- endmacro %}
+
+{# Newsletter signup (D-186). Saved as a Subscriber on this site; Kit sends the release emails. One per page. #}
+{% macro subscribe(source) -%}
+<section class="subscribe" id="subscribe" aria-labelledby="subscribe-title">
+  <div class="subscribe__text">
+    <h2 class="h3" id="subscribe-title">Get the next part by email</h2>
+    <p class="muted">One email when a new part of the story comes out. Nothing else, and you can leave any time.</p>
+  </div>
+  <form class="subscribe__form" id="subscribe-form" method="post" action="/api/method/thefrappeguy.api.subscribe" novalidate>
+    <label class="sr-only" for="sub-email">Email</label>
+    <div class="subscribe__row"><input class="input" id="sub-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required><button class="btn" type="submit" id="sub-send">Subscribe</button></div>
+    <input type="hidden" name="source" value="{{ source | e }}">
+    <div aria-hidden="true" style="position:absolute;left:-9999px"><label for="sub-website">Leave this empty</label><input id="sub-website" name="website" tabindex="-1" autocomplete="off"></div>
+    <p class="form-error" id="sub-err" role="alert" hidden></p>
+    <p class="meta"><a href="/privacy#newsletter">What happens to your email</a></p>
+  </form>
+  <div class="subscribe__done" id="sub-done" hidden tabindex="-1"><p class="h3">You're on the list.</p><p class="muted">If an email asks you to confirm, click the link in it. After that, every new part comes to your inbox.</p></div>
+</section>
 {%- endmacro %}

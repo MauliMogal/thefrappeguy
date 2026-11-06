@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "creation": "2026-11-06 20:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "help",
+  "kit_enabled",
+  "kit_form_id",
+  "kit_api_key"
+ ],
+ "fields": [
+  {
+   "fieldname": "help",
+   "fieldtype": "HTML",
+   "options": "<p>Signups are saved as Subscriber records on this site. When Kit is set up here, each one is also added to your Kit form, which sends the release emails. Signups made before that are sent to Kit within a day.</p>"
+  },
+  {
+   "fieldname": "kit_enabled",
+   "fieldtype": "Check",
+   "label": "Send signups to Kit",
+   "default": "0"
+  },
+  {
+   "fieldname": "kit_form_id",
+   "fieldtype": "Data",
+   "label": "Kit form ID",
+   "description": "The number in the form's address in Kit, for example 1234567.",
+   "depends_on": "kit_enabled"
+  },
+  {
+   "fieldname": "kit_api_key",
+   "fieldtype": "Password",
+   "label": "Kit API key (v4)",
+   "description": "Kit > Settings > Developer > API keys.",
+   "depends_on": "kit_enabled"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-06 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "The Frappe Guy",
+ "name": "Newsletter Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

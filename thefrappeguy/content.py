@@ -208,6 +208,10 @@ def copy_issues(text, label):
 	return issues
 
 
+# Mauli's own profiles for the About page (D-187): (icon key, label, url). Icon keys: linkedin, youtube,
+# instagram, x, reddit. An empty list hides the "Find me" block.
+MAULI_LINKS = []
+
 DIAGRAM_TEMPLATES = ("one-record", "timeline", "closed-open", "lock-in", "family", "one-site")
 
 

@@ -41,4 +41,4 @@ after_install = "thefrappeguy.install.after_install"
 after_migrate = "thefrappeguy.install.after_migrate"
 
 # Privacy page: questions are kept for 12 months, then deleted.
-scheduler_events = {"daily": ["thefrappeguy.install.delete_old_questions"]}
+scheduler_events = {"daily": ["thefrappeguy.install.delete_old_questions", "thefrappeguy.api.send_waiting_to_kit"]}

@@ -66,4 +66,35 @@
         .then(function () { send.disabled = false; send.textContent = "Send question"; });
     });
   }
+
+  // Newsletter signup (D-186): save the email, then show a plain confirmation or a plain error.
+  var sub = document.getElementById("subscribe-form");
+  if (sub) {
+    var subErr = document.getElementById("sub-err"), subSend = document.getElementById("sub-send");
+    var subEmail = document.getElementById("sub-email");
+    sub.addEventListener("submit", function (e) {
+      e.preventDefault();
+      subErr.hidden = true;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(subEmail.value.trim())) {
+        subErr.textContent = "That email address doesn't look right. Check it and try again.";
+        subErr.hidden = false; subEmail.setAttribute("aria-invalid", "true"); subEmail.focus(); return;
+      }
+      subEmail.removeAttribute("aria-invalid");
+      subSend.disabled = true; subSend.textContent = "Subscribing";
+      fetch(sub.action, { method: "POST", body: new URLSearchParams(new FormData(sub)), headers: { "Accept": "application/json" } })
+        .then(function (r) {
+          if (r.ok) { sub.hidden = true; var d = document.getElementById("sub-done"); d.hidden = false; d.focus(); return; }
+          return r.json().catch(function () { return {}; }).then(function (data) {
+            var msg = r.status === 429 ? "Too many signups from here in the last hour. Please try again later." : "";
+            if (!msg && data && data._server_messages) {
+              try { msg = JSON.parse(JSON.parse(data._server_messages)[0]).message; } catch (x) {}
+            }
+            subErr.textContent = (msg || "That didn't go through. Please try again in a minute.").replace(/<[^>]+>/g, " ");
+            subErr.hidden = false;
+          });
+        })
+        .catch(function () { subErr.textContent = "That didn't go through. Check your connection and try again."; subErr.hidden = false; })
+        .then(function () { subSend.disabled = false; subSend.textContent = "Subscribe"; });
+    });
+  }
 })();
