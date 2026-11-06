@@ -6,7 +6,7 @@ from frappe.utils import md_to_html
 from markupsafe import Markup
 
 from thefrappeguy.content import series_map, story_nav
-from thefrappeguy.jinja import tfg_bubble, tfg_caption, tfg_char, tfg_panel, tfg_thought
+from thefrappeguy.jinja import tfg_bubble, tfg_caption, tfg_char, tfg_diagram, tfg_panel, tfg_thought
 
 
 def get_context(context):
@@ -109,6 +109,7 @@ SHOTS = {
 	"flat": {"fig": "112%", "x": "6%", "y": "-30%"},
 	"small": {"fig": "76%", "x": "10%", "y": "0%"},
 	"wide": {"fig": "128%", "x": "6%", "y": "-30%"},
+	"diagram": {"fig": None, "x": "8%", "y": "0%"},
 }
 
 
@@ -117,10 +118,12 @@ def comic_panel(p, env):
 	d = SHOTS[shot]
 	items = sum(1 for k in ("caption", "thought", "left_bubble", "right_bubble") if p.get(k))
 	both = p.left_bubble and p.right_bubble
-	fig = d["fig"] or ("56%" if both else "60%" if items >= 2 else "64%")
+	# A long reply sits higher and both figures stand a little lower, so it never covers a face (D-184).
+	long_reply = both and len(p.right_bubble.split()) > 11
+	fig = d["fig"] or ("52%" if long_reply else "56%" if both else "60%" if items >= 2 else "64%")
 	y = d["y"]
 	inner = Markup("")
-	if shot in ("medium", "close", "small") and env:
+	if shot in ("medium", "close", "small") and env and not p.plain_paper:
 		inner += Markup(f'<img class="tfg-scenery" src="/assets/thefrappeguy/img/{env}.webp" alt="" decoding="async">')
 	if p.sticker == "ww":
 		inner += Markup('<img class="tfg-sticker st-ww" src="/assets/thefrappeguy/img/st-ww.webp" alt="W W">')
@@ -132,20 +135,27 @@ def comic_panel(p, env):
 		inner += tfg_char(p.right_pose, f"--fig:{fig};--x:{d['x']};--y:{y}")
 	if p.sticker == "whoa":
 		inner += Markup('<img class="tfg-sticker st-whoa" src="/assets/thefrappeguy/img/st-whoa.webp" alt="WHOA!">')
+	if shot == "diagram":
+		inner += tfg_diagram(p.diagram_template, p.diagram_labels)
 
 	stack = Markup("")
 	if p.caption:
-		stack += tfg_caption(p.caption)
+		# A caption alone in its panel is narration (G1, D-180): full width, a little larger.
+		narration = items == 1 and len(p.caption.split()) > 14 and shot != "diagram"
+		stack += Markup(f'<p class="tfg-caption{" is-narration" if narration else ""}">{escape(p.caption)}</p>')
 	lone_left = p.left_pose and not p.right_pose
+	# One speaks while the other listens: the bubble may use two thirds of the width (D-184).
+	solo = bool(p.left_pose and p.right_pose) and bool(p.left_bubble) != bool(p.right_bubble)
 	if p.left_bubble:
-		stack += bubble(p.left_bubble, "left", "is-across" if lone_left else "")
+		stack += bubble(p.left_bubble, "left", "is-across" if lone_left else "is-wide" if solo else "")
 	if p.thought:
 		stack += tfg_thought(p.thought)
 	if p.right_bubble:
-		stack += bubble(p.right_bubble, "right", "is-reply" if p.left_bubble else "")
+		cls = ("is-reply is-high" if long_reply else "is-reply") if p.left_bubble else "is-wide" if solo else ""
+		stack += bubble(p.right_bubble, "right", cls)
 	if stack:
 		inner += Markup(f'<div class="tfg-stack{" has-cap" if p.caption else ""}">') + stack + Markup("</div>")
-	if shot != "flat":
+	if shot not in ("flat", "diagram"):
 		inner += Markup('<div class="tfg-table"></div>')
 	return Markup(f'<figure class="tfg-panel" data-shot="{shot}">') + inner + Markup("</figure>")
 

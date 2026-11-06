@@ -63,6 +63,48 @@ def tfg_caption(text):
 	return Markup(f'<p class="tfg-caption">{escape(text)}</p>')
 
 
+def tfg_diagram(template, labels):
+	"""Diagram panel content (D-180): ink lines on paper and labels in the hand font. Layout only, never a character."""
+	from thefrappeguy.content import parse_diagram
+
+	g = parse_diagram(labels)
+	if not g:
+		return Markup("")
+
+	def lab(t, cls="dg-label"):
+		return f'<span class="{cls}">{escape(t)}</span>'
+
+	if template == "one-record":
+		items = g[0]["items"][:4]
+		lines = "".join(f'<line x1="50" y1="50" x2="{x}" y2="{y}"/>' for x, y in ((22, 20), (78, 20), (22, 80), (78, 80)))
+		cells = "".join(f'<div class="dg-box dg-c{i}">{lab(x)}</div>' for i, x in enumerate(items))
+		out = (f'<div class="dg dg-one-record"><svg class="dg-lines" viewBox="0 0 100 100" preserveAspectRatio="none" '
+			f'aria-hidden="true">{lines}</svg>{cells}<div class="dg-box dg-hub">{lab(g[0]["title"])}</div></div>')
+	elif template == "timeline":
+		steps = "".join(
+			f'<div class="dg-step"><span class="dg-year">{escape(x["title"])}</span><i class="dg-dot"></i>'
+			f'{lab(x["items"][0] if x["items"] else "")}</div>' for x in g)
+		out = f'<div class="dg dg-timeline"><div class="dg-rail"></div>{steps}</div>'
+	elif template in ("closed-open", "lock-in"):
+		cols = "".join(
+			f'<div class="dg-col dg-col{i}"><span class="dg-title dg-label">{escape(x["title"])}</span>'
+			+ "".join(f'<span class="dg-item dg-label">{escape(y)}</span>' for y in x["items"]) + "</div>"
+			for i, x in enumerate(g[:2]))
+		out = f'<div class="dg dg-two dg-{template}">{cols}</div>'
+	elif template == "family":
+		out = '<div class="dg dg-family">' + "".join(
+			f'<div class="dg-group" data-n="{len(x["items"])}"><span class="dg-title dg-label">{escape(x["title"])}</span>'
+			f'<div class="dg-chips">' + "".join(lab(y, "dg-chip dg-label") for y in x["items"]) + "</div></div>"
+			for x in g) + "</div>"
+	elif template == "one-site":
+		x = g[0]
+		out = (f'<div class="dg dg-one-site"><div class="dg-site"><span class="dg-bar dg-label">{escape(x["title"])}</span>'
+			f'<div class="dg-chips">' + "".join(lab(y, "dg-chip dg-label") for y in x["items"]) + "</div></div></div>")
+	else:
+		return Markup("")
+	return Markup(out)
+
+
 def tfg_panel(inner, env="env-cafeteria", table=True, extra=""):
 	scenery = (
 		f'<img class="tfg-scenery" src="{IMG}{env}.webp" alt="" decoding="async">' if env in ENVIRONMENTS else ""

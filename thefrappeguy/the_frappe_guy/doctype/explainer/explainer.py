@@ -4,7 +4,7 @@ from frappe.utils import today
 from frappe.website.utils import clear_cache
 
 from thefrappeguy.characters import CHARACTERS
-from thefrappeguy.content import SLUG_RE, copy_issues, word_count
+from thefrappeguy.content import DIAGRAM_TEMPLATES, SLUG_RE, copy_issues, parse_diagram, word_count
 
 # Figma component names to the display names approved in D-022
 DISPLAY = {"Saara": "Sara", "Jammy": "Joseph", "Suman": "Salman"}
@@ -69,7 +69,9 @@ class Explainer(Document):
 		"""The comic grammar, panel by panel: 2 bubbles at most (a caption counts), 20 words each,
 		no exclamation marks from The Frappe Guy, and a listening pose never speaks.
 		Full comic (D-166, D-168): small panels hold 6 words per item, one sticker per part,
-		wide panels stay silent, and a pose with the table drawn in needs the table."""
+		wide panels stay silent, and a pose with the table drawn in needs the table.
+		Stage 6 (D-180): a caption alone in its panel may hold 30 words, and a diagram panel has no characters,
+		one caption at most and labels of 4 words, 16 at most."""
 		issues = []
 		stickers = [p.idx for p in self.panels if p.sticker]
 		if len(stickers) > 1:
@@ -77,7 +79,24 @@ class Explainer(Document):
 		for p in self.panels:
 			n = f"Panel {p.idx}"
 			shot = p.shot or "medium"
-			if not p.left_pose and not p.right_pose:
+			if shot == "diagram":
+				if p.left_pose or p.right_pose:
+					issues.append(f"{n}: a diagram has no characters. Clear the poses.")
+				if p.thought or p.left_bubble or p.right_bubble:
+					issues.append(f"{n}: a diagram holds one caption and no bubbles.")
+				if p.diagram_template not in DIAGRAM_TEMPLATES:
+					issues.append(f"{n}: pick a diagram template.")
+				groups = parse_diagram(p.diagram_labels)
+				labels = [g["title"] for g in groups] + [x for g in groups for x in g["items"]]
+				if not groups:
+					issues.append(f"{n}: add the diagram labels, a # title line and - item lines.")
+				if len(labels) > 16:
+					issues.append(f"{n}: {len(labels)} diagram labels. 16 at most.")
+				for label in labels:
+					if word_count(label) > 4:
+						issues.append(f"{n}: the label '{label}' has {word_count(label)} words. Labels hold 4 at most.")
+				issues += copy_issues(p.diagram_labels, f"{n}, diagram labels")
+			elif not p.left_pose and not p.right_pose:
 				issues.append(f"{n}: pick at least one character.")
 			if p.left_bubble and not p.left_pose:
 				issues.append(f"{n}: the left bubble needs someone on the left.")
@@ -107,8 +126,10 @@ class Explainer(Document):
 			if len(speech) > 2:
 				issues.append(f"{n}: {len(speech)} bubbles. A panel holds 2 at most, and a caption counts as one.")
 			for field in ("caption", "thought", "left_bubble", "right_bubble"):
-				if word_count(p.get(field)) > 20:
-					issues.append(f"{n}: a bubble has {word_count(p.get(field))} words. Bubbles hold 20 at most.")
+				# A caption alone in its panel is narration and may hold 30 words (G1, D-180).
+				limit = 30 if field == "caption" and len(speech) == 1 else 20
+				if word_count(p.get(field)) > limit:
+					issues.append(f"{n}: a bubble has {word_count(p.get(field))} words. This one holds {limit} at most.")
 			if p.right_bubble and not p.right_pose:
 				issues.append(f"{n}: The Frappe Guy has a bubble but is not in the panel.")
 			if p.right_bubble and "!" in p.right_bubble:
@@ -140,6 +161,9 @@ class Explainer(Document):
 			left = DISPLAY.get(CHARACTERS[p.left_pose][0], CHARACTERS[p.left_pose][0]) if p.left_pose in CHARACTERS else ""
 			if p.caption:
 				lines.append(p.caption.strip())
+			if (p.shot or "") == "diagram":
+				for g in parse_diagram(p.diagram_labels):
+					lines.append(f"{g['title']}: " + "; ".join(g["items"]) + ".")
 			if p.thought:
 				lines.append(f"{left} thinks: {p.thought.strip()}")
 			if p.left_bubble:

@@ -10,6 +10,9 @@
   "right_pose",
   "row",
   "sticker",
+  "plain_paper",
+  "diagram_template",
+  "diagram_labels",
   "caption",
   "thought",
   "column_break_p1",
@@ -25,12 +28,12 @@
   {
    "columns": 1,
    "default": "medium",
-   "description": "medium: two characters at the table. close: one character, bigger, scenery kept. flat: a close-up on the library highlight, no scenery. small: one of a row of three, 6 words at most. wide: the library's wide strip, for a silent beat with a sticker.",
+   "description": "medium: two characters at the table. close: one character, bigger, scenery kept. flat: a close-up on the library highlight, no scenery. small: one of a row of three, 6 words at most. wide: the library's wide strip, for a silent beat with a sticker. Diagram (D-180): ink lines on paper, no characters; fill the template and labels below.",
    "fieldname": "shot",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Shot",
-   "options": "medium\nclose\nflat\nsmall\nwide"
+   "options": "medium\nclose\nflat\nsmall\nwide\ndiagram"
   },
   {
    "columns": 2,
@@ -63,6 +66,27 @@
    "fieldtype": "Select",
    "label": "Sticker",
    "options": "\nwhoa\nww"
+  },
+  {
+   "fieldname": "plain_paper",
+   "fieldtype": "Check",
+   "label": "Plain paper",
+   "default": "0",
+   "description": "No scenery behind this panel, for a moment away from the part's setting (D-184)."
+  },
+  {
+   "fieldname": "diagram_template",
+   "fieldtype": "Select",
+   "label": "Diagram template",
+   "depends_on": "eval:doc.shot=='diagram'",
+   "options": "\none-record\ntimeline\nclosed-open\nlock-in\nfamily\none-site"
+  },
+  {
+   "fieldname": "diagram_labels",
+   "fieldtype": "Small Text",
+   "label": "Diagram labels",
+   "depends_on": "eval:doc.shot=='diagram'",
+   "description": "One label per line. Start a group title with # and an item with -. 4 words per label, 16 labels at most."
   },
   {
    "description": "Top-left narration, no tail. Counts toward the 2-bubble limit.",
@@ -128,7 +152,7 @@
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-11-06 00:30:00.000000",
+ "modified": "2026-11-06 19:30:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer Panel",

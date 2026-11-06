@@ -24,11 +24,11 @@ SERIES = [
 		"slug": "frappe-101",
 		"title": "Frappe 101",
 		"scene": "ink",
-		"description": "Who makes Frappe, how it started, what it believes and what it makes. The story starts here.",
+		"description": "What an ERP is, who makes Frappe, why its code is open, what happens if you leave, and what Frappe makes. The story starts here.",
 		"asked_by": "Ishita wants to know who is behind the software before she trusts it with her company.",
 		"pose": "dr-coffee-offer",
 		"decision": "Whether you can trust the people who build Frappe.",
-		"sections": "Who is behind this?\nWhy it is open source\nEverything Frappe makes",
+		"sections": "What is an ERP?\nWho is behind this?\nWhy it is open source\nWhat if we want to leave?\nEverything Frappe makes",
 	},
 	{
 		"slug": "erpnext",
@@ -38,7 +38,7 @@ SERIES = [
 		"asked_by": "Raju sells the bags. Ishita buys the beans.",
 		"pose": "dr-using-ipad",
 		"decision": "Whether ERPNext can run how The Coffee Company buys beans and sells bags, to cafes and online.",
-		"sections": "What is an ERP, really?\nThe order that starts it all\nCafe prices and online prices\nBuying green beans\nWhat an imported bean really costs",
+		"sections": "The order that starts it all\nCafe prices and online prices\nBuying green beans\nWhat an imported bean really costs",
 	},
 	{
 		"slug": "erpnext-stock",
@@ -206,6 +206,21 @@ def copy_issues(text, label):
 		if rx.search(text):
 			issues.append(f'{label}: "{word}" is on the banned list.')
 	return issues
+
+
+DIAGRAM_TEMPLATES = ("one-record", "timeline", "closed-open", "lock-in", "family", "one-site")
+
+
+def parse_diagram(text):
+	"""Diagram labels (D-180): '# Title' starts a group, '- item' adds to it. Returns [{title, items}]."""
+	groups = []
+	for line in (text or "").splitlines():
+		line = line.strip()
+		if line.startswith("#"):
+			groups.append({"title": line.lstrip("#").strip(), "items": []})
+		elif line.startswith("-") and groups:
+			groups[-1]["items"].append(line[1:].strip())
+	return groups
 
 
 def word_count(text):
