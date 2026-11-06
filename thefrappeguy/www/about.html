@@ -22,7 +22,7 @@
     {%- if mauli_socials %}
     <h3 class="h3" id="mauli">Find me</h3>
     <ul class="social" aria-label="Mauli Mogal elsewhere">
-      {%- for label, url, icon in mauli_socials %}<li><a href="{{ url }}" target="_blank" rel="me noopener" aria-label="Mauli Mogal on {{ label }} (opens in a new tab)" title="{{ label }}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
+      {%- for label, url, icon in mauli_socials %}<li>{% if url.startswith("mailto:") %}<a href="{{ url }}" aria-label="Email Mauli Mogal at {{ url[7:] }}" title="{{ url[7:] }}">{% else %}<a href="{{ url }}" target="_blank" rel="me noopener" aria-label="Mauli Mogal on {{ label }} (opens in a new tab)" title="{{ label }}">{% endif %}<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="{{ icon }}"/></svg></a></li>{% endfor %}
     </ul>
     {%- endif %}
   </section>
