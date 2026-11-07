@@ -62,8 +62,8 @@ def credit(color="#4E4B45", bottom=24):
 
 
 def page_home():
-	# The headline is About's own line, not the hero, which is still under review (D-166). It says what the site is
-	# and claims nothing about The Frappe Guy's character (brand core: never call ourselves honest).
+	# The headline is the site's hero line (D-201). It claims nothing about The Frappe Guy's character
+	# (brand core: never call ourselves honest).
 	panel = (
 		'<figure class="tfg-panel" style="--letter:23px">'
 		f'<img class="tfg-scenery" src="{u("img/env-cafeteria.webp")}" alt="">'
@@ -75,7 +75,7 @@ def page_home():
 	)
 	return f"""{HEAD}<div class="art" style="background:#FAF8F2;color:#000">
 <img src="{u('logo/tfg-logo.svg')}" style="position:absolute;left:64px;top:56px;width:180px" alt="">
-<h1 style="position:absolute;left:64px;top:170px;width:500px;font:800 54px/60px var(--font-sans);letter-spacing:-.02em">Frappe, explained in small comic scenes.</h1>
+<h1 style="position:absolute;left:64px;top:170px;width:500px;font:800 54px/60px var(--font-sans);letter-spacing:-.02em">Learn Frappe the easy way.</h1>
 <div style="position:absolute;right:64px;top:100px;width:520px">{panel}</div>
 <p class="url" style="margin:0;bottom:56px">thefrappeguy.com</p>{credit()}</div></body></html>"""
 
