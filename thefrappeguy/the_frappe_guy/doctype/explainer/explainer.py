@@ -37,8 +37,6 @@ class Explainer(Document):
 			if word_count(self.get(field)) > 20:
 				issues.append(f"{label}: {word_count(self.get(field))} words. Bubbles hold 20 at most.")
 
-		issues += self.check_faqs()
-
 		if self.answer and "!" in self.answer:
 			issues.append("Deepak's bubble: Deepak never uses exclamation marks.")
 		if self.deepak_pose == "dr-listen" and self.answer:
@@ -66,23 +64,6 @@ class Explainer(Document):
 
 		if self.published and not self.published_on:
 			self.published_on = today()
-
-	def check_faqs(self):
-		"""Questions people ask (D-206): 5 at most, a question of 15 words, an answer of 60, the same copy rules as the comic."""
-		issues = []
-		if len(self.faqs or []) > 5:
-			issues.append(f"Questions: {len(self.faqs)}. Keep 5 at most, the ones readers actually ask.")
-		for q in self.faqs or []:
-			n = f"Question {q.idx}"
-			issues += copy_issues(q.question, n)
-			issues += copy_issues(q.answer, f"{n}, answer")
-			if word_count(q.question) > 15:
-				issues.append(f"{n}: {word_count(q.question)} words. 15 at most.")
-			if word_count(q.answer) > 60:
-				issues.append(f"{n}, answer: {word_count(q.answer)} words. 60 at most.")
-			if q.question and not q.question.strip().endswith("?"):
-				issues.append(f"{n}: end it with a question mark.")
-		return issues
 
 	def check_panels(self):
 		"""The comic grammar, panel by panel: 2 bubbles at most (a caption counts), 20 words each,

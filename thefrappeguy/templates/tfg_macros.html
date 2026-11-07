@@ -31,6 +31,14 @@
 {%- endmacro %}
 
 
+{# A release's parts as plain numbered links, no pictures (home page, D-208). #}
+{% macro part_links(rows, scene) -%}
+<ol class="part-links" data-tone="{{ scene }}">
+{%- for e in rows %}<li><a href="{{ e.url }}"><span class="part-links__no">{{ e.part }}</span><span class="part-links__title">{{ e.title | e }}</span><span class="part-links__min">{{ e.read_minutes }} min</span></a></li>{% endfor %}
+</ol>
+{%- endmacro %}
+
+
 {% macro cast_grid(cast) -%}
 <ul class="cast">{% for key, name, role, line in cast %}<li>{{ tfg_panel(tfg_char(key, "--x:0", True), None) }}<span class="cast__name">{{ name }}</span>{% if role %}<span class="label">{{ role | upper }}</span>{% endif %}<p class="small muted">{{ line }}</p></li>{% endfor %}</ul>
 {%- endmacro %}

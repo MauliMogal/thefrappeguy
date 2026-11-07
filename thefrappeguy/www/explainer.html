@@ -34,12 +34,6 @@
   <div class="prose">{{ body_html | safe }}</div>
   {% endif %}
   <p class="tfg-takeaway">{{ doc.takeaway | e }}</p>
-  {% if faqs %}<section class="faq" aria-labelledby="faq-title">
-    <h2 class="h2" id="faq-title">Questions people ask</h2>
-    {%- for q in faqs %}
-    <div class="faq__item"><h3 class="h3">{{ q.question | e }}</h3><p>{{ q.answer | e }}</p></div>
-    {%- endfor %}
-  </section>{% endif %}
   {% if comic_sources %}<div class="comic-sources"><p class="label">SOURCES</p><ul>{% for url, label in comic_sources %}<li><a href="{{ url }}" rel="noopener">{{ label | e }}</a></li>{% endfor %}</ul></div>{% endif %}
   {% if comic %}<details class="comic-text"><summary>Read the comic as text</summary><div class="prose">{{ body_html | safe }}</div></details>{% endif %}
   <nav class="story-nav" aria-label="Story">

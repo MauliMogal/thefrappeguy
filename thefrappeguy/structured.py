@@ -1,8 +1,7 @@
 """Structured data (schema.org JSON-LD) for search engines and AI answer tools (D-206).
 
 Only facts the page already shows: the title, the one-line summary, dates, the share image, the author,
-the breadcrumb and the page's own questions. Google stopped showing FAQ rich results in May 2026, but it
-and other search and AI tools still read this markup to understand a page."""
+and the breadcrumb."""
 
 import json
 
@@ -85,17 +84,4 @@ def explainer_ld(doc, series, og_image):
 		author(),
 	]
 	graph[0] = {k: v for k, v in graph[0].items() if v is not None}
-	faqs = [q for q in (doc.get("faqs") or []) if q.question and q.answer]
-	if faqs:
-		graph.append(
-			{
-				"@type": "FAQPage",
-				"@id": f"{url}#questions",
-				"url": url,
-				"mainEntity": [
-					{"@type": "Question", "name": q.question, "acceptedAnswer": {"@type": "Answer", "text": q.answer}}
-					for q in faqs
-				],
-			}
-		)
 	return as_script(graph)

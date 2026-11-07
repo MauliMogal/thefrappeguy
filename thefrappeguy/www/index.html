@@ -1,5 +1,5 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import card, topics, cast_grid, subscribe %}
+{% from "templates/tfg_macros.html" import part_links, topics, cast_grid, subscribe %}
 {% block content %}
 <div class="wrap">
   <section class="hero">
@@ -25,10 +25,9 @@
   <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">Meet the team</h2><p class="lede">{{ tfg_premise }} The company and its people are fictional.</p></div>
   {{ cast_grid(tfg_cast) }}
 </div></section>
-<section class="section"><div class="wrap">
-  <div class="section-head"><h2 class="h2">Latest parts</h2></div>
-  {% if explainers %}<div class="cards">{% for e in explainers %}{{ card(e) }}{% endfor %}</div>
-  {% else %}<div class="empty" style="border-top:0;padding-top:0"><span class="soon">Coming soon</span><p class="h3">The first parts of the story are being written.</p><p class="muted">Follow along by <a href="/rss.xml">RSS</a>.</p></div>{% endif %}
-</div></section>
+{% if start %}<section class="section" id="start"><div class="wrap">
+  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">Start here: {{ start_series.title | e }}</h2><p class="lede">{{ start | length }} short parts, about {{ start | sum(attribute="read_minutes") }} minutes in all. Then the story moves on to <a href="/series/erpnext">ERPNext I</a>.</p></div>
+  {{ part_links(start, start_series.scene) }}
+</div></section>{% endif %}
 <div class="wrap">{{ subscribe("/") }}</div>
 {% endblock %}

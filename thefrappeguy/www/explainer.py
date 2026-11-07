@@ -48,7 +48,6 @@ def get_context(context):
 	else:
 		context.og_image = "/assets/thefrappeguy/og/og-home.png"
 
-	context.faqs = [q for q in (doc.faqs or []) if q.question and q.answer]
 	if not context.is_preview:
 		context.json_ld = explainer_ld(doc, series, context.og_image)
 
