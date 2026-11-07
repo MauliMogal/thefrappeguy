@@ -98,3 +98,22 @@
     });
   }
 })();
+
+/* Page counting without cookies (D-196). Sends the page, the referring site and any utm tags; nothing is stored
+   in the browser. Skipped when the browser sends Global Privacy Control. The utm tags are then removed from the
+   address bar, so a link copied from here does not carry someone else's campaign. */
+(function () {
+  try {
+    if (navigator.globalPrivacyControl || !navigator.sendBeacon) return;
+    var q = new URLSearchParams(location.search), d = new FormData();
+    d.append("path", location.pathname);
+    d.append("referrer", document.referrer || "");
+    ["utm_source", "utm_medium", "utm_campaign"].forEach(function (k) { if (q.get(k)) d.append(k, q.get(k)); });
+    navigator.sendBeacon("/api/method/thefrappeguy.api.hit", d);
+    if (q.get("utm_source") || q.get("utm_medium") || q.get("utm_campaign")) {
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) { q.delete(k); });
+      var s = q.toString();
+      history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash);
+    }
+  } catch (e) {}
+})();

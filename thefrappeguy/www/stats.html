@@ -1,0 +1,31 @@
+{% extends "templates/tfg_base.html" %}
+{% block head %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+{% macro rows(items, field, label) %}
+<div class="table-scroll"><table class="table"><thead><tr><th>{{ label }}</th><th>Views</th><th>People</th></tr></thead><tbody>
+{% for r in items %}<tr><td>{{ r[field] or "Direct or unknown" }}</td><td>{{ r.views }}</td><td>{{ r.people }}</td></tr>{% else %}<tr><td colspan="3" class="muted">Nothing yet.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endmacro %}
+{% block content %}
+<div class="wrap section">
+  <div class="section-head" style="margin-bottom:var(--space-6)">
+    <p class="label">PRIVATE · ONLY YOU SEE THIS</p>
+    <h1 class="h2">Last {{ days }} day{{ "" if days == 1 else "s" }}</h1>
+    <p class="muted">{% for c in choices %}<a href="/stats?days={{ c }}"{% if c == days %} aria-current="page"{% endif %}>{{ c }} day{{ "" if c == 1 else "s" }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  </div>
+  <div class="table-scroll"><table class="table"><thead><tr><th>Page views</th><th>People (counted per day)</th><th>Newsletter signups</th><th>Questions</th></tr></thead>
+  <tbody><tr><td class="h2">{{ views }}</td><td class="h2">{{ people }}</td><td class="h2">{{ signups }}</td><td class="h2">{{ questions }}</td></tr></tbody></table></div>
+  <h2 class="h2" style="margin-top:var(--space-12)">By day</h2>
+  <div class="table-scroll"><table class="table"><thead><tr><th>Day</th><th>Views</th><th>People</th><th style="width:50%"></th></tr></thead><tbody>
+  {% for d in daily %}<tr><td>{{ frappe.utils.formatdate(d.day, "d MMM") }}</td><td>{{ d.views }}</td><td>{{ d.people }}</td><td><span style="display:block;height:10px;background:var(--ink);width:{{ (100 * d.views / peak)|round(1) }}%"></span></td></tr>{% else %}<tr><td colspan="4" class="muted">Nothing yet.</td></tr>{% endfor %}
+  </tbody></table></div>
+  <h2 class="h2" style="margin-top:var(--space-12)">Where readers come from</h2>
+  {{ rows(sources, "source", "Source") }}
+  <h2 class="h2" style="margin-top:var(--space-12)">Campaign tags</h2>
+  {{ rows(campaigns, "campaign", "Campaign") }}
+  <h2 class="h2" style="margin-top:var(--space-12)">Pages</h2>
+  {{ rows(pages, "path", "Page") }}
+  <h2 class="h2" style="margin-top:var(--space-12)">Devices</h2>
+  {{ rows(devices, "device", "Device") }}
+  <p class="muted" style="margin-top:var(--space-8)">Counted without cookies. "People" is the number of different visitors per day, added up over the days; one person reading on three days counts three times. Your own visits while signed in are not counted.</p>
+</div>
+{% endblock %}

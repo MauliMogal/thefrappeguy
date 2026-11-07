@@ -1,6 +1,6 @@
 {%- set site_title = "The Frappe Guy" -%}
 {%- set full_title = (page_title ~ " · " ~ site_title) if page_title else site_title -%}
-{%- set desc = page_description or "Learn Frappe the easy way: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more." -%}
+{%- set desc = page_description or "Frappe, explained in small comic scenes: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more." -%}
 {%- set share = og_image or "/assets/thefrappeguy/og/og-home.png" -%}
 {%- set share_url = share if share.startswith("http") else tfg_base ~ share -%}
 {%- set canonical_url = tfg_canonical() -%}

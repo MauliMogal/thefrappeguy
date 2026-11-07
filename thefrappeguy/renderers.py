@@ -14,11 +14,17 @@ from thefrappeguy.content import explainer_list, series_list
 STATIC_ROUTES = ["", "explainers", "roadmap", "about", "ask", "brand", "privacy"]
 
 
+# Google Search Console ownership file for https://thefrappeguy.com/ (thefrappeguyhq@gmail.com, 7 Nov 2026).
+# Keep it: Search Console checks it again from time to time.
+GOOGLE_VERIFY = "googlec3faf177f992676d.html"
+
+
 class FeedRenderer(BaseRenderer):
-	ROUTES = ("rss.xml", "sitemap.xml", "robots.txt", "favicon.ico", "site.webmanifest")
+	ROUTES = ("rss.xml", "sitemap.xml", "robots.txt", "favicon.ico", "site.webmanifest", GOOGLE_VERIFY)
 
 	def can_render(self):
-		return self.path in self.ROUTES
+		# Frappe drops ".html" from the path before page renderers see it.
+		return self.path in self.ROUTES or self.path == GOOGLE_VERIFY[:-5]
 
 	def render(self):
 		if self.path == "rss.xml":
@@ -27,6 +33,8 @@ class FeedRenderer(BaseRenderer):
 			return self.respond(sitemap(), "application/xml; charset=utf-8")
 		if self.path == "robots.txt":
 			return self.respond(robots(), "text/plain; charset=utf-8")
+		if self.path in (GOOGLE_VERIFY, GOOGLE_VERIFY[:-5]):
+			return self.respond(f"google-site-verification: {GOOGLE_VERIFY}", "text/html; charset=utf-8")
 		if self.path == "site.webmanifest":
 			return self.respond(manifest(), "application/manifest+json; charset=utf-8")
 		return self.respond(favicon(), "image/x-icon")
@@ -63,7 +71,7 @@ def rss():
 		"<title>The Frappe Guy</title>"
 		f"<link>{b}/</link>"
 		f'<atom:link href="{b}/rss.xml" rel="self" type="application/rss+xml"/>'
-		"<description>Learn Frappe the easy way: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more.</description>"
+		"<description>Frappe, explained in small comic scenes: follow one company as it finds out whether Frappe can run its business, in short comic parts on ERPNext, Frappe Cloud, pricing and more.</description>"
 		"<language>en-in</language>"
 		+ "".join(items)
 		+ "</channel></rss>"

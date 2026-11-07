@@ -119,3 +119,87 @@ def send_waiting_to_kit():
 		"Subscriber", filters={"status": "Subscribed", "kit_status": ["in", ["Waiting", "Kit error"]]}, pluck="name"
 	):
 		send_to_kit(name)
+
+
+# Page counting without cookies (D-196) ---------------------------------------------------------------------------
+# What is stored: the day, the page, phone/tablet/computer, the referring site's host name, the utm tags, and a
+# one-way hash of (address, browser, a random code that changes daily). Nothing that identifies a person.
+
+BOT_WORDS = ("bot", "crawl", "spider", "slurp", "preview", "headless", "lighthouse", "pingdom", "monitor", "python", "curl", "wget")
+SOURCE_NAMES = {
+	"lnkd.in": "linkedin", "linkedin.com": "linkedin", "t.co": "x", "x.com": "x", "twitter.com": "x",
+	"facebook.com": "facebook", "instagram.com": "instagram", "reddit.com": "reddit", "youtube.com": "youtube",
+	"wa.me": "whatsapp", "web.whatsapp.com": "whatsapp", "frappe.io": "frappe.io", "discuss.frappe.io": "frappe forum",
+}
+
+
+def _clip(value, n=80):
+	return (value or "").strip()[:n] or None
+
+
+def _host(url):
+	from urllib.parse import urlparse
+
+	try:
+		host = (urlparse(url or "").hostname or "").lower()
+	except ValueError:
+		return None
+	return host[4:] if host.startswith("www.") else host or None
+
+
+def _device(ua):
+	ua = ua.lower()
+	if "ipad" in ua or "tablet" in ua or ("android" in ua and "mobile" not in ua):
+		return "Tablet"
+	if "mobi" in ua or "iphone" in ua or "android" in ua:
+		return "Phone"
+	return "Computer"
+
+
+def _daily_salt(day):
+	key = frappe.cache.make_key(f"tfg-hit-salt:{day}")
+	salt = frappe.cache.get(key)
+	if not salt:
+		frappe.cache.set(key, frappe.generate_hash(length=32), nx=True, ex=60 * 60 * 48)
+		salt = frappe.cache.get(key)
+	return salt.decode() if isinstance(salt, bytes) else str(salt)
+
+
+@frappe.whitelist(allow_guest=True, methods=["POST"])
+def hit(path=None, referrer=None, utm_source=None, utm_medium=None, utm_campaign=None):
+	"""Counts one page view. Sent by site.js with navigator.sendBeacon; answers nothing useful on purpose."""
+	import hashlib
+
+	from frappe.utils import today
+
+	ua = frappe.get_request_header("User-Agent") or ""
+	if frappe.session.user != "Guest" or not ua or any(w in ua.lower() for w in BOT_WORDS):
+		return
+	path = (path or "").split("?")[0].split("#")[0][:140]
+	if not path.startswith("/") or path.startswith(("/api", "/desk", "/app", "/login", "/stats", "/assets")):
+		return
+	if over_limit("hit", 600):
+		frappe.local.response["http_status_code"] = 200
+		return
+
+	ref = _host(referrer)
+	own = _host(frappe.utils.get_url())
+	if ref == own:
+		ref = None
+	source = _clip(utm_source, 40)
+	source = source.lower() if source else SOURCE_NAMES.get(ref or "", ref)
+	if not source and ref and ref.startswith("google."):
+		source = "google"
+	day = today()
+	ip = getattr(frappe.local, "request_ip", None) or ""
+	visitor = hashlib.sha256(f"{_daily_salt(day)}|{ip}|{ua}".encode()).hexdigest()[:16]
+
+	frappe.get_doc({
+		"doctype": "Page Hit", "day": day, "path": path, "device": _device(ua), "referrer": ref,
+		"source": source, "medium": _clip(utm_medium, 40), "campaign": _clip(utm_campaign, 60), "visitor": visitor,
+	}).db_insert()
+
+
+def delete_old_hits():
+	"""Page counts are kept for 13 months (Privacy)."""
+	frappe.db.delete("Page Hit", {"day": ["<", frappe.utils.add_days(frappe.utils.today(), -396)]})
