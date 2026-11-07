@@ -24,6 +24,8 @@
   "deepak_pose",
   "answer",
   "environment",
+  "section_faq",
+  "faqs",
   "section_panels",
   "so_far",
   "panels",
@@ -195,6 +197,19 @@
    "read_only": 1
   },
   {
+   "fieldname": "section_faq",
+   "fieldtype": "Section Break",
+   "label": "Questions people ask",
+   "collapsible": 1,
+   "description": "Shown under the comic and given to search engines. 3 to 5 questions. Only what this part already teaches."
+  },
+  {
+   "fieldname": "faqs",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "Explainer FAQ"
+  },
+  {
    "description": "Panel, text, panel, text (D-157). When panels are filled, the page shows them instead of the single panel and article, and fills the asker, question, Deepak pose and article for the card and feed.",
    "fieldname": "section_panels",
    "fieldtype": "Section Break",
@@ -215,7 +230,7 @@
  ],
  "index_web_pages_for_search": 0,
  "links": [],
- "modified": "2026-11-06 00:30:00.000000",
+ "modified": "2026-11-07 15:10:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer",

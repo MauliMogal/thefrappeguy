@@ -1,0 +1,23 @@
+{
+ "actions": [],
+ "creation": "2026-11-07 15:10:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["question", "answer"],
+ "fields": [
+  {"fieldname": "question", "fieldtype": "Data", "in_list_view": 1, "columns": 4, "label": "Question", "reqd": 1, "description": "How a reader would type it into a search box. 15 words at most."},
+  {"fieldname": "answer", "fieldtype": "Small Text", "in_list_view": 1, "columns": 6, "label": "Answer", "reqd": 1, "description": "Plain words, 60 at most. Only facts the comic already teaches, with its sources."}
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-07 15:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "The Frappe Guy",
+ "name": "Explainer FAQ",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

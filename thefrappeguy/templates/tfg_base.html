@@ -37,6 +37,9 @@
 <link rel="preload" href="{{ asset }}fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ asset }}css/tfg-comic.css?v={{ tfg_v }}">
 <link rel="stylesheet" href="{{ asset }}css/site.css?v={{ tfg_v }}">
+{%- if json_ld %}
+<script type="application/ld+json">{{ json_ld }}</script>
+{%- endif %}
 {%- block head %}{% endblock %}
 </head>
 <body>

@@ -7,6 +7,7 @@ from markupsafe import Markup
 
 from thefrappeguy.content import series_map, story_nav
 from thefrappeguy.jinja import tfg_bubble, tfg_caption, tfg_char, tfg_diagram, tfg_panel, tfg_thought
+from thefrappeguy.structured import explainer_ld
 
 
 def get_context(context):
@@ -46,6 +47,10 @@ def get_context(context):
 		context.og_image = f"/assets/thefrappeguy/og/og-series-{series.slug}.png"
 	else:
 		context.og_image = "/assets/thefrappeguy/og/og-home.png"
+
+	context.faqs = [q for q in (doc.faqs or []) if q.question and q.answer]
+	if not context.is_preview:
+		context.json_ld = explainer_ld(doc, series, context.og_image)
 
 	if context.is_preview:
 		context.prev_part, context.next_part = draft_nav(doc, series)

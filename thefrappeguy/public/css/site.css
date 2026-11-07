@@ -354,3 +354,10 @@ textarea.input { min-height: 160px; resize: vertical; }
 .subscribe__row .btn { flex: 0 0 auto; }
 .subscribe__done { display: grid; gap: var(--space-2); }
 .subscribe__done p { margin: 0; }
+
+/* Questions people ask (D-206): plain text under the takeaway, every answer visible, no accordion. */
+.faq { display: flex; flex-direction: column; gap: var(--space-6); max-width: 65ch; margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--rule); }
+.faq__item { display: flex; flex-direction: column; gap: var(--space-2); }
+.faq__item .h3 { font-size: 19px; line-height: 26px; }
+.faq__item p { margin: 0; color: var(--ink-2); font-size: 17px; line-height: 27px; }
+.faq + .comic-sources { margin-top: var(--space-8); }
