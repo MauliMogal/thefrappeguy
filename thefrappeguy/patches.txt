@@ -10,3 +10,4 @@ thefrappeguy.patches.v1_6.r1_full_comic
 thefrappeguy.patches.v1_7.r1_teach_every_concept
 thefrappeguy.patches.v1_8.r1_prelaunch_fixes
 thefrappeguy.patches.v1_9.short_erpnext_titles
+thefrappeguy.patches.v1_9.erpnext_roman_titles
