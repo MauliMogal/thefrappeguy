@@ -91,6 +91,7 @@ def robots():
 			"User-agent: *",
 			"Allow: /",
 			"Disallow: /app",
+			"Disallow: /desk",
 			"Disallow: /api",
 			"Disallow: /login",
 			f"Sitemap: {base()}/sitemap.xml",

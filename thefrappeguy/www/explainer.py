@@ -113,7 +113,7 @@ SHOTS = {
 }
 
 
-def comic_panel(p, env):
+def comic_panel(p, env, lazy=False):
 	shot = p.shot if p.shot in SHOTS else "medium"
 	d = SHOTS[shot]
 	items = sum(1 for k in ("caption", "thought", "left_bubble", "right_bubble") if p.get(k))
@@ -122,19 +122,22 @@ def comic_panel(p, env):
 	long_reply = both and len(p.right_bubble.split()) > 11
 	fig = d["fig"] or ("52%" if long_reply else "56%" if both else "60%" if items >= 2 else "64%")
 	y = d["y"]
+	# Panels below the first screen load as the reader scrolls to them (D-195).
+	load = ' loading="lazy"' if lazy else ""
+	full = shot in ("close", "flat")
 	inner = Markup("")
 	if shot in ("medium", "close", "small") and env and not p.plain_paper:
-		inner += Markup(f'<img class="tfg-scenery" src="/assets/thefrappeguy/img/{env}.webp" alt="" decoding="async">')
+		inner += Markup(f'<img class="tfg-scenery" src="/assets/thefrappeguy/img/{env}.webp" alt="" decoding="async"{load}>')
 	if p.sticker == "ww":
 		inner += Markup('<img class="tfg-sticker st-ww" src="/assets/thefrappeguy/img/st-ww.webp" alt="W W">')
 	if p.left_pose and p.right_pose:
-		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:5%;--y:{y}") + tfg_char(p.right_pose, f"--fig:{fig};--x:4%;--y:{y}")
+		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:5%;--y:{y}", lazy, full) + tfg_char(p.right_pose, f"--fig:{fig};--x:4%;--y:{y}", lazy, full)
 	elif p.left_pose:
-		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:{d['x']};--y:{y}")
+		inner += tfg_char(p.left_pose, f"--fig:{fig};--x:{d['x']};--y:{y}", lazy, full)
 	elif p.right_pose:
-		inner += tfg_char(p.right_pose, f"--fig:{fig};--x:{d['x']};--y:{y}")
+		inner += tfg_char(p.right_pose, f"--fig:{fig};--x:{d['x']};--y:{y}", lazy, full)
 	if p.sticker == "whoa":
-		inner += Markup('<img class="tfg-sticker st-whoa" src="/assets/thefrappeguy/img/st-whoa.webp" alt="WHOA!">')
+		inner += Markup(f'<img class="tfg-sticker st-whoa" src="/assets/thefrappeguy/img/st-whoa.webp" alt="WHOA!"{load}>')
 	if shot == "diagram":
 		inner += tfg_diagram(p.diagram_template, p.diagram_labels)
 
@@ -176,11 +179,11 @@ def comic(doc):
 		if row:
 			group = Markup("")
 			while i < len(rows) and (rows[i].row or "").strip() == row:
-				group += comic_panel(rows[i], env)
+				group += comic_panel(rows[i], env, lazy=i >= 2)
 				i += 1
 			out += Markup('<div class="comic-row">') + group + Markup("</div>")
 		else:
-			out += comic_panel(rows[i], env)
+			out += comic_panel(rows[i], env, lazy=i >= 2)
 			i += 1
 	return out
 

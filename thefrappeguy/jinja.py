@@ -10,18 +10,20 @@ from thefrappeguy.characters import CHARACTERS, ENVIRONMENTS
 IMG = "/assets/thefrappeguy/img/"
 
 
-def tfg_char(key, style="", lazy=False):
-	"""One character export, sized by the registry. Never flipped, never drawn."""
+def tfg_char(key, style="", lazy=False, full=False):
+	"""One character export, sized by the registry. Never flipped, never drawn.
+	By default the 640 px tall copy in img/m/ (D-195): enough for any medium shot on a 2x screen.
+	Close-ups ask for the full export (full=True)."""
 	if key not in CHARACTERS:
 		return Markup("")
 	name, pose, side, n, drop = CHARACTERS[key]
-	# In public copy the hero is The Frappe Guy; "Deepak" is the library's component name only (D-107).
-	public = "The Frappe Guy" if name == "Deepak" else name
 	css = f"--n:{n};" + (f"--drop:{drop};" if drop else "") + (style or "")
 	attrs = ' data-baked-table=""' if drop else ""
 	loading = ' loading="lazy"' if lazy else ""
+	# Decorative: the words are real text in the bubbles, and every comic has "Read the comic as text" (D-195).
+	# Pose names such as "tierd" were being read aloud to screen readers.
 	return Markup(
-		f'<img class="tfg-char" src="{IMG}{key}.webp" alt="{escape(public)}, {escape(pose.replace("-", " "))}" '
+		f'<img class="tfg-char" src="{IMG}{"" if full else "m/"}{key}.webp" alt="" '
 		f'data-character="{escape(name)}" data-pose="{escape(pose)}" data-side="{side}"{attrs} '
 		f'style="{escape(css)}"{loading} decoding="async">'
 	)

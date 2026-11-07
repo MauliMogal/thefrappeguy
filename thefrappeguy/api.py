@@ -1,14 +1,33 @@
 import frappe
-from frappe.rate_limiter import rate_limit
 from frappe.utils import cint, validate_email_address
+
+# Signups and questions per visitor address per hour (D-191). A whole office often shares one address,
+# so a launch post on Raven must not lock out the sixth colleague. Bot-trap requests are not counted.
+SUBSCRIBE_LIMIT = 30
+ASK_LIMIT = 20
+
+
+def over_limit(action, limit, seconds=60 * 60):
+	"""Counts one real request from this address. Past the limit, answers 429 with a plain message instead of
+	raising: Frappe's own 429 page talks about the site's compute plan, which is not what happened."""
+	ip = getattr(frappe.local, "request_ip", None) or "unknown"
+	key = frappe.cache.make_key(f"tfg-limit:{action}:{ip}")
+	count = frappe.cache.incr(key)
+	if count == 1:
+		frappe.cache.expire(key, seconds)
+	if count > limit:
+		frappe.local.response["http_status_code"] = 429
+		return True
+	return False
 
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-@rate_limit(limit=5, seconds=60 * 60)
 def ask(question=None, area=None, full_name=None, email=None, may_publish=0, website=None):
 	"""Saves a question from /ask as a Question record. `website` is a hidden trap field for bots."""
 	if website:
 		return {"ok": True}
+	if over_limit("ask", ASK_LIMIT):
+		return {"ok": False, "message": "Too many questions from here in the last hour. Please try again later."}
 
 	question = (question or "").strip()
 	if len(question) < 10:
@@ -37,12 +56,13 @@ def ask(question=None, area=None, full_name=None, email=None, may_publish=0, web
 
 
 @frappe.whitelist(allow_guest=True, methods=["POST"])
-@rate_limit(limit=5, seconds=60 * 60)
 def subscribe(email=None, source=None, website=None):
 	"""Saves a newsletter signup as a Subscriber, then hands it to Kit in the background (D-186).
 	`website` is a hidden trap field for bots. Signing up twice is fine and changes nothing."""
 	if website:
 		return {"ok": True}
+	if over_limit("subscribe", SUBSCRIBE_LIMIT):
+		return {"ok": False, "message": "Too many signups from here in the last hour. Please try again later."}
 	email = (email or "").strip().lower()
 	if not email or not validate_email_address(email):
 		frappe.throw("That email address doesn't look right. Check it and try again.")

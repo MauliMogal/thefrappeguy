@@ -1,6 +1,6 @@
 {
  "release": "frappe-101",
- "decisions": "D-174, D-176 to D-184",
+ "decisions": "D-174, D-176 to D-184, D-192",
  "explainers": [
   {
    "slug": "what-is-an-erp",
@@ -29,7 +29,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-ishita-doubtful",
+     "left_pose": "cl-ishita-laptop",
      "right_pose": "",
      "row": "",
      "sticker": "",
@@ -74,7 +74,7 @@
      "sticker": "",
      "plain_paper": 0,
      "caption": "Next morning. The cafe's order can't be filled.",
-     "thought": "Orders on Raju's phone. Stock and invoices in two sheets. Nobody sees the whole picture.",
+     "thought": "Three sheets and Raju's phone. Nobody sees the whole picture.",
      "left_bubble": "",
      "right_bubble": "",
      "sources": "https://frappe.io/erpnext"
@@ -489,7 +489,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-ishita-doubtful",
+     "left_pose": "cl-ishita-no-idea",
      "right_pose": "dr-express",
      "row": "",
      "sticker": "",
@@ -528,7 +528,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-thinking",
      "right_pose": "",
      "row": "",
      "sticker": "",
@@ -607,7 +607,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-expressing-2",
      "right_pose": "dr-express",
      "row": "",
      "sticker": "",
@@ -674,7 +674,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-noidea",
      "right_pose": "dr-using-ipad",
      "row": "",
      "sticker": "",
@@ -787,12 +787,12 @@
      "caption": "",
      "thought": "",
      "left_bubble": "",
-     "right_bubble": "Then you leave. Nobody can lock you in.",
+     "right_bubble": "Leaving any ERP is work. But nobody can lock you in.",
      "sources": "https://frappe.io/erpnext"
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-noidea",
      "right_pose": "dr-express",
      "row": "",
      "sticker": "",
@@ -872,7 +872,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-expressing",
      "right_pose": "dr-listen",
      "row": "",
      "sticker": "",
@@ -976,7 +976,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-saara-doubtful",
+     "left_pose": "cl-saara-noidea",
      "right_pose": "dr-using-ipad",
      "row": "",
      "sticker": "",
@@ -1253,7 +1253,7 @@
      "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
     },
     {
-     "shot": "wide",
+     "shot": "flat",
      "left_pose": "cl-jammy-shock",
      "right_pose": "",
      "row": "",
@@ -1321,7 +1321,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-jammy-doubtful",
+     "left_pose": "cl-jammy-no-dea",
      "right_pose": "dr-express",
      "row": "",
      "sticker": "",
@@ -1347,7 +1347,7 @@
     },
     {
      "shot": "medium",
-     "left_pose": "cl-ishita-doubtful",
+     "left_pose": "cl-ishita-speaking",
      "right_pose": "dr-coffee",
      "row": "",
      "sticker": "",

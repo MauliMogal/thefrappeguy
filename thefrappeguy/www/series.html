@@ -4,7 +4,7 @@
 <div class="wrap"><nav class="crumbs" aria-label="Breadcrumb" style="padding-top:var(--space-6)"><a href="/explainers">Explainers</a><span>/</span><span>{{ series.title | e }}</span></nav></div>
 <div class="wrap" style="padding-top:var(--space-6)"><div class="tfg-scene series-hero" data-scene="{{ series.scene }}">
   <span class="tfg-dot" style="right:38%;top:14%;--d:18px"></span><span class="tfg-dot" data-dot="blue" style="right:34%;top:22%;--d:11px"></span>
-  {{ tfg_char(series.pose or "dr-thinking") }}
+  {{ tfg_char(series.pose or "dr-thinking", "", False, True) }}
   <span class="label" style="color:var(--on-scene)">RELEASE {{ topic_no }} OF {{ tfg_series | length }}</span>
   <h1 class="h1">{{ series.title | e }}</h1>
   <p>{{ series.description | e }}</p>

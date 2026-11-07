@@ -1,1 +1,37 @@
-[]
+[
+ {
+  "slug": "what-is-an-erp",
+  "title": "What is an ERP?",
+  "series_title": "Frappe 101",
+  "part": 1,
+  "pose": "dr-coffee-offer"
+ },
+ {
+  "slug": "who-is-behind-this",
+  "title": "Who is behind this?",
+  "series_title": "Frappe 101",
+  "part": 2,
+  "pose": "dr-book"
+ },
+ {
+  "slug": "why-it-is-open-source",
+  "title": "Why it is open source",
+  "series_title": "Frappe 101",
+  "part": 3,
+  "pose": "dr-express"
+ },
+ {
+  "slug": "what-if-we-want-to-leave",
+  "title": "What if we want to leave?",
+  "series_title": "Frappe 101",
+  "part": 4,
+  "pose": "dr-idea"
+ },
+ {
+  "slug": "everything-frappe-makes",
+  "title": "Everything Frappe makes",
+  "series_title": "Frappe 101",
+  "part": 5,
+  "pose": "dr-using-ipad"
+ }
+]
