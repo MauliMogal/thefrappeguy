@@ -102,7 +102,7 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 1099px) { .topics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .topics li:nth-child(4n+1) .topic { padding-left: var(--space-6); } .topics li:nth-child(2n+1) .topic { padding-left: 0; } }
 @media (max-width: 519px) { .topics { grid-template-columns: minmax(0, 1fr); } .topics li .topic { padding-left: 0 !important; padding-right: 0; } }
 .topic-links { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
-.topic-links a { font-weight: 700; font-size: 18px; line-height: 26px; text-decoration: none; }
+.topic-links a { font-weight: 700; font-size: 18px; line-height: 26px; text-decoration: none; white-space: nowrap; }
 .topic-links a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 
 /* Explainer cards: a series tile with Deepak at the corner, then words on paper */
@@ -184,7 +184,7 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 1099px) { .cast { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 599px) { .cast { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .next-topic { margin-top: var(--space-6); font-size: 16px; }
-.next-topic a { font-weight: 700; }
+.next-topic a { font-weight: 700; white-space: nowrap; }
 .about-head { align-items: flex-start; }
 .signoff { margin-top: var(--space-4); padding-top: var(--space-6); border-top: 3px solid var(--ink); display: flex; flex-direction: column; gap: var(--space-1); }
 .signoff p { margin: 0; }
@@ -345,7 +345,7 @@ textarea.input { min-height: 160px; resize: vertical; }
 .comic-text .prose { margin-top: var(--space-3); white-space: pre-line; }
 
 /* Newsletter signup (D-186): a quiet block on paper, one per page. */
-.subscribe { display: grid; gap: var(--space-4); padding: var(--space-6) 0; border-top: 3px solid var(--border-strong); max-width: 680px; }
+.subscribe { display: grid; gap: var(--space-4); padding: var(--space-6) 0; margin-top: var(--space-12); border-top: 3px solid var(--border-strong); max-width: 680px; }
 .subscribe__text { display: grid; gap: var(--space-2); }
 .subscribe__text p { margin: 0; }
 .subscribe__form { display: grid; gap: var(--space-3); position: relative; }

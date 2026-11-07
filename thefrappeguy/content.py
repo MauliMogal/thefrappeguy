@@ -32,7 +32,7 @@ SERIES = [
 	},
 	{
 		"slug": "erpnext",
-		"title": "ERPNext I: Buying and selling",
+		"title": "ERPNext 1",
 		"scene": "blue",
 		"description": "One order followed from the first quote to the money in the bank, and how the beans get bought in the first place.",
 		"asked_by": "Raju sells the bags. Ishita buys the beans.",
@@ -42,7 +42,7 @@ SERIES = [
 	},
 	{
 		"slug": "erpnext-stock",
-		"title": "ERPNext II: Stock and the roastery",
+		"title": "ERPNext 2",
 		"scene": "blue",
 		"description": "Green beans in, packed bags out: warehouses, batches, roasting as manufacturing and quality checks.",
 		"asked_by": "Ishita wants to know what happens to the beans once they arrive.",
@@ -52,7 +52,7 @@ SERIES = [
 	},
 	{
 		"slug": "erpnext-accounts",
-		"title": "ERPNext III: Accounts, GST and reports",
+		"title": "ERPNext 3",
 		"scene": "blue",
 		"description": "The books that write themselves from every order, GST on every invoice, and reports you can open down to the document.",
 		"asked_by": "Sara wants to see the money.",
