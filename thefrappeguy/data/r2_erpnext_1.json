@@ -614,7 +614,7 @@
      "thought": "",
      "left_bubble": "Where does our price even come from?",
      "right_bubble": "From a Price List. You set up two: Cafe Prices and Online Prices.",
-     "sources": "https://docs.frappe.io/erpnext/price-lists"
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group"
     },
     {
      "shot": "medium",
@@ -627,7 +627,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "Each list holds a price per item. House Blend is ₹340 a bag for cafes and ₹420 online.",
-     "sources": "https://docs.frappe.io/erpnext/price-lists"
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group"
     },
     {
      "shot": "medium",
@@ -653,7 +653,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "Customers sit in groups. Blue Door is in the Cafes group, and Cafes use Cafe Prices.",
-     "sources": "https://docs.frappe.io/erpnext/price-lists"
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group"
     },
     {
      "shot": "screen",
@@ -666,7 +666,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/price-lists",
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group",
      "screen_image": "/assets/thefrappeguy/img/screens/r2/cafes-group.webp",
      "screen_alt": "Customer Group Cafes, parent All Customer Groups, default price list Cafe Prices."
     },
@@ -776,7 +776,7 @@
      "thought": "",
      "left_bubble": "And someone ordering online?",
      "right_bubble": "Online Prices, ₹420 a bag, and no cafe discount, even for 60.",
-     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/pricing-rule"
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group\nhttps://docs.frappe.io/erpnext/pricing-rule"
     },
     {
      "shot": "medium",
@@ -802,7 +802,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/pricing-rule",
+     "sources": "https://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group\nhttps://docs.frappe.io/erpnext/pricing-rule",
      "diagram_template": "chain",
      "diagram_labels": "# Blue Door Cafe\n- The customer\n# Cafes group\n- Picks Cafe Prices\n# Cafe Prices\n- House Blend ₹340\n#+ Pricing Rule\n- 5% off at 50+\n# Quote\n- ₹323 a bag"
     },
@@ -1130,7 +1130,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "Every kilo in stock has a value: what it cost you. ERPNext calls it the valuation rate.",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher"
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average"
     },
     {
      "shot": "screen",
@@ -1143,7 +1143,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher",
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average",
      "screen_image": "/assets/thefrappeguy/img/screens/r2/bean-cost-before.webp",
      "screen_alt": "Stock Ledger for GB-ETH: in quantity 60, balance quantity 60, average rate ₹900, balance value ₹54,000."
     },
@@ -1184,7 +1184,7 @@
      "thought": "",
      "left_bubble": "So how do I add it?",
      "right_bubble": "With a Landed Cost Voucher. You attach the charges to the Purchase Receipt they belong to.",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher"
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average"
     },
     {
      "shot": "screen",
@@ -1197,7 +1197,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher",
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average",
      "screen_image": "/assets/thefrappeguy/img/screens/r2/landed-cost.webp",
      "screen_alt": "Landed Cost Voucher, submitted, dated 07-11-2026, for Purchase Receipt PR-26-00001, with charges Sea freight for the beans ₹4,800 and Port and clearing agent ₹4,200, distributed based on Qty."
     },
@@ -1225,7 +1225,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher",
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average",
      "screen_image": "/assets/thefrappeguy/img/screens/r2/bean-cost-after.webp",
      "screen_alt": "Stock Ledger for GB-ETH after the Landed Cost Voucher: in quantity 60, balance quantity 60, average rate ₹1,050, balance value ₹63,000."
     },
@@ -1268,7 +1268,7 @@
      "thought": "",
      "left_bubble": "Any catch?",
      "right_bubble": "Book freight as a plain expense and the stock never knows. Attach it to the receipt.",
-     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher"
+     "sources": "https://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average"
     },
     {
      "shot": "diagram",
@@ -1281,7 +1281,7 @@
      "thought": "",
      "left_bubble": "",
      "right_bubble": "",
-     "sources": "https://docs.frappe.io/erpnext/sales-order\nhttps://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/pricing-rule\nhttps://docs.frappe.io/erpnext/material-request\nhttps://docs.frappe.io/erpnext/buying-settings\nhttps://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher",
+     "sources": "https://docs.frappe.io/erpnext/sales-order\nhttps://docs.frappe.io/erpnext/price-lists\nhttps://docs.frappe.io/erpnext/customer-group\nhttps://docs.frappe.io/erpnext/pricing-rule\nhttps://docs.frappe.io/erpnext/material-request\nhttps://docs.frappe.io/erpnext/buying-settings\nhttps://docs.frappe.io/erpnext/stock-transactions-landed-cost-voucher\nhttps://docs.frappe.io/erpnext/fifo-and-moving-average",
      "diagram_template": "capability",
      "diagram_labels": "# Quote to payment\n- Built in\n# Cafe and online prices\n- Built in\n# Big-order discounts\n- Built in\n# Request to payment\n- Built in\n# Freight in bean cost\n- Built in\n# Compulsory buying steps\n- A setting\n# GST on invoices\n- In ERPNext III"
     },
