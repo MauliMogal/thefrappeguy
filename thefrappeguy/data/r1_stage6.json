@@ -1,6 +1,6 @@
 {
  "release": "frappe-101",
- "decisions": "D-174, D-176 to D-184, D-192",
+ "decisions": "D-174, D-176 to D-184, D-192, D-214",
  "explainers": [
   {
    "slug": "what-is-an-erp",
@@ -234,8 +234,8 @@
      "caption": "",
      "thought": "",
      "left_bubble": "What would it cover for us?",
-     "right_bubble": "Selling to cafes, buying beans, stock and accounts. Payroll and projects too, when you're ready.",
-     "sources": "https://frappe.io/erpnext"
+     "right_bubble": "Selling to cafes, buying beans, stock, accounts and projects. Frappe HR adds payroll when you're ready.",
+     "sources": "https://frappe.io/erpnext\nhttps://github.com/frappe/hrms"
     },
     {
      "shot": "medium",
@@ -510,7 +510,7 @@
      "caption": "",
      "thought": "",
      "left_bubble": "So I visit the bean farm. Check the builders, not only the brochure.",
-     "right_bubble": "That's the test.",
+     "right_bubble": "That's the test. Then ask to meet a customer your size.",
      "sources": ""
     },
     {
@@ -684,6 +684,19 @@
      "left_bubble": "All of it, or only a taste?",
      "right_bubble": "All of it. No feature is held back.",
      "sources": "https://frappe.io/erpnext"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-thinking",
+     "right_pose": "dr-express",
+     "row": "",
+     "sticker": "",
+     "plain_paper": 0,
+     "caption": "",
+     "thought": "",
+     "left_bubble": "So what's the catch? Is it free?",
+     "right_bubble": "The software has no licence fee. The money goes into setting it up and running it.",
+     "sources": "https://frappe.io/18\nhttps://frappe.io/framework"
     },
     {
      "shot": "medium",
@@ -899,14 +912,14 @@
     {
      "shot": "medium",
      "left_pose": "cl-saara-thinking",
-     "right_pose": "dr-thumbsup",
+     "right_pose": "dr-express",
      "row": "",
      "sticker": "",
      "plain_paper": 0,
      "caption": "",
      "thought": "",
      "left_bubble": "And if we don't get on with our partner?",
-     "right_bubble": "You change partners. The code is open, so nobody can hold your system back.",
+     "right_bubble": "You can change partners. It takes work, so keep the admin login and every change they make in your name.",
      "sources": "https://frappe.io/erpnext"
     },
     {
@@ -984,8 +997,21 @@
      "caption": "",
      "thought": "",
      "left_bubble": "Whose computer, though?",
-     "right_bubble": "I'd start with Frappe Cloud, the official hosting for Frappe apps. It handles setup, upgrades and monitoring.",
+     "right_bubble": "I'd start with Frappe Cloud, the official hosting for Frappe apps. It installs, upgrades and watches over the system.",
      "sources": "https://frappe.io/products\nhttps://frappe.io/cloud"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-expressing-2",
+     "right_pose": "dr-using-ipad",
+     "row": "",
+     "sticker": "",
+     "plain_paper": 0,
+     "caption": "",
+     "thought": "",
+     "left_bubble": "And if we leave ERPNext for good? Do our records come with us?",
+     "right_bubble": "Yes. Frappe Cloud lets you download a full backup any time. Moving it elsewhere is still work.",
+     "sources": "https://frappecloud.com/docs\nhttps://docs.frappe.io/cloud/sites/backups"
     },
     {
      "shot": "medium",
@@ -997,7 +1023,7 @@
      "caption": "",
      "thought": "",
      "left_bubble": "",
-     "right_bubble": "One catch. Open code doesn't set itself up or run itself. You still need good people.",
+     "right_bubble": "One catch. Hosting runs the system. It doesn't set it up around how you work. You still need good people.",
      "sources": "https://frappe.io/framework\nhttps://frappe.io/erpnext"
     },
     {
@@ -1010,7 +1036,7 @@
      "caption": "",
      "thought": "",
      "left_bubble": "So Frappe earns from the help, not the code.",
-     "right_bubble": "Yes. Frappe and its partners are paid for setup, hosting and support.",
+     "right_bubble": "Yes. Frappe and its partners are paid for setup, hosting and support. Costs get their own chapter.",
      "sources": "https://frappe.io/framework"
     },
     {
@@ -1138,11 +1164,11 @@
      "row": "",
      "sticker": "",
      "plain_paper": 0,
-     "caption": "",
+     "caption": "CRM: software that keeps track of every customer and lead.",
      "thought": "",
      "left_bubble": "A CRM? I keep every customer up here!",
      "right_bubble": "",
-     "sources": ""
+     "sources": "https://frappe.io/products"
     },
     {
      "shot": "close",
@@ -1173,21 +1199,6 @@
      "diagram_labels": "# For running a business\n- ERPNext: accounts, stock, sales\n- Frappe CRM: customers\n- Frappe Helpdesk: complaints\n- Frappe HR: people, payroll\n- Learning: online courses\n- Insights: dashboards, reports\n- Lending: loans\n- Raven: team chat"
     },
     {
-     "shot": "diagram",
-     "left_pose": "",
-     "right_pose": "",
-     "row": "",
-     "sticker": "",
-     "plain_paper": 0,
-     "caption": "Tools for people who build apps, and the cloud under it all.",
-     "thought": "",
-     "left_bubble": "",
-     "right_bubble": "",
-     "sources": "https://frappe.io/products",
-     "diagram_template": "family",
-     "diagram_labels": "# For builders\n- Framework: build apps\n- Builder: websites without code\n- Frappe UI: screen parts\n# Under it all\n- Frappe Cloud: hosting"
-    },
-    {
      "shot": "medium",
      "left_pose": "cl-jammy-thinking",
      "right_pose": "dr-listen",
@@ -1196,7 +1207,7 @@
      "plain_paper": 0,
      "caption": "",
      "thought": "",
-     "left_bubble": "For builders? What's the Framework?",
+     "left_bubble": "And what are all these apps built with?",
      "right_bubble": "",
      "sources": ""
     },
@@ -1210,7 +1221,7 @@
      "caption": "",
      "thought": "",
      "left_bubble": "",
-     "right_bubble": "A toolkit for building business apps quickly. ERPNext was the first app built with it.",
+     "right_bubble": "A toolkit for building business apps: the Frappe Framework. ERPNext was the first app built with it.",
      "sources": "https://frappe.io/framework"
     },
     {
@@ -1250,32 +1261,6 @@
      "thought": "",
      "left_bubble": "Which came first, the roaster or the blend?",
      "right_bubble": "The roaster. They built the Framework so they could build ERPNext.",
-     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
-    },
-    {
-     "shot": "flat",
-     "left_pose": "cl-jammy-shock",
-     "right_pose": "",
-     "row": "",
-     "sticker": "whoa",
-     "plain_paper": 0,
-     "caption": "",
-     "thought": "",
-     "left_bubble": "",
-     "right_bubble": "",
-     "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
-    },
-    {
-     "shot": "medium",
-     "left_pose": "cl-jammy-listening",
-     "right_pose": "dr-using-ipad",
-     "row": "",
-     "sticker": "",
-     "plain_paper": 0,
-     "caption": "Then their own way to put apps online. Then their own building blocks for screens.",
-     "thought": "",
-     "left_bubble": "They built the tools to build the tool.",
-     "right_bubble": "",
      "sources": "https://frappe.io/vision\nhttps://frappe.io/framework"
     },
     {
@@ -1342,7 +1327,7 @@
      "caption": "",
      "thought": "",
      "left_bubble": "So it's Frappe all the way down.",
-     "right_bubble": "Pretty much.",
+     "right_bubble": "Pretty much: every app sits on the same toolkit.",
      "sources": ""
     },
     {
