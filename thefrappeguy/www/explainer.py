@@ -114,10 +114,25 @@ SHOTS = {
 	"small": {"fig": "76%", "x": "10%", "y": "0%"},
 	"wide": {"fig": "128%", "x": "6%", "y": "-30%"},
 	"diagram": {"fig": None, "x": "8%", "y": "0%"},
+	"screen": {"fig": None, "x": "8%", "y": "0%"},
 }
 
 
+def screen_panel(p, lazy=False):
+	"""A real screen from The Coffee Company's site (D-216): caption on top, the screen below, tap for full size."""
+	load = ' loading="lazy"' if lazy else ""
+	src = escape(p.screen_image or "")
+	cap = Markup(f'<p class="tfg-screen-cap">{escape(p.caption)}</p>') if p.caption else Markup("")
+	img = Markup(
+		f'<a class="tfg-screen" href="{src}" target="_blank" rel="noopener">'
+		f'<img src="{src}" alt="{escape(p.screen_alt or "")}" decoding="async"{load}></a>'
+	)
+	return Markup('<figure class="tfg-panel" data-shot="screen">') + cap + img + Markup("</figure>")
+
+
 def comic_panel(p, env, lazy=False):
+	if p.shot == "screen":
+		return screen_panel(p, lazy)
 	shot = p.shot if p.shot in SHOTS else "medium"
 	d = SHOTS[shot]
 	items = sum(1 for k in ("caption", "thought", "left_bubble", "right_bubble") if p.get(k))
@@ -164,7 +179,8 @@ def comic_panel(p, env, lazy=False):
 		inner += Markup(f'<div class="tfg-stack{" has-cap" if p.caption else ""}">') + stack + Markup("</div>")
 	if shot not in ("flat", "diagram"):
 		inner += Markup('<div class="tfg-table"></div>')
-	return Markup(f'<figure class="tfg-panel" data-shot="{shot}">') + inner + Markup("</figure>")
+	dg = f' data-dg="{escape(p.diagram_template)}"' if shot == "diagram" and p.diagram_template else ""
+	return Markup(f'<figure class="tfg-panel" data-shot="{shot}"{dg}>') + inner + Markup("</figure>")
 
 
 def bubble(text, side, cls=""):

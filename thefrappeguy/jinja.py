@@ -102,6 +102,20 @@ def tfg_diagram(template, labels):
 		x = g[0]
 		out = (f'<div class="dg dg-one-site"><div class="dg-site"><span class="dg-bar dg-label">{escape(x["title"])}</span>'
 			f'<div class="dg-chips">' + "".join(lab(y, "dg-chip dg-label") for y in x["items"]) + "</div></div></div>")
+	elif template == "chain":
+		# Documents in order, each made from the one before (D-216). A marked step is the one the story is on.
+		steps = "".join(
+			f'<div class="dg-link{" is-on" if x.get("mark") else ""}"><span class="dg-doc">{escape(x["title"])}</span>'
+			f'{lab(x["items"][0]) if x["items"] else ""}</div>' for x in g[:6])
+		out = f'<div class="dg dg-chain" data-n="{min(len(g), 6)}">{steps}</div>'
+	elif template == "capability":
+		# The release's capability box (D-142): what it covers and how. "Built in" is solid; anything else ("A setting",
+		# "In ERPNext III") is dashed.
+		rows = "".join(
+			f'<div class="dg-cap"><span class="dg-flow dg-label">{escape(x["title"])}</span>'
+			f'<span class="dg-level{"" if x["items"] and x["items"][0].lower() == "built in" else " is-setting"}">'
+			f'{escape(x["items"][0] if x["items"] else "")}</span></div>' for x in g[:8])
+		out = f'<div class="dg dg-capability" data-n="{min(len(g), 8)}">{rows}</div>'
 	else:
 		return Markup("")
 	return Markup(out)

@@ -13,6 +13,8 @@
   "plain_paper",
   "diagram_template",
   "diagram_labels",
+  "screen_image",
+  "screen_alt",
   "caption",
   "thought",
   "column_break_p1",
@@ -28,12 +30,12 @@
   {
    "columns": 1,
    "default": "medium",
-   "description": "medium: two characters at the table. close: one character, bigger, scenery kept. flat: a close-up on the library highlight, no scenery. small: one of a row of three, 6 words at most. wide: the library's wide strip, for a silent beat with a sticker. Diagram (D-180): ink lines on paper, no characters; fill the template and labels below.",
+   "description": "medium: two characters at the table. close: one character, bigger, scenery kept. flat: a close-up on the library highlight, no scenery. small: one of a row of three, 6 words at most. wide: the library's wide strip, for a silent beat with a sticker. Diagram (D-180): ink lines on paper, no characters; fill the template and labels below. Screen (D-216): a real screen from The Coffee Company's ERPNext site, no characters; give the image path and its alt text below.",
    "fieldname": "shot",
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Shot",
-   "options": "medium\nclose\nflat\nsmall\nwide\ndiagram"
+   "options": "medium\nclose\nflat\nsmall\nwide\ndiagram\nscreen"
   },
   {
    "columns": 2,
@@ -79,7 +81,7 @@
    "fieldtype": "Select",
    "label": "Diagram template",
    "depends_on": "eval:doc.shot=='diagram'",
-   "options": "\none-record\ntimeline\nclosed-open\nlock-in\nfamily\none-site"
+   "options": "\none-record\ntimeline\nclosed-open\nlock-in\nfamily\none-site\nchain\ncapability"
   },
   {
    "fieldname": "diagram_labels",
@@ -87,6 +89,20 @@
    "label": "Diagram labels",
    "depends_on": "eval:doc.shot=='diagram'",
    "description": "One label per line. Start a group title with # and an item with -. 4 words per label, 16 labels at most."
+  },
+  {
+   "fieldname": "screen_image",
+   "fieldtype": "Data",
+   "label": "Screen image",
+   "depends_on": "eval:doc.shot=='screen'",
+   "description": "Path to a real screen under /assets/thefrappeguy/img/screens/, as webp."
+  },
+  {
+   "fieldname": "screen_alt",
+   "fieldtype": "Small Text",
+   "label": "Screen alt text",
+   "depends_on": "eval:doc.shot=='screen'",
+   "description": "What the screen shows, in words, for readers who can't see it and for the text version."
   },
   {
    "description": "Top-left narration, no tail. Counts toward the 2-bubble limit.",
@@ -152,7 +168,7 @@
  "index_web_pages_for_search": 0,
  "istable": 1,
  "links": [],
- "modified": "2026-11-06 19:30:00.000000",
+ "modified": "2026-11-08 23:30:00.000000",
  "modified_by": "Administrator",
  "module": "The Frappe Guy",
  "name": "Explainer Panel",

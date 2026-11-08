@@ -183,7 +183,7 @@
      "right_bubble": "",
      "sources": "https://frappe.io/erpnext",
      "diagram_template": "one-record",
-     "diagram_labels": "# Raju's cafe order\n- Stock: one bag less\n- Invoice: made from it\n- Accounts: money owed\n- Ishita: sees everything"
+     "diagram_labels": "# Raju's cafe order\n- Stock: bags promised\n- Invoice: made from it\n- Accounts: money owed\n- Ishita: sees everything"
     },
     {
      "shot": "medium",

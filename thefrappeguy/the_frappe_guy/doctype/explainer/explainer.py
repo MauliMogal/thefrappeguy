@@ -96,6 +96,18 @@ class Explainer(Document):
 					if word_count(label) > 4:
 						issues.append(f"{n}: the label '{label}' has {word_count(label)} words. Labels hold 4 at most.")
 				issues += copy_issues(p.diagram_labels, f"{n}, diagram labels")
+			elif shot == "screen":
+				# A real screen from the demo site (D-216): the screen is the picture, so no characters or bubbles,
+				# one caption at most, and alt text that says what the screen shows.
+				if p.left_pose or p.right_pose:
+					issues.append(f"{n}: a screen has no characters. Clear the poses.")
+				if p.thought or p.left_bubble or p.right_bubble:
+					issues.append(f"{n}: a screen holds one caption and no bubbles.")
+				if not (p.screen_image or "").startswith("/assets/thefrappeguy/img/screens/"):
+					issues.append(f"{n}: give the screen's path under /assets/thefrappeguy/img/screens/.")
+				if word_count(p.screen_alt) < 4:
+					issues.append(f"{n}: describe the screen in the alt text, at least 4 words.")
+				issues += copy_issues(p.screen_alt, f"{n}, screen alt text")
 			elif not p.left_pose and not p.right_pose:
 				issues.append(f"{n}: pick at least one character.")
 			if p.left_bubble and not p.left_pose:
@@ -164,6 +176,8 @@ class Explainer(Document):
 			if (p.shot or "") == "diagram":
 				for g in parse_diagram(p.diagram_labels):
 					lines.append(f"{g['title']}: " + "; ".join(g["items"]) + ".")
+			if (p.shot or "") == "screen" and p.screen_alt:
+				lines.append(f"Screen: {p.screen_alt.strip()}")
 			if p.thought:
 				lines.append(f"{left} thinks: {p.thought.strip()}")
 			if p.left_bubble:

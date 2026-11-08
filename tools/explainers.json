@@ -33,5 +33,40 @@
   "series_title": "Frappe 101",
   "part": 5,
   "pose": "dr-using-ipad"
+ },
+ {
+  "slug": "the-order-that-starts-it-all",
+  "title": "The order that starts it all",
+  "series_title": "ERPNext I",
+  "part": 1,
+  "pose": "dr-express"
+ },
+ {
+  "slug": "from-roastery-to-paid",
+  "title": "From roastery to paid",
+  "series_title": "ERPNext I",
+  "part": 2,
+  "pose": "dr-using-ipad"
+ },
+ {
+  "slug": "cafe-prices-and-online-prices",
+  "title": "Cafe prices and online prices",
+  "series_title": "ERPNext I",
+  "part": 3,
+  "pose": "dr-using-ipad"
+ },
+ {
+  "slug": "buying-green-beans",
+  "title": "Buying green beans",
+  "series_title": "ERPNext I",
+  "part": 4,
+  "pose": "dr-using-ipad"
+ },
+ {
+  "slug": "what-an-imported-bean-really-costs",
+  "title": "What an imported bean really costs",
+  "series_title": "ERPNext I",
+  "part": 5,
+  "pose": "dr-book"
  }
 ]

@@ -13,3 +13,4 @@ thefrappeguy.patches.v1_9.short_erpnext_titles
 thefrappeguy.patches.v1_9.erpnext_roman_titles
 thefrappeguy.patches.v1_11.r1_content_review
 thefrappeguy.patches.v1_11.r1_coffee_site_address
+thefrappeguy.patches.v1_12.r2_erpnext_1

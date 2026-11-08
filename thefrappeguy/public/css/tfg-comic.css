@@ -325,3 +325,32 @@
 .dg-site .dg-chips { padding: 3.4cqw 2.4cqw; justify-content: center; gap: 2.4cqw; }
 .dg-site .dg-chip { font-size: 4.8cqw; }
 .dg-site .dg-chip:last-child { border-style: dashed; }
+
+/* ---------- Stage 8: real screens and ERPNext diagrams (D-216) ----------
+   Screen: a real screen from The Coffee Company's ERPNext site, never redrawn. The caption sits above it in the
+   same box as every caption; the screen sits on paper with a thin ink frame and opens full size on tap.
+   Chain: documents in order, each made from the one before; the step the story is on is highlighted.
+   Capability: the release's capability box, one row per flow, "Built in" solid and "A setting" dashed. */
+.tfg-panel[data-shot="screen"] { aspect-ratio: auto; display: flex; flex-direction: column; align-items: stretch; gap: 3.4cqw; padding: 0 4.5cqw 4.5cqw; background: var(--comic-paper, #FAF8F2); }
+.tfg-screen-cap { position: relative; z-index: 4; align-self: flex-start; box-sizing: border-box; margin: 0 0 0 -4.5cqw; max-width: calc(100% + 9cqw); padding: 0.45em 0.9em 0.5em; background: var(--comic-bubble, #FFFFFF); border: solid var(--comic-ink, #000000); border-width: 0 max(2px, 0.56cqw) max(2px, 0.56cqw) 0; color: var(--comic-ink, #000000); font-family: var(--font-hand, "Caveat", cursive); font-weight: 600; font-size: 4.5cqw; line-height: 1.2; }
+.tfg-screen { display: block; align-self: center; width: 100%; max-width: 460px; border: max(1px, 0.3cqw) solid var(--comic-ink, #000000); border-radius: 1.6cqw; overflow: hidden; background: #FFFFFF; box-shadow: 0.9cqw 0.9cqw 0 var(--comic-ink, #000000); }
+.tfg-screen img { display: block; width: 100%; height: auto; }
+.tfg-screen:focus-visible { outline: 3px solid var(--highlight, #E8BE5F); outline-offset: 3px; }
+
+.tfg-panel[data-dg="chain"] { aspect-ratio: 4 / 5; }
+.tfg-panel[data-dg="capability"] { aspect-ratio: 3 / 4; }
+.tfg-panel[data-dg="capability"] .dg { top: 21cqw; }
+.dg-chain { display: flex; flex-direction: column; justify-content: space-between; gap: 4.6cqw; }
+.dg-link { position: relative; flex: 1; display: grid; grid-template-columns: 44% 1fr; align-items: center; column-gap: 3cqw; padding: 0 3.2cqw; background: var(--comic-bubble, #FFFFFF); border: var(--bw) solid var(--comic-ink, #000000); }
+.dg-link + .dg-link::before { content: ""; position: absolute; left: 22%; top: calc(-4.6cqw - var(--bw)); height: 4.6cqw; border-left: var(--bw) solid var(--comic-ink, #000000); }
+.dg-link + .dg-link::after { content: ""; position: absolute; left: calc(22% - 1.5cqw + var(--bw) / 2); top: calc(-2.4cqw - var(--bw)); border: 1.5cqw solid transparent; border-top: 2cqw solid var(--comic-ink, #000000); border-bottom: 0; }
+.dg-link.is-on { background: var(--highlight, #E8BE5F); }
+.dg-doc { font-family: var(--font-sans, "Inter", sans-serif); font-weight: 800; font-size: 4.3cqw; letter-spacing: -0.01em; line-height: 1.1; }
+.dg-link .dg-label { font-size: 4.9cqw; }
+.dg-chain[data-n="6"] .dg-doc { font-size: 3.9cqw; }
+.dg-capability { display: flex; flex-direction: column; justify-content: center; gap: 2.2cqw; }
+.dg-cap { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 3cqw; padding-bottom: 2.2cqw; border-bottom: max(1px, 0.3cqw) solid var(--comic-ink, #000000); }
+.dg-cap:last-child { border-bottom: 0; }
+.dg-flow { font-size: 5cqw; }
+.dg-level { font-family: var(--font-sans, "Inter", sans-serif); font-weight: 700; font-size: 3.6cqw; padding: 0.3em 0.7em; background: var(--highlight, #E8BE5F); border: var(--bw) solid var(--comic-ink, #000000); white-space: nowrap; }
+.dg-level.is-setting { background: var(--comic-bubble, #FFFFFF); border-style: dashed; }

@@ -34,11 +34,11 @@ SERIES = [
 		"slug": "erpnext",
 		"title": "ERPNext I",
 		"scene": "blue",
-		"description": "Buying and selling: one order followed from the first quote to the money in the bank, and how the beans get bought in the first place.",
+		"description": "Buying and selling on a real ERPNext site for The Coffee Company, a small coffee roaster: one cafe order from quote to payment, cafe and online prices, buying green beans, and what an imported bean really costs.",
 		"asked_by": "Raju sells the bags. Ishita buys the beans.",
 		"pose": "dr-using-ipad",
 		"decision": "Whether ERPNext can run how The Coffee Company buys beans and sells bags, to cafes and online.",
-		"sections": "The order that starts it all\nCafe prices and online prices\nBuying green beans\nWhat an imported bean really costs",
+		"sections": "The order that starts it all\nFrom roastery to paid\nCafe prices and online prices\nBuying green beans\nWhat an imported bean really costs",
 	},
 	{
 		"slug": "erpnext-stock",
@@ -216,16 +216,18 @@ MAULI_LINKS = [
 	("email", "maulimogal@gmail.com", "mailto:maulimogal@gmail.com"),
 ]
 
-DIAGRAM_TEMPLATES = ("one-record", "timeline", "closed-open", "lock-in", "family", "one-site")
+DIAGRAM_TEMPLATES = ("one-record", "timeline", "closed-open", "lock-in", "family", "one-site", "chain", "capability")
 
 
 def parse_diagram(text):
-	"""Diagram labels (D-180): '# Title' starts a group, '- item' adds to it. Returns [{title, items}]."""
+	"""Diagram labels (D-180): '# Title' starts a group, '- item' adds to it. Returns [{title, items, mark}].
+	'#+ Title' marks a group (D-216): the chain template highlights the step the story is on."""
 	groups = []
 	for line in (text or "").splitlines():
 		line = line.strip()
 		if line.startswith("#"):
-			groups.append({"title": line.lstrip("#").strip(), "items": []})
+			mark = line.startswith("#+")
+			groups.append({"title": (line[2:] if mark else line.lstrip("#")).strip(), "items": [], "mark": mark})
 		elif line.startswith("-") and groups:
 			groups[-1]["items"].append(line[1:].strip())
 	return groups
