@@ -321,7 +321,7 @@
 .dg-group:last-child .dg-chip:only-child { background: var(--highlight, #E8BE5F); }
 .dg-one-site { display: flex; align-items: center; justify-content: center; }
 .dg-site { width: 86%; border: var(--bw) solid var(--comic-ink, #000000); background: var(--comic-bubble, #FFFFFF); }
-.dg-bar { display: block; padding: 1.4cqw 2.4cqw; border-bottom: var(--bw) solid var(--comic-ink, #000000); background: var(--highlight, #E8BE5F); font-family: var(--font-sans, "Inter", sans-serif); font-weight: 700; font-size: 4.2cqw; overflow-wrap: anywhere; }
+.dg-bar { display: block; padding: 1.4cqw 2.4cqw; border-bottom: var(--bw) solid var(--comic-ink, #000000); background: var(--highlight, #E8BE5F); font-family: var(--font-sans, "Inter", sans-serif); font-weight: 700; font-size: 3.6cqw; white-space: nowrap; overflow: hidden; text-overflow: clip; }
 .dg-site .dg-chips { padding: 3.4cqw 2.4cqw; justify-content: center; gap: 2.4cqw; }
 .dg-site .dg-chip { font-size: 4.8cqw; }
 .dg-site .dg-chip:last-child { border-style: dashed; }

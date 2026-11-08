@@ -1,6 +1,6 @@
 {
  "release": "frappe-101",
- "decisions": "D-174, D-176 to D-184, D-192, D-214",
+ "decisions": "D-174, D-176 to D-184, D-192, D-214, D-215",
  "explainers": [
   {
    "slug": "what-is-an-erp",
@@ -1302,7 +1302,7 @@
      "right_bubble": "",
      "sources": "https://frappe.io/cloud\nhttps://frappe.io/cloud/sites",
      "diagram_template": "one-site",
-     "diagram_labels": "# thecoffeecompany.frappe.cloud\n- ERPNext\n- Frappe CRM\n- More apps, later"
+     "diagram_labels": "# thecoffeecompany.m.frappe.cloud\n- ERPNext\n- Frappe CRM\n- More apps, later"
     },
     {
      "shot": "medium",
