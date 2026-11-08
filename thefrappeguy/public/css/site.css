@@ -354,13 +354,3 @@ textarea.input { min-height: 160px; resize: vertical; }
 .subscribe__row .btn { flex: 0 0 auto; }
 .subscribe__done { display: grid; gap: var(--space-2); }
 .subscribe__done p { margin: 0; }
-
-/* Start here (D-208): a release's parts as numbered text links, two columns on wide screens. */
-.part-links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); max-width: 960px; }
-@media (max-width: 719px) { .part-links { grid-template-columns: minmax(0, 1fr); } }
-.part-links li { border-top: 1px solid var(--rule); }
-.part-links a { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-3); padding: var(--space-4) 0; color: inherit; text-decoration: none; }
-.part-links__no { font: 700 13px/20px var(--font-sans); letter-spacing: .08em; color: var(--tone); }
-.part-links__title { font-weight: 700; font-size: 19px; line-height: 26px; letter-spacing: -0.01em; }
-.part-links__min { font-size: 14px; line-height: 20px; color: var(--ink-3); white-space: nowrap; }
-.part-links a:hover .part-links__title { text-decoration: underline; text-underline-offset: 4px; }

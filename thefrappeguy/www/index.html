@@ -1,5 +1,5 @@
 {% extends "templates/tfg_base.html" %}
-{% from "templates/tfg_macros.html" import part_links, topics, cast_grid, subscribe %}
+{% from "templates/tfg_macros.html" import topics, cast_grid, subscribe %}
 {% block content %}
 <div class="wrap">
   <section class="hero">
@@ -25,9 +25,5 @@
   <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">Meet the team</h2><p class="lede">{{ tfg_premise }} The company and its people are fictional.</p></div>
   {{ cast_grid(tfg_cast) }}
 </div></section>
-{% if start %}<section class="section" id="start"><div class="wrap">
-  <div class="section-head" style="margin-bottom:var(--space-6)"><h2 class="h2">Start here: {{ start_series.title | e }}</h2><p class="lede">{{ start | length }} short parts, about {{ start | sum(attribute="read_minutes") }} minutes in all. Then the story moves on to <a href="/series/erpnext">ERPNext I</a>.</p></div>
-  {{ part_links(start, start_series.scene) }}
-</div></section>{% endif %}
 <div class="wrap">{{ subscribe("/") }}</div>
 {% endblock %}
