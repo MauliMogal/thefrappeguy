@@ -4,6 +4,10 @@ The Frappe app behind **thefrappeguy.com**: learn Frappe the easy way by followi
 
 The site is the brand system's "comic on a quiet page": pages stay ink and paper, and all colour comes from Deepak and the cast of Frappe's Character Library.
 
+## Contribute
+
+Wording, facts, storylines for other industries, design and technical writing are all welcome, and most of it needs no code. Start with [CONTRIBUTING.md](CONTRIBUTING.md), or open an issue from the templates. The only hard rule: characters are never drawn, edited or generated.
+
 ## What's in the app
 
 | Part | Where | What it does |
@@ -24,7 +28,7 @@ On Frappe Cloud: add this repository to the bench as an app, deploy, then instal
 Locally:
 
 ```bash
-bench get-app https://github.com/MauliMogal/the-frappe-guy
+bench get-app https://github.com/MauliMogal/thefrappeguy
 bench --site yoursite install-app thefrappeguy
 ```
 
@@ -39,6 +43,6 @@ Desk → **Explainer** → New. Fill the card, the comic panel (asker on the lef
 
 ## The characters
 
-Deepak and the cast belong to Frappe and are used with permission. They are composed only from the library's own exports, never drawn, generated or redrawn. They are not covered by this repository's licence, and this repository stays private so the artwork never becomes a public kit.
+Deepak and the cast belong to Frappe Technologies and are used with permission. They are composed only from the library's own exports, never drawn, generated or redrawn. They are not covered by this repository's MIT licence. The files in `thefrappeguy/public/img` are here only so the site builds: do not copy, redistribute or reuse them elsewhere.
 
 Characters from the Frappe Character Library, used with permission.

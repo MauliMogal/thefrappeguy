@@ -1,0 +1,19 @@
+name: Design or technical writing
+description: Layout, accessibility, share cards, docs, or technical writing for the site.
+title: "Design: [what]"
+labels: ["design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Characters are never drawn, edited or generated. They come only from Frappe's Character Library exports. If a pose is missing, say which one is needed and we will request it from Frappe's designer.
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you change, and where
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What problem does it solve for a reader

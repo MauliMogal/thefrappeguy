@@ -1,0 +1,30 @@
+name: Storyline idea
+description: A story for a different industry or kind of company, or a new question the comic should answer.
+title: "Story: [industry or question]"
+labels: ["storyline"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The story today follows The Coffee Company: a small roaster in India. Ideas for other businesses (a garment maker, a school, a clinic, a trading company) are welcome.
+        Keep it to what the comic can teach: one real question from the owner, one real example, the catch, one takeaway.
+  - type: input
+    id: who
+    attributes:
+      label: Which kind of company, and who asks the question
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: The question they would ask
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: A real example from how that business works
+  - type: textarea
+    id: catch
+    attributes:
+      label: The catch: what ERPNext cannot do, or needs set up
