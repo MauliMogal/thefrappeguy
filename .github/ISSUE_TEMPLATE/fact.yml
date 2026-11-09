@@ -1,0 +1,28 @@
+name: Fact check
+description: Something in a part is wrong, out of date or overstated about Frappe, ERPNext or Frappe Cloud.
+title: "Fact: [part and panel]"
+labels: ["fact-check"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Part and panel number
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: What the panel says
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What is true today
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: frappe.io, docs.frappe.io, frappecloud.com/docs or github.com/frappe. If you are not sure, say so here.

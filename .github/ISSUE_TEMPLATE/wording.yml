@@ -1,0 +1,35 @@
+name: Wording suggestion
+description: A line in a comic panel could sound more natural, clearer or more like a real conversation.
+title: "Wording: [part and panel]"
+labels: ["wording"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. You do not need to run anything. Open the part on thefrappeguy.com, find the panel, and tell us what to change.
+        Rules in one line: 20 words per bubble (12 is the target), no dashes, no exclamation marks from The Frappe Guy. See CONTRIBUTING.md.
+  - type: input
+    id: where
+    attributes:
+      label: Part and panel number
+      description: For example, "ERPNext I, Part 3, panel 7". The panel number is its position in the part, counting from 1.
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current line
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Your version
+      description: Say it the way you would say it across a table.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it is better
+      description: Optional. One sentence is plenty.
