@@ -1,6 +1,6 @@
 {
  "release": "erpnext",
- "decisions": "D-216 to D-222",
+ "decisions": "D-216 to D-222, D-224",
  "explainers": [
   {
    "slug": "the-order-that-starts-it-all",
@@ -162,6 +162,21 @@
      "left_bubble": "Corner Cup said yes this morning. Do I type it all again as an order?",
      "right_bubble": "No. On the quote, Create, then Sales Order. It becomes the cafe's confirmed order.",
      "sources": "https://docs.frappe.io/erpnext/sales-order"
+    },
+    {
+     "shot": "screen",
+     "left_pose": "",
+     "right_pose": "",
+     "row": "",
+     "sticker": "",
+     "plain_paper": 0,
+     "caption": "The Create button on an open quote. This one is for another cafe, Blue Door. Pick Sales Order, and the cafe and its bags carry across.",
+     "thought": "",
+     "left_bubble": "",
+     "right_bubble": "",
+     "sources": "https://docs.frappe.io/erpnext/sales-order",
+     "screen_image": "/assets/thefrappeguy/img/screens/r2/create-menu.webp",
+     "screen_alt": "Top of an open Quotation for Blue Door Cafe, with the Create menu open on Sales Order, beside Update Items, Set as Lost and Cancel."
     },
     {
      "shot": "screen",
@@ -764,6 +779,32 @@
      "left_bubble": "",
      "right_bubble": "Full price, ₹340 a bag. 40 is under 50, so the rule stays off.",
      "sources": "https://docs.frappe.io/erpnext/pricing-rule"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-saara-expressing-2",
+     "right_pose": "dr-thinking",
+     "row": "",
+     "sticker": "",
+     "plain_paper": 0,
+     "caption": "",
+     "thought": "",
+     "left_bubble": "And 30 Ethiopian plus 30 House Blend? That's 60 bags.",
+     "right_bubble": "Still full price. The rule counts each item on its own, and 30 is under 50.",
+     "sources": "https://docs.frappe.io/erpnext/pricing-rule\nhttps://github.com/frappe/erpnext/blob/version-16/erpnext/accounts/doctype/pricing_rule/utils.py"
+    },
+    {
+     "shot": "medium",
+     "left_pose": "cl-raju-speaking",
+     "right_pose": "dr-idea",
+     "row": "",
+     "sticker": "",
+     "plain_paper": 0,
+     "caption": "",
+     "thought": "",
+     "left_bubble": "Can it count the whole order instead?",
+     "right_bubble": "Tick Mixed Conditions on the rule. Then everything in the Products group counts together.",
+     "sources": "https://docs.frappe.io/erpnext/pricing-rule\nhttps://github.com/frappe/erpnext/blob/version-16/erpnext/accounts/doctype/pricing_rule/utils.py"
     },
     {
      "shot": "medium",
